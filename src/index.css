@@ -35,7 +35,7 @@
     }
 
     .navbar{
-        @apply  sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 h-[150px] bg-gradient-to-r from-brown to-dark-green ;
+        @apply sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 h-[150px] bg-gradient-to-r from-brown to-dark-green ;
     }
 
     .h-cover{
@@ -55,7 +55,7 @@
     }
 
     .link{
-        @apply text-white text-xl text-center w-32 hover:text-black hover:bg-grey p-3 px-4 block;
+        @apply text-white text-2xl text-center w-36 hover:text-black hover:bg-grey p-3 px-4 block;
     }
 
     .hide{
