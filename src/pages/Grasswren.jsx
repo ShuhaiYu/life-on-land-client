@@ -1,9 +1,21 @@
+import Vector from '../imgs/Vector 1.png'
+import BirdIcon from '../imgs/grasswren/bird-right.png'
+import GrasswrenImg1 from '../imgs/grasswren/abc3.jpg'
+
 const GrasswrenPage = () => {
     return (
-        <div>
-            <h1>Grasswren</h1>
-            <p>Grasswrens are a group of small, insectivorous birds that are native to Australia. They are known for their distinctive calls and complex songs, which are used to communicate with other members of their species. Grasswrens are highly social birds, and they live in small family groups that work together to forage for food and raise their young.</p>
-        </div>
+        <>
+            <div className='flex flex-col justify-center items-center mt-28'>
+
+                <p className="text-center text-3xl text-dark-green w-1/2 mx-auto my-10">Black summer fires took nearly 3 billions animals' lives.
+                    It has never been so vital and urgent to protect our biodiversity.</p>
+                <img src={Vector} alt="Vector" className='w-auto h-auto' />
+                <img src={BirdIcon} alt="bird icon" className='self-center w-28 h-28 my-5 mx-1' />
+                <img src={GrasswrenImg1} alt="Grasswren" className='w-[40%] my-10' />
+            </div>
+            
+        </>
+
     )
 }
 
