@@ -9,6 +9,7 @@ import GrasswrenPage from './pages/Grasswren'
 import EducationPage from './pages/Education';
 import InvolvedPage from './pages/Involved';
 import RiskPage from './pages/Risk';
+import GrasswrenDetail from './pages/GrasswrenDetail';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route index element={<HomePage />} />
 
         <Route path="/grasswren" element={<GrasswrenPage />} />
+        <Route path="/grasswren/:id" element={<GrasswrenDetail />} />
         <Route path="/education" element={<EducationPage />} />
         <Route path="/involved" element={<InvolvedPage />} />
         <Route path="/risk" element={<RiskPage />} />

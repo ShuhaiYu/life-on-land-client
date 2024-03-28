@@ -5,7 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 const Navbar = () => {
     return (
         <>
-            <nav className="navbar">
+            <nav className="z-50 navbar">
 
                 <Link to="/" className="flex-none text-3xl w-10 text-white">WrenGuard</Link>
                 <div className="flex items-center justify-center gap-x-3 md:gap-12 mx-auto">

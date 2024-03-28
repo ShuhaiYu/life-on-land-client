@@ -1,6 +1,7 @@
 import Vector from '../imgs/Vector 1.png'
 import BirdIcon from '../imgs/grasswren/bird-right.png'
 import GrasswrenImg1 from '../imgs/grasswren/abc3.jpg'
+import SelectGrasswren from '../components/SelectGrasswren'
 
 const GrasswrenPage = () => {
     return (
@@ -13,7 +14,7 @@ const GrasswrenPage = () => {
                 <img src={BirdIcon} alt="bird icon" className='self-center w-28 h-28 my-5 mx-1' />
                 <img src={GrasswrenImg1} alt="Grasswren" className='w-[40%] my-10' />
             </div>
-            
+            <SelectGrasswren />
         </>
 
     )
