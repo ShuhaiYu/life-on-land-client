@@ -54,6 +54,7 @@ const SelectGrasswren = () => {
                         wren_id={grasswren.wren_id}
                         common_name={grasswren.common_name}
                         risk_category={grasswren.risk_category}
+                        image={grasswren.image}
                     />
                 ))}
             </div>

@@ -16,46 +16,45 @@ const GrasswrenDetail = () => {
                 console.log(error);
             });
     }
-    
+
     useEffect(() => {
         fetchGrasswren();
     }, [id]);
 
-    const { common_name, description, location, population, risk_category, scientific_name, threats } = grasswren;
-    
+    const { common_name, description, location, population, risk_category, scientific_name, threats, image } = grasswren;
+
     return (
-        <div className='flex flex-col bg-dark-green m-20 p-10'>
-            <div className='flex flex-row gap-5 m-5'>
-               <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Name</p> 
-               <p className='text-white'>{scientific_name}</p>
+        <div className='grid grid-cols-2 m-20' style={{ gridTemplateColumns: '30% 70%' }}>
+            <div className='relative max-w-xl mx-auto'>
+                <img src={image} alt={common_name} className='w-full h-full object-cover' />
+                <div className="absolute inset-0 flex items-end justify-end">
+                    <h2 className="text-white text-4xl font-bold opacity-80">{common_name}</h2>
+                </div>
             </div>
-            <div className='flex flex-row gap-5 m-5'>
-               <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Risk</p> 
-               <p className='text-white'>{risk_category}</p>
+
+            <div className='flex flex-col bg-dark-green p-10'>
+                <div className='flex flex-row gap-5 m-5'>
+                    <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Name</p>
+                    <p className='text-white'>{scientific_name}</p>
+                </div>
+                <div className='flex flex-row gap-5 m-5'>
+                    <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Risk</p>
+                    <p className='text-white'>{risk_category}</p>
+                </div>
+                <div className='flex gap-5 m-5 items-start'>
+                    <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>description</p>
+                    <p className='text-white'>{description}</p>
+                </div>
+                <div className='flex flex-row gap-5 m-5'>
+                    <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>location</p>
+                    <p className='text-white'>{location}</p>
+                </div>
+
             </div>
-            <div className='flex gap-5 m-5 items-start'>
-               <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>description</p> 
-               <p className='text-white'>{description}</p>
-            </div>
-            <div className='flex flex-row gap-5 m-5'>
-               <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>location</p> 
-               <p className='text-white'>{location}</p>
-            </div>
-            {/* <div className='flex flex-row gap-5 m-5'>
-               <p className='text-white uppercase border-2 border-white px-10 py-2'>Risk</p> 
-               <p className='text-white'>{risk_category}</p>
-            </div> */}
-            
-            {/* <h2>Name: {common_name}</h2>
-            <p>Description: {description}</p>
-            <p>Location: {location}</p>
-            <p>Population: {population}</p>
-            <p>Risk Category: {risk_category}</p>
-            
-            <p>Threats: {threats}</p> */}
         </div>
+
     );
-    }
+}
 
 export default GrasswrenDetail;
 

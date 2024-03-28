@@ -10,6 +10,7 @@ import EducationPage from './pages/Education';
 import InvolvedPage from './pages/Involved';
 import RiskPage from './pages/Risk';
 import GrasswrenDetail from './pages/GrasswrenDetail';
+import RiskFirePage from './pages/RiskFire';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/education" element={<EducationPage />} />
         <Route path="/involved" element={<InvolvedPage />} />
         <Route path="/risk" element={<RiskPage />} />
+        <Route path="/risk/fire" element={<RiskFirePage />} />
 
         
         <Route path="*" element={<PageNotFound />} />
