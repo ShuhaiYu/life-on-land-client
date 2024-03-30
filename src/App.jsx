@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar'
+import Layout from './components/Layout';
 import HomePage from './pages/Home'
 import PageNotFound from './pages/404'
 import GrasswrenPage from './pages/Grasswren'
@@ -11,13 +12,16 @@ import InvolvedPage from './pages/Involved';
 import RiskPage from './pages/Risk';
 import GrasswrenDetail from './pages/GrasswrenDetail';
 import RiskFirePage from './pages/RiskFire';
+import Footer from './components/Footer';
+import RiskPredators from './pages/RiskPredators';
+import RiskHuman from './pages/RiskHuman';
 
 
 function App() {
   return (
     <Router>
       <Routes>
-      <Route path="/" element={<Navbar />} >
+      <Route path="/" element={<Layout />} >
         <Route index element={<HomePage />} />
 
         <Route path="/grasswren" element={<GrasswrenPage />} />
@@ -26,12 +30,15 @@ function App() {
         <Route path="/involved" element={<InvolvedPage />} />
         <Route path="/risk" element={<RiskPage />} />
         <Route path="/risk/fire" element={<RiskFirePage />} />
+        <Route path="/risk/predators" element={<RiskPredators />} />
+        <Route path="/risk/humans" element={<RiskHuman />} />
 
         
         <Route path="*" element={<PageNotFound />} />
       </Route>
 
     </Routes>
+    <Footer />
     </Router>
     
   )

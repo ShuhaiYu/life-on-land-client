@@ -21,6 +21,7 @@ export default {
         'transparent': 'transparent',
         'purple': '#8B46FF',
         'brown': '#5A3F37',
+        'light-green': '#5EBA7B',
         'dark-green': '#2C7744',
         'orange': '#FA8700',
         'yellow': '#C7A801',

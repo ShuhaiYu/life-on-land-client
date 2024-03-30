@@ -38,6 +38,10 @@
         @apply sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 h-[150px] bg-gradient-to-r from-brown to-dark-green ;
     }
 
+    .footer{
+        @apply sticky top-0 flex items-center justify-center gap-12 w-full px-[5vw] py-5 h-[150px] bg-gradient-to-r from-brown to-dark-green ;
+    }
+
     .h-cover{
         @apply min-h-[calc(100vh-80px)];
     }
@@ -55,7 +59,7 @@
     }
 
     .link{
-        @apply text-white text-2xl text-center w-36 hover:text-black hover:bg-grey p-3 px-4 block;
+        @apply text-white text-2xl text-center w-40 hover:text-black hover:bg-grey p-3 px-4 block;
     }
 
     .hide{
