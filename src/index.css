@@ -59,8 +59,19 @@
     }
 
     .link{
-        @apply text-white text-2xl text-center w-40 hover:text-black hover:bg-grey p-3 px-4 block;
+        @apply text-white text-2xl text-center w-40 p-3 px-4 block no-underline;
+        position: relative;
     }
+
+    .link:hover::after {
+        content: '';
+        position: absolute;
+        bottom: -10px; 
+        left: 0;
+        width: 100%;
+        height: 10px; 
+        background-color: #FCE04E; 
+      }
 
     .hide{
         @apply opacity-0 pointer-events-none duration-100;

@@ -6,7 +6,7 @@ const CardGrasswren = ({ wren_id, common_name, risk_category, image }) => {
             risk_category === 'Vulnerable' ? 'border-yellow' : '';
     return (
         <div className={`flex justify-end items-center bg-dark-green h-[300px] relative border-4 ${borderColor}`}>
-            <img src={image} alt={common_name} className=' w-1/2 h-full object-cover' />
+            <img src={image} alt={common_name} className=' w-[70%] h-full object-cover' />
             <div className="absolute inset-0 flex items-center justify-center">
                 <h2 className="text-white text-4xl font-bold opacity-80">{common_name}</h2>
             </div>
