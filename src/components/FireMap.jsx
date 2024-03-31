@@ -30,7 +30,7 @@ const FireHeatMap = ({ points }) => {
 
       // Add the heat layer with custom gradient
       const heatLayer = L.heatLayer(points, {
-        radius: 25,
+        radius: 20,
         gradient: colorGradient
       }).addTo(map);
 

@@ -29,16 +29,18 @@ const RiskFirePage = () => {
 
     const fetchFire = async () => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firepoints`);
-            const newPoints = response.data.map(fire => {
-                const [lng, lat] = fire.first_point.replace('POINT(', '').replace(')', '').split(' ');
-                return [parseFloat(lat), parseFloat(lng), 1];
-            });
-            setPoints(newPoints);
+          const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firepoints`);
+          const newPoints = response.data.map(fire => {
+            // Directly access the x and y properties of first_point
+            const { x: lng, y: lat } = fire.first_point;
+            return [lat, lng, 1]; // Note that the heatmap expects [latitude, longitude, intensity]
+          });
+          setPoints(newPoints);
         } catch (error) {
-            console.error(error);
+          console.error(error);
         }
-    }
+      }
+      
 
     useEffect(() => {
         fetchFire();
