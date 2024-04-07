@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Link, Outlet } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -7,12 +7,12 @@ const Navbar = () => {
         <>
             <nav className="navbar z-50">
 
-                <Link to="/" className="flex-none text-3xl w-10 text-white">WrenGuard</Link>
+                <NavLink to="/" className="flex-none text-3xl w-10 text-white">WrenGuard</NavLink>
                 <div className="flex items-center justify-center gap-x-3 md:gap-12 mx-auto">
-                    <Link to="/grasswren" className="link">Threatened Grasswren</Link>
-                    <Link to="/risk" className="link">What Went Wrong</Link>
-                    <Link to="/education" className="link">Becoming An Expert</Link>
-                    <Link to="/involved" className="link">Get Involved</Link>
+                    <NavLink to="/grasswren" className="link">Threatened Grasswren</NavLink>
+                    <NavLink to="/risk" className="link">What Went Wrong</NavLink>
+                    <NavLink to="/education" className="link">Becoming An Expert</NavLink>
+                    <NavLink to="/involved" className="link">Get Involved</NavLink>
 
                 </div>
 

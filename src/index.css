@@ -63,7 +63,7 @@
         position: relative;
     }
 
-    .link:hover::after {
+    .link:hover::after, .link.active::after {
         content: '';
         position: absolute;
         bottom: -10px; 
