@@ -6,17 +6,20 @@ import 'leaflet.heat';
 const FireHeatMap = ({ points }) => {
   const mapRef = useRef(null); // Reference to the map instance
 
+  // useEffect hook to render the map
   useEffect(() => {
+    // Check if the map reference and points are set
     if (mapRef.current !== null && points.length > 0) {
       
-
+      // Create a new map instance
       const map = L.map(mapRef.current, {
         center: [-33.8688, 151.2093], // Sydney coordinates
         zoom: 7,
         maxZoom: 10,
         minZoom: 3
       });
-
+      
+      // Add OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);

@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 
+// AudioPlayer component
 const AudioPlayer = ({src_url}) => {
  
   const audioRef = useRef(null);
  
   const [isPlaying, setIsPlaying] = useState(false);
 
-  
+  // Function to toggle play/pause
   const togglePlayPause = () => {
     
     if (!audioRef.current) return;

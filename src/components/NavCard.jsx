@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// NavCard component
 const NavCard = ({ title, img, link }) => {
     return (
+        
         <div className='flex flex-col justify-center items-center w-[25%] bg-dark-green pt-10'>
 
             <h1 className='text-2xl text-white text-center uppercase font-bold w-2/3 my-5'>{title}</h1>

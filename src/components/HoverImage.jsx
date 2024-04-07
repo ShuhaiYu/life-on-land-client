@@ -6,8 +6,10 @@ const HoverImage = ({ imgSrc, title, link }) => {
 
   return (
 
+    // Link to the page
     <Link to={link} className='relative max-w-xl mx-auto' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <img src={imgSrc} alt="Grasswren" className='w-[100%] rounded-[100px]' />
+        {/* If not hovered, display a semi-transparent overlay */}
         {!isHovered && (
           <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-[100px]"></div>
         )}

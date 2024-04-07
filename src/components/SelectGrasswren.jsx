@@ -6,15 +6,15 @@ import VectorBgYellow from '../imgs/grasswren/VectorBg-yellow.svg';
 import VectorBgOrange from '../imgs/grasswren/VectorBg-orange.svg';
 import VectorBgRed from '../imgs/grasswren/VectorBg-red.svg';
 
-
+// SelectGrasswren component
 const SelectGrasswren = () => {
     const [grasswrenList, setGrasswrenList] = useState([]);
     const [selectedRisk, setSelectedRisk] = useState(null);
 
+    // Fetch grasswren list
     const fecthGrasswrenList = async () => {
         axios.get(import.meta.env.VITE_SERVER_DOMAIN + '/api/grasswren/list')
             .then(response => {
-                // console.log(response.data);
                 setGrasswrenList(response.data);
                 console.log(grasswrenList);
             })
@@ -23,10 +23,12 @@ const SelectGrasswren = () => {
             });
     }
 
+    // useEffect hook to fetch grasswren list
     useEffect(() => {
         fecthGrasswrenList();
     }, []);
 
+    // Function to handle risk filter
     const handleRiskFilter = (risk) => {
         setSelectedRisk(prevRisk => prevRisk === risk ? null : risk);
     };
@@ -35,6 +37,8 @@ const SelectGrasswren = () => {
     return (
         <div className='bg-dark-green p-20'>
             <h1 className='text-3xl text-white text-center mb-20'>Meet Our Endangered Grasswrens</h1>
+            
+            {/* Filter buttons */}
             <div className='flex flex-row gap-20 justify-center mb-16'>
                 <button onClick={() => handleRiskFilter('Critically Endangered')}>
                     <img src={VectorBgRed} alt="Critically Endangered" className='w-auto h-auto' />
@@ -47,6 +51,8 @@ const SelectGrasswren = () => {
                 </button>
 
             </div>
+
+            {/* Display grasswren cards based on the selected risk category */}
             <div className='grid grid-cols-3 gap-4 '>
                 {grasswrenList.filter(grasswren => !selectedRisk || grasswren.risk_category === selectedRisk).map((grasswren) => (
                     <CardGrasswren

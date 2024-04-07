@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+
+// Back to top button component
+// ref - https://stackoverflow.com/questions/57574181/how-to-add-scroll-to-top-in-react
 const BackToTopButton = () => {
+  // Set visibility state
   const [isVisible, setIsVisible] = useState(false);
 
-  
+  // Show button when page is scrolled down to certain distance
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -18,7 +22,7 @@ const BackToTopButton = () => {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  
+  // Scroll to top on click
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

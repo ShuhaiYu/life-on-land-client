@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Link, Outlet } from 'react-router-dom';
 
-
+// Navbar component
 const Navbar = () => {
     return (
         <>
@@ -17,6 +17,7 @@ const Navbar = () => {
                 </div>
 
             </nav>
+            {/* Outlet is a special component that allows nested routing */}
             <Outlet />
         </>
 

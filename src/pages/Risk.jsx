@@ -20,6 +20,7 @@ import HoverImage from '../components/HoverImage';
 
 
 const RiskPage = () => {
+    // Slider settings
     const settings = {
         dots: true,
         infinite: true,
@@ -31,12 +32,14 @@ const RiskPage = () => {
     };
     return (
         <div>
+            
             <div className="flex flex-col justify-center items-center m-20">
                 <p className="text-dark-green text-3xl text-center w-[70%]">The Mukarrthippi Grasswren is on the verge of extinction, with fewer than 20 individuals remaining in the wild. </p>
                 <img src={Vector} alt="Vector" className='w-auto h-auto m-10' />
                 <img src={BirdIcon1} alt="bird icon" className='self-center w-20 h-20 my-5 mx-1' />
             </div>
             <div className="slider-container">
+                {/* // Slider component */}
                 <Slider {...settings}>
                     <div>
                         <img src={img1} alt="Grasswren" className='w-[100%] h-[500px] ' />
@@ -63,6 +66,7 @@ const RiskPage = () => {
 
             </div>
 
+            {/* links to other risk pages */}
             <div className='bg-dark-green pb-20'>
                 <p className='text-white text-5xl text-center p-20'>What went wrong exactly?</p>
                 <div className='grid grid-cols-3 gap-4 mx-10'>
@@ -95,6 +99,8 @@ const RiskPage = () => {
 
                     <img src={VectorWhite} alt="Vector" className='w-auto h-auto' />
                 </div>
+
+                {/* links to other pages */}
                 <div className='grid grid-cols-3 gap-12 mx-40'>
                     
                     <HoverImage imgSrc={img4} title='About Grasswren' link='/grasswren'/>

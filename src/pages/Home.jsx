@@ -13,6 +13,7 @@ import NavCard from '../components/NavCard'
 const HomePage = () => {
     return (
         <>
+            {/* This is the landing imgs */}
             <div className="flex flex-col h-full">
                 <div className="flex flex-row">
                     <div className='flex flex-col justify-center items-center w-[40%]'>
@@ -24,10 +25,7 @@ const HomePage = () => {
                         <img src={LandingImg1} alt="Birdwatching" className='h-64' />
                         <img src={LandingImg2} alt="Birdwatching" className='h-96' />
                     </div>
-
                     <img src={LandingImg3} alt="Birdwatching" className="w-[40%] h-[40rem]" />
-
-
                 </div>
                 <div className='flex flex-row'>
                     <img src={LandingImg2} alt="Grasswren" className="w-[40%]" />
@@ -39,16 +37,13 @@ const HomePage = () => {
                 </div>
             </div>
 
+            {/* This is the three nav cards */}
             <div className='flex flex-row gap-24 justify-center my-40'>
                 <NavCard title='What is grasswren?' img={NavCardImg1} link='/grasswren' />
                 <NavCard title='how can i help?' img={NavCardImg2} link='/education' />
                 <NavCard title='how did it happen?' img={NavCardImg3} link='/risk' />
             </div>
         </>
-
-
-
-
     )
 }
 

@@ -16,8 +16,7 @@ import imgnature from '../imgs/risk/nature.png';
 
 const RiskFirePage = () => {
     let [fireData, setFireData] = useState([]);
-    let [fireTypes, setFireTypes] = useState([]);
-    let [stateDistribution, setStateDistribution] = useState([]);
+
     let [fireDates, setFireDates] = useState([]);
 
     let [points, setPoints] = useState([]);
@@ -30,7 +29,7 @@ const RiskFirePage = () => {
         fireDates: [],
     });
 
-
+    // Slider settings
     const settings = {
         dots: true,
         infinite: true,
@@ -40,6 +39,7 @@ const RiskFirePage = () => {
         arrows: true,
     };
 
+    // Function to fetch fire points
     const fetchFirePoints = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firepoints`);
@@ -54,6 +54,7 @@ const RiskFirePage = () => {
         }
     }
 
+    // Function to fetch fire data
     const fetchFireData = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firedata`);
@@ -64,19 +65,18 @@ const RiskFirePage = () => {
         }
     }
 
-
-
+    // useEffect hook to fetch fire data
     useEffect(() => {
         fetchFirePoints();
         fetchFireData();
     }, []);
 
+    // useEffect hook to process fire data
     useEffect(() => {
         processData(fireData);
     }, [fireData, timeRange, timeUnit]);
 
     const processData = (data) => {
-        // console.log("Before" + data);
         // Filter data based on the selected time range
         const filteredData = data.filter(fire => {
             const fireDate = new Date(fire.fire_date);
@@ -106,14 +106,16 @@ const RiskFirePage = () => {
         sortedFireDates.sort((a, b) => new Date(a.date) - new Date(b.date));
         setFireDates(sortedFireDates);
 
+        // Set the processed data
         setProcessedData({
             fireTypes: Object.entries(fireTypeCounts).map(([name, value]) => ({ name, value })),
             stateDistribution: Object.entries(stateCounts).map(([name, value]) => ({ name, value })),
             fireDates: Object.entries(fireDateCounts).map(([date, count]) => ({ date, count })),
         });
-        // console.log("After" + processedData);
+
     };
 
+    // Helper function to aggregate data by a specific property
     const aggregateDataByProperty = (data, property) => {
         return data.reduce((acc, item) => {
             acc[item[property]] = (acc[item[property]] || 0) + 1;
@@ -121,6 +123,7 @@ const RiskFirePage = () => {
         }, {});
     };
 
+    // Helper function to aggregate data by time unit
     const aggregateDataByTimeUnit = (data, unit) => {
         return data.reduce((acc, item) => {
             const date = new Date(item.fire_date);
@@ -145,6 +148,7 @@ const RiskFirePage = () => {
         return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
     }
 
+    // Color palette for charts
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
     return (
         <div>
@@ -168,6 +172,8 @@ const RiskFirePage = () => {
             <div className="m-10 p-10 w-[60%] border border-black shadow-lg shadow-black rounded-3xl">
                 <FireHeatMap points={points} />
             </div>
+
+            {/* Time range selector */}
             <div className='flex items-center justify-center mt-20 text-xl'>
                 <select className='bg-light-green rounded-full text-white p-3' value={timeRange} onChange={(e) => setTimeRange(e.target.value)}>
                     <option value="2021-2022">2021-2022</option>
@@ -175,6 +181,7 @@ const RiskFirePage = () => {
                 </select>
             </div>
 
+            {/* Two pie charts   */}
             <div className="charts-container">
                 <div className='grid grid-cols-2'>
                     <ResponsiveContainer width="100%" height={400}>
@@ -218,6 +225,8 @@ const RiskFirePage = () => {
                         </PieChart>
                     </ResponsiveContainer>
                 </div>
+
+                {/* Time unit selector */}
                 <div className='flex items-center justify-center mt-10 mb-5 text-xl'>
 
                     <select className='bg-light-green rounded-full text-white p-3' value={timeUnit} onChange={(e) => setTimeUnit(e.target.value)}>
@@ -225,6 +234,8 @@ const RiskFirePage = () => {
                         <option value="month">Month</option>
                     </select>
                 </div>
+
+                {/* Line chart */}
                 <ResponsiveContainer width="100%" height={400}>
                     <LineChart data={processedData.fireDates} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />

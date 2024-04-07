@@ -8,6 +8,7 @@ const GrasswrenDetail = () => {
     const { id } = useParams();
     const [grasswren, setGrasswren] = useState({});
 
+    // Fetch the grasswren data from the server
     const fetchGrasswren = async () => {
         await axios.get(import.meta.env.VITE_SERVER_DOMAIN + `/api/grasswren/${id}`)
             .then(response => {
@@ -19,15 +20,18 @@ const GrasswrenDetail = () => {
             });
     }
 
+    // useEffect hook to fetch grasswren data
     useEffect(() => {
         fetchGrasswren();
     }, [id]);
 
+    // Destructure the grasswren object
     const { common_name, description, location, population, risk_category, scientific_name, threats, image, audio } = grasswren;
 
     return (
         <div className='grid grid-cols-2 m-20' style={{ gridTemplateColumns: '30% 70%' }}>
 
+            {/* Display the grasswren img */}
             <div className='relative max-w-xl mx-auto'>
                 <img src={image} alt={common_name} className='w-full h-full object-cover' />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -35,9 +39,8 @@ const GrasswrenDetail = () => {
                 </div>
             </div>
 
-
-
             <div className='flex flex-col bg-dark-green p-10 pl-0'>
+                {/* Display the grasswren name and sound */}
                 <div className='flex flex-row gap-32'>
                     <div className='flex flex-row gap-5 m-5'>
                         <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Name</p>
@@ -47,9 +50,9 @@ const GrasswrenDetail = () => {
                         <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Sound</p>
                         <AudioPlayer src_url={audio} />
                     </div>
-
-
                 </div>
+
+                {/* Display the grasswren Risk, description and location */}
                 <div className='flex flex-row gap-5 m-5'>
                     <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Risk</p>
                     <p className='text-white'>{risk_category}</p>
@@ -66,6 +69,7 @@ const GrasswrenDetail = () => {
 
                 </div>
 
+                {/* Back button */}
                 <div className='flex items-end justify-end'>
                     <Link to={`/grasswren`} className='flex gap-5 text-white text-center uppercase border-2 border-white px-10 py-2'>
                         Back
