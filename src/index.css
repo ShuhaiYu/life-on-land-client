@@ -35,11 +35,11 @@
     }
 
     .navbar{
-        @apply sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 h-[150px] bg-gradient-to-r from-brown to-dark-green ;
+        @apply sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 min-h-[150px] bg-gradient-to-r from-brown to-dark-green ;
     }
 
     .footer{
-        @apply sticky top-0 flex items-center justify-center gap-12 w-full px-[5vw] py-5 h-[150px] bg-gradient-to-r from-brown to-dark-green ;
+        @apply sticky top-0 flex items-center justify-center gap-12 w-full px-[5vw] py-5 bg-gradient-to-r from-brown to-dark-green ;
     }
 
     .h-cover{
