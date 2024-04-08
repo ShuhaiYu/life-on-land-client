@@ -35,7 +35,7 @@ const GrasswrenDetail = () => {
             {/* Display the grasswren img */}
             <div className='relative max-w-xl mx-auto'>
                 <img src={image} alt={common_name} className='w-full h-full object-cover' />
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-end justify-start px-4 pb-10 ">
                     <h2 className="text-white text-4xl font-bold opacity-90">{common_name}</h2>
                 </div>
             </div>
