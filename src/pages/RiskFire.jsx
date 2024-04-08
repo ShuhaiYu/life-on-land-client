@@ -169,9 +169,17 @@ const RiskFirePage = () => {
                 <img src={fireicon} alt="fire icon" className='self-center w-20 h-20 my-5 mx-1' />
 
             </div>
-            <div className="m-10 p-10 w-[60%] border border-black shadow-lg shadow-black rounded-3xl">
-                <FireHeatMap points={points} />
+            <div className='flex flex-row items-center'>
+                <div className="m-10 p-10 w-[60%] border border-black shadow-lg shadow-black rounded-3xl">
+                    <FireHeatMap points={points} />
+                </div>
+                <p className='text-2xl text-dark-green w-[40%] m-10'>
+                    Check out where the wildfires happen most frequently by interacting with the map!<br />
+                    <br />
+                    The darker the colour is, the higher the density of wildfires happening in that region.
+                    </p>
             </div>
+
 
             {/* Time range selector */}
             <div className='flex items-center justify-center mt-20 text-xl'>
@@ -183,47 +191,40 @@ const RiskFirePage = () => {
 
             {/* Two pie charts   */}
             <div className="charts-container">
-                <div className='grid grid-cols-2'>
-                    <ResponsiveContainer width="100%" height={400}>
-                        <PieChart>
-                            <Pie
-                                dataKey="value"
+                <div className='grid grid-cols-2 gap-4'>
+                    {/* Left Pie Chart with Title */}
+                    <div>
+                        <div className="text-center font-bold text-xl">
+                            Annual Total Number of Different Types of Wildfires in Australia
+                        </div>
+                        <ResponsiveContainer width="100%" height={400}>
+                            <PieChart>
+                                <Pie dataKey="value" data={processedData.fireTypes} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label>
+                                    {processedData.fireTypes.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
+                                </Pie>
+                                <Tooltip />
+                                <Legend />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
 
-                                data={processedData.fireTypes}
-                                cx="50%"
-                                cy="50%"
-                                outerRadius={80}
-                                fill="#8884d8"
-                                label
-                            >
-                                {
-                                    processedData.fireTypes.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-                                }
-                            </Pie>
-                            <Tooltip />
-                            <Legend />
-                        </PieChart>
-                    </ResponsiveContainer>
-                    <ResponsiveContainer width="100%" height={400}>
-                        <PieChart width={400} height={400}>
-                            <Pie
-                                data={processedData.stateDistribution}
-                                cx="50%"
-                                cy="50%"
-
-                                label
-                                outerRadius={80}
-                                fill="#8884d8"
-                                dataKey="value"
-                            >
-                                {processedData.stateDistribution.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                ))}
-                            </Pie>
-                            <Tooltip formatter={(value) => `${value} fires`} />
-                            <Legend />
-                        </PieChart>
-                    </ResponsiveContainer>
+                    {/* Right Pie Chart with Title */}
+                    <div>
+                        <div className="text-center font-bold text-xl">
+                            Annual Total Number of Wildfires in Different States in Australia
+                        </div>
+                        <ResponsiveContainer width="100%" height={400}>
+                            <PieChart>
+                                <Pie data={processedData.stateDistribution} cx="50%" cy="50%" label outerRadius={80} fill="#8884d8" dataKey="value">
+                                    {processedData.stateDistribution.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                </Pie>
+                                <Tooltip formatter={(value) => `${value} fires`} />
+                                <Legend />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
 
                 {/* Time unit selector */}
@@ -236,16 +237,21 @@ const RiskFirePage = () => {
                 </div>
 
                 {/* Line chart */}
-                <ResponsiveContainer width="100%" height={400}>
-                    <LineChart data={processedData.fireDates} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="date" />
-                        <YAxis />
-                        <Tooltip />
+                <div>
+                    <div className="text-center font-bold text-xl mb-4">
+                        Total Number of Wildfires Occurred in Australia Monthly/Weekly
+                    </div>
+                    <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={processedData.fireDates} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="date" />
+                            <YAxis />
+                            <Tooltip />
+                            <Line type="monotone" dataKey="count" stroke="#FA8700" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
 
-                        <Line type="monotone" dataKey="count" stroke="#FA8700" />
-                    </LineChart>
-                </ResponsiveContainer>
             </div>
 
 
