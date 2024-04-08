@@ -22,26 +22,26 @@ function App() {
     <Router>
       <ScrollToTop />
       <Routes>
-      <Route path="/" element={<Layout />} >
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<Layout />} >
+          <Route index element={<HomePage />} />
 
-        <Route path="/grasswren" element={<GrasswrenPage />} />
-        <Route path="/grasswren/:id" element={<GrasswrenDetail />} />
-        <Route path="/education" element={<EducationPage />} />
-        <Route path="/involved" element={<InvolvedPage />} />
-        <Route path="/risk" element={<RiskPage />} />
-        <Route path="/risk/fire" element={<RiskFirePage />} />
-        <Route path="/risk/predators" element={<RiskPredators />} />
-        <Route path="/risk/humans" element={<RiskHuman />} />
+          <Route path="/grasswren" element={<GrasswrenPage />} />
+          <Route path="/grasswren/:id" element={<GrasswrenDetail />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/involved" element={<InvolvedPage />} />
+          <Route path="/risk" element={<RiskPage />} />
+          <Route path="/risk/fire" element={<RiskFirePage />} />
+          <Route path="/risk/predators" element={<RiskPredators />} />
+          <Route path="/risk/humans" element={<RiskHuman />} />
 
-        
-        <Route path="*" element={<PageNotFound />} />
-      </Route>
 
-    </Routes>
-    <Footer />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+
+      </Routes>
+      {/* <Footer /> */}
     </Router>
-    
+
   )
 }
 
