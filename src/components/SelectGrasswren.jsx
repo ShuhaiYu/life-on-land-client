@@ -36,8 +36,8 @@ const SelectGrasswren = () => {
 
     return (
         <div className='bg-dark-green p-20'>
-            <h1 className='text-3xl text-white text-center mb-20'>Meet Our Endangered Grasswrens</h1>
-            
+            <h1 className='text-4xl text-white text-center font-sans mb-16'>Meet Our Endangered Grasswrens</h1>
+
             {/* Filter buttons */}
             <div className='flex flex-row gap-20 justify-center mb-16'>
                 <button onClick={() => handleRiskFilter('Critically Endangered')}>
