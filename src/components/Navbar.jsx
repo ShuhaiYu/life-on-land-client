@@ -5,7 +5,7 @@ import { NavLink, Link, Outlet } from 'react-router-dom';
 const Navbar = () => {
     return (
         <>
-            <nav className="navbar z-50 flex items-center justify-center w-full">
+            <nav className="navbar z-50">
                 <NavLink to="/" className="text-3xl text-white mr-auto">WrenGuard</NavLink>
                 <div className="flex items-center justify-center md:gap-x-12 lg:gap-x-20 mx-auto" >
                     <NavLink to="/grasswren" className="link">Threatened Grasswren</NavLink>
