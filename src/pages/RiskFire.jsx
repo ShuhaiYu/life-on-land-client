@@ -149,7 +149,17 @@ const RiskFirePage = () => {
     }
 
     // Color palette for charts
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = [
+        '#F4A460', // Sandy Brown
+        '#4682B4', // Steel Blue
+        '#9ACD32', // Yellow Green
+        '#D2B48C', // Tan
+        '#87CEFA', // Light Sky Blue
+        '#FFA07A', // Light Salmon
+        '#BA55D3', // Medium Orchid
+        '#F08080'  // Light Coral
+    ];
+
     return (
         <div>
             <div className="slider-container">
