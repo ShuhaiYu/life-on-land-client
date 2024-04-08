@@ -12,8 +12,8 @@ const GrasswrenDetail = () => {
     const fetchGrasswren = async () => {
         await axios.get(import.meta.env.VITE_SERVER_DOMAIN + `/api/grasswren/${id}`)
             .then(response => {
-                setGrasswren(response.data[0]);
-                console.log(grasswren);
+                setGrasswren(response.data);
+                
             })
             .catch(error => {
                 console.log(error);
@@ -23,10 +23,11 @@ const GrasswrenDetail = () => {
     // useEffect hook to fetch grasswren data
     useEffect(() => {
         fetchGrasswren();
+        
     }, [id]);
 
     // Destructure the grasswren object
-    const { common_name, description, location, population, risk_category, scientific_name, threats, image, audio } = grasswren;
+    const { common_name, description, location, population, risk_category, scientific_name, threats, image, audio, obs_locations } = grasswren;
 
     return (
         <div className='grid grid-cols-2 m-20' style={{ gridTemplateColumns: '30% 70%' }}>
@@ -64,7 +65,7 @@ const GrasswrenDetail = () => {
                 <div className='flex flex-row gap-5 m-5 items-start'>
                     <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>location</p>
                     <div className='h-[250px] w-[500px]'>
-                        <AustraliaMap location={location} />
+                        <AustraliaMap location={location} observation={obs_locations} />
                     </div>
 
                 </div>
