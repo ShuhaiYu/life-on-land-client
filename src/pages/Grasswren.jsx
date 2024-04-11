@@ -24,9 +24,9 @@ const GrasswrenPage = () => {
             {/* links to other pages */}
             {/* Three nav cards */}
             <div className='flex flex-col sm:flex-col md:flex-row gap-8 justify-center my-16'>
-                <NavCard title='get involved' img={NavCardImg1} link='/involved' />
                 <NavCard title='what went wrong' img={NavCardImg3} link='/risk' />
                 <NavCard title='becoming an expert' img={NavCardImg2} link='/education' />
+                <NavCard title='get involved' img={NavCardImg1} link='/involved' />
             </div>
 
         </>

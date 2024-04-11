@@ -8,6 +8,7 @@ import Vector from '../imgs/Vector 1.png'
 import NavCardImg1 from '../imgs/home/nsw2.jpg'
 import NavCardImg2 from '../imgs/home/nsw3.jpg'
 import NavCardImg3 from '../imgs/home/bushfire.jpg'
+import NavCardImg4 from '../imgs/home/getinvolved.jpeg'
 
 import NavCard from '../components/NavCard'
 
@@ -39,10 +40,11 @@ const HomePage = () => {
             </div>
 
             {/* Three nav cards */}
-            <div className='flex flex-col sm:flex-col md:flex-row gap-8 justify-center my-16'>
+            <div className='flex flex-col sm:flex-col md:flex-row gap-8 justify-center m-28'>
                 <NavCard title='threatened grasswren' img={NavCardImg1} link='/grasswren' />
                 <NavCard title='what went wrong' img={NavCardImg3} link='/risk' />
                 <NavCard title='becoming an expert' img={NavCardImg2} link='/education' />
+                <NavCard title='get involved' img={NavCardImg4} link='/involved' />
             </div>
         </div>
     )

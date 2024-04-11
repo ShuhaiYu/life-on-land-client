@@ -107,8 +107,8 @@ const RiskPage = () => {
             {/* Three nav cards */}
             <div className='flex flex-col sm:flex-col md:flex-row gap-8 justify-center my-16'>
                 <NavCard title='threatened grasswren' img={NavCardImg1} link='/grasswren' />
-                <NavCard title='get involved' img={NavCardImg3} link='/involved' />
                 <NavCard title='becoming an expert' img={NavCardImg2} link='/education' />
+                <NavCard title='get involved' img={NavCardImg3} link='/involved' />
             </div>
         </div>
     );
