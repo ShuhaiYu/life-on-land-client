@@ -36,19 +36,19 @@ const RiskHuman = () => {
             </div>
             {/* Landing Content */}
             <div className='flex flex-col items-center justify-center m-20'>
-                <p className='text-3xl text-dark-green font-bold text-center w-[70%] m-10'>
+                <p className='text-dark-green text-3xl text-center w-[70%] m-10'>
                     Tom, an avid wildlife adventurer,<br />
                     enjoys all kinds of outdoor activities in the bush.
                 </p>
                 <img src={imgdiscover} alt="Discover" className='w-32' />
+
+                <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
                 <p className='text-xl text-dark-green font-bold text-center w-[70%] m-10 mb-20'>
                     Little did he know, <br />
                     every time he carelessly started a campfire or hunted for fun, <br />
                     he was unknowingly threatening the survival of endangered grasswrens, <br />
                     whose habitats and lives are fragile and easily disrupted by such actions.
                 </p>
-                <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
-
                 {/* Content */}
                 <div className='flex flex-row m-20 justify-center items-center'>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tent_camping_along_the_Sulayr_trail_in_La_Taha%2C_Sierra_Nevada_National_Park_%28DSCF5147%29.jpg/1280px-Tent_camping_along_the_Sulayr_trail_in_La_Taha%2C_Sierra_Nevada_National_Park_%28DSCF5147%29.jpg" alt="Fox in nature" className='w-[300px] h-[300px] rounded-full mx-10' />

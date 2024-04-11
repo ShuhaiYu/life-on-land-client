@@ -38,7 +38,7 @@ const RiskPredators = () => {
 
             {/* Landing Content */}
             <div className='flex flex-col items-center justify-center m-20'>
-                <p className='text-2xl text-dark-green font-bold text-center w-[70%] m-10'>
+                <p className='text-dark-green text-3xl text-center w-[70%]'>
                     When we worry about the risk of wildfire causing
                     irreversible damage  to grasswren habitats, there are
                     more heartbreaking truths about their fate toward extinction.
