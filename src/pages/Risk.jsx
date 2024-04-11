@@ -32,7 +32,7 @@ const RiskPage = () => {
     };
     return (
         <div>
-            
+
             <div className="flex flex-col justify-center items-center m-20">
                 <p className="text-dark-green text-3xl text-center w-[70%]">The Mukarrthippi Grasswren is on the verge of extinction, with fewer than 20 individuals remaining in the wild. </p>
                 <img src={Vector} alt="Vector" className='w-auto h-auto m-10' />
@@ -70,29 +70,26 @@ const RiskPage = () => {
             <div className='bg-dark-green pb-20'>
                 <p className='text-white text-5xl text-center p-20'>What went wrong exactly?</p>
                 <div className='grid grid-cols-3 gap-4 mx-10'>
-                    <div className='relative max-w-xl mx-auto'>
-                        <img src={imgfire} alt="Grasswren" className='w-[100%] ' />
+                    <Link to='/risk/fire' className='relative max-w-xl mx-auto group'>
+                        <img src={imgfire} alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110' />
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <h2 className="text-white text-5xl font-bold opacity-80">Wildfire</h2>
+                            <h2 className="text-white text-5xl font-bold opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100">Wildfire</h2>
                         </div>
-                        <Link to='/risk/fire' className='text-white text-xl underline flex justify-end py-3 hover:font-bold'>To know more</Link>
-                    </div>
-                    <div className='relative max-w-xl mx-auto'>
-                        <img src={imgcat} alt="Grasswren" className='w-[100%] ' />
+                    </Link>
+                    <Link to='/risk/predators' className='relative max-w-xl mx-auto group'>
+                        <img src={imgcat} alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110' />
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <h2 className="text-white text-5xl font-bold opacity-80">Predators</h2>
+                            <h2 className="text-white text-5xl font-bold opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100">Predators</h2>
                         </div>
-                        <Link to='/risk/predators' className='text-white text-xl underline flex justify-end py-3 hover:font-bold'>To know more</Link>
-                    </div>
-                    <div className='relative max-w-xl mx-auto'>
-                        <img src={imgnature} alt="Grasswren" className='w-[100%] ' />
+                    </Link>
+                    <Link to='/risk/humans' className='relative max-w-xl mx-auto group'>
+                        <img src={imgnature} alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110' />
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <h2 className="text-white text-5xl font-bold opacity-80">Humans</h2>
+                            <h2 className="text-white text-5xl font-bold opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100">Humans</h2>
                         </div>
-                        <Link to='/risk/humans' className='text-white text-xl underline flex justify-end py-3 hover:font-bold'>To know more</Link>
-
-                    </div>
+                    </Link>
                 </div>
+
 
                 <div className='flex flex-col justify-center items-center m-10 pt-20'>
                     <img src={BirdIcon3} alt="bird icon" className='self-center w-16 h-16 ' />
@@ -102,10 +99,10 @@ const RiskPage = () => {
 
                 {/* links to other pages */}
                 <div className='grid grid-cols-3 gap-12 mx-40'>
-                    
-                    <HoverImage imgSrc={img4} title='About Grasswren' link='/grasswren'/>
+
+                    <HoverImage imgSrc={img4} title='About Grasswren' link='/grasswren' />
                     <HoverImage imgSrc={imgvolunteer} title='Get Involved' link='/involved' />
-                    <HoverImage imgSrc={imglearnmore} title='Learn More' link='/education'/>
+                    <HoverImage imgSrc={imglearnmore} title='Learn More' link='/education' />
                 </div>
             </div>
 

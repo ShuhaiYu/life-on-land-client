@@ -13,6 +13,8 @@ import Slider from "react-slick";
 import imgfire from '../imgs/home/bushfire.jpg'
 import imgcat from '../imgs/risk/cat.png';
 import imgnature from '../imgs/risk/nature.png';
+import imgbirdRight from '../imgs/grasswren/bird-right.png';
+import imgvector from '../imgs/Vector 1.png';
 
 const RiskFirePage = () => {
     let [fireData, setFireData] = useState([]);
@@ -187,7 +189,7 @@ const RiskFirePage = () => {
                     Check out where the wildfires happen most frequently by interacting with the map!<br />
                     <br />
                     The darker the colour is, the higher the density of wildfires happening in that region.
-                    </p>
+                </p>
             </div>
 
 
@@ -263,7 +265,22 @@ const RiskFirePage = () => {
                 </div>
 
             </div>
+            {/* Ending content */}
+            <div className='flex flex-col mx-20 mt-20 justify-center items-center'>
+                <img src={imgbirdRight} alt="bird icon" className='self-center w-20 h-20 my-5 mx-1' />
+                <p className='text-3xl text-dark-green font-bold text-center w-[70%] m-10'>
+                    Your passion is recruited!
+                </p>
+                <p className='text-xl text-dark-green text-center font-bold w-[60%]'>
+                    Crafting effective fire management strategies is crucial for wildfire risk reduction in vulnerable areas, supporting the recovery and conservation of the grasswren population.
+                </p>
+                <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
+                <p className='text-xl text-dark-green text-center font-bold w-[60%]'>
+                    To learn more risk about grasswren extinction<br />
+                    …
 
+                </p>
+            </div>
 
             <div className='grid grid-cols-2 gap-12 m-32'>
 

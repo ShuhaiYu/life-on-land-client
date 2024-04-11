@@ -40,9 +40,9 @@ const HomePage = () => {
 
             {/* This is the three nav cards */}
             <div className='flex flex-row gap-24 justify-center my-40'>
-                <NavCard title='What is grasswren?' img={NavCardImg1} link='/grasswren' />
-                <NavCard title='how can i help?' img={NavCardImg2} link='/education' />
-                <NavCard title='how did it happen?' img={NavCardImg3} link='/risk' />
+                <NavCard title='threatened grasswren' img={NavCardImg1} link='/grasswren' />
+                <NavCard title='what went wrong' img={NavCardImg3} link='/risk' />
+                <NavCard title='becoming an expert' img={NavCardImg2} link='/education' />
             </div>
         </div>
     )

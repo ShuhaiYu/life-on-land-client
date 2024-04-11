@@ -1,4 +1,4 @@
-<svg width="258" height="81" viewBox="0 0 258 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="258" height="81" viewBox="0 0 258 81" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-button">
 <path d="M16.5 67.5L2.5 31L16.5 2.5L69 11.5L109.5 2.5L172.5 11.5H238.5L255.5 43L238.5 67.5L192 78L120 67.5L69 78L16.5 67.5Z" fill="#C7A801" stroke="#C7A801" stroke-width="4"/>
 <text x="50%" y="45%" fill="white" font-size="20" dy=".3em" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-weight="bold">Vulnerable</text>
 </svg>

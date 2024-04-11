@@ -40,17 +40,19 @@ const SelectGrasswren = () => {
 
             {/* Filter buttons */}
             <div className='flex flex-row gap-20 justify-center mb-16'>
-                <button onClick={() => handleRiskFilter('Critically Endangered')}>
+                <button onClick={() => handleRiskFilter('Critically Endangered')} className="focus:outline-none transition duration-300 ease-in-out transform hover:scale-110 active:scale-95">
                     <img src={VectorBgRed} alt="Critically Endangered" className='w-auto h-auto' />
                 </button>
-                <button onClick={() => handleRiskFilter('Endangered')}>
+                <button onClick={() => handleRiskFilter('Endangered')} className="focus:outline-none transition duration-300 ease-in-out transform hover:scale-110 active:scale-95">
                     <img src={VectorBgOrange} alt="Endangered" className='w-auto h-auto' />
                 </button>
-                <button onClick={() => handleRiskFilter('Vulnerable')}>
+                <button onClick={() => handleRiskFilter('Vulnerable')} className="focus:outline-none transition duration-300 ease-in-out transform hover:scale-110 active:scale-95">
                     <img src={VectorBgYellow} alt="Vulnerable" className='w-auto h-auto' />
                 </button>
-
             </div>
+
+
+
 
             {/* Display grasswren cards based on the selected risk category */}
             <div className='grid grid-cols-3 gap-4 '>

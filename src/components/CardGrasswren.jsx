@@ -7,13 +7,13 @@ const CardGrasswren = ({ wren_id, common_name, risk_category, image }) => {
             risk_category === 'Vulnerable' ? 'border-yellow' : '';
 
     return (
-        <div className={`flex justify-end items-center bg-dark-green h-[300px] relative border-4 ${borderColor}`}>
-            <img src={image} alt={common_name} className=' w-[70%] h-full object-cover' />
-            <div className="absolute inset-0 flex items-center justify-start">
-                <h2 className="text-white text-4xl font-bold opacity-90">{common_name}</h2>
+        <Link to={`/grasswren/${wren_id}`} className={`flex justify-end items-center bg-dark-green h-[300px] relative border-4 transition duration-300 ease-in-out ${borderColor} hover:bg-light-green group`}>
+            <img src={image} alt={common_name} className='w-[70%] h-full object-cover transition-transform duration-300 ease-in-out' />
+            <div className="absolute inset-0 flex items-center justify-start bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300 ease-in-out">
+                <h2 className="text-white text-4xl font-bold opacity-90 transition-opacity duration-300 ease-in-out group-hover:opacity-100">{common_name}</h2>
             </div>
-            <Link to={`/grasswren/${wren_id}`} className='text-lg font-semibold text-white underline absolute bottom-0 left-0 pl-5 pb-5'>What are they?</Link>
-        </div>
+        </Link>
+
     )
 }
 

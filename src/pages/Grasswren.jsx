@@ -7,15 +7,17 @@ import SelectGrasswren from '../components/SelectGrasswren'
 const GrasswrenPage = () => {
     return (
         <>
-            <div className='flex flex-col justify-center items-center mt-28'>
-
+            
+            <SelectGrasswren />
+            <div className='flex flex-col justify-center items-center my-16'>
+                <img src={GrasswrenImg1} alt="Grasswren" className='w-[40%] my-10' />
                 <p className="text-center text-3xl text-dark-green w-1/2 mx-auto my-10">Black summer fires took nearly 3 billions animals' lives.
                     It has never been so vital and urgent to protect our biodiversity.</p>
                 <img src={Vector} alt="Vector" className='w-auto h-auto' />
-                <img src={BirdIcon} alt="bird icon" className='self-center w-28 h-28 my-5 mx-1' />
-                <img src={GrasswrenImg1} alt="Grasswren" className='w-[40%] my-10' />
+                <img src={BirdIcon} alt="bird icon" className='self-center w-20 h-20 my-5 mx-1' />
+                
             </div>
-            <SelectGrasswren />
+
         </>
 
     )

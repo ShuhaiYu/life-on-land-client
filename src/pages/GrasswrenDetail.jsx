@@ -13,7 +13,7 @@ const GrasswrenDetail = () => {
         await axios.get(import.meta.env.VITE_SERVER_DOMAIN + `/api/grasswren/${id}`)
             .then(response => {
                 setGrasswren(response.data);
-                
+
             })
             .catch(error => {
                 console.log(error);
@@ -23,7 +23,7 @@ const GrasswrenDetail = () => {
     // useEffect hook to fetch grasswren data
     useEffect(() => {
         fetchGrasswren();
-        
+
     }, [id]);
 
     // Destructure the grasswren object
@@ -72,12 +72,12 @@ const GrasswrenDetail = () => {
 
                 {/* Back button */}
                 <div className='flex items-end justify-end'>
-                    <Link to={`/grasswren`} className='flex gap-5 text-white text-center uppercase border-2 border-white px-10 py-2'>
+                    <Link to={`/grasswren`} className='flex gap-5 text-white text-center uppercase border-2 border-white px-10 py-2 transition duration-300 ease-in-out bg-light-green hover:bg-white hover:text-dark-green focus:bg-white focus:text-dark-green focus:outline-none'>
                         Back
                         <i className="fi fi-rr-angle-left text-sm pt-1"></i>
                     </Link>
-                    
                 </div>
+
 
 
             </div>

@@ -45,7 +45,7 @@ const RiskPredators = () => {
 
                 </p>
                 <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
-                <img src={imgbird} alt="Discover" className='w-32' />
+                <img src={imgbird} alt="Discover" className='w-16 h-16' />
                 <p className='text-2xl text-dark-green font-bold text-center w-[70%] m-10 mb-20'>
                     In reality, one of the biggest challenges for grasswren conservation is
                     protecting the grasswrens against the additional pressure of cat and fox predation.

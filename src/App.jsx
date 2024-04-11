@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar'
 import Layout from './components/Layout';
@@ -15,14 +15,27 @@ import RiskFirePage from './pages/RiskFire';
 import Footer from './components/Footer';
 import RiskPredators from './pages/RiskPredators';
 import RiskHuman from './pages/RiskHuman';
+import LoginPage from './pages/Login';
 
+function ProtectedRoute({ isLoggedIn, children }) {
+  const location = useLocation();
+  if (!isLoggedIn) {
+    // if not logged in, redirect to login page
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return children;
+}
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Layout />} >
+        <Route path="/login" element={<LoginPage onLoginSuccess={() => setIsLoggedIn(true)} />} />
+        <Route path="/" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Layout /></ProtectedRoute>} >
           <Route index element={<HomePage />} />
 
           <Route path="/grasswren" element={<GrasswrenPage />} />

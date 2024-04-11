@@ -7,12 +7,12 @@ const AustraliaMap = ({ location, observation }) => {
   // create a reference to the map
   const mapRef = useRef(null);
 
-  // 创建一个自定义图标
+  // create a custom icon
   const customIcon = L.icon({
-    iconUrl: birdMaker, // 图标的url
-    iconSize: [32, 37], // 图标的大小
-    iconAnchor: [16, 37], // 图标的锚点（图标相对于其经纬度点的位置）
-    popupAnchor: [0, -37] // 弹出窗口相对于图标的位置
+    iconUrl: birdMaker, // icon url
+    iconSize: [32, 37], // icon size
+    iconAnchor: [16, 37], // icon anchor
+    popupAnchor: [0, -37] // icon popup anchor
   });
 
 
@@ -59,9 +59,11 @@ const AustraliaMap = ({ location, observation }) => {
 
     // Add observation points to the map
     if (observation.length > 1) {
+      
       observation.forEach(obs => {
+        const date = new Date(obs.date).toLocaleDateString();
         L.marker([obs.lat, obs.lon], { icon: customIcon }).addTo(map)
-          .bindPopup(`Observation: ${obs.lat}, ${obs.lon}`);
+          .bindPopup(`Observation Date: ${date}`);
       });
     }
 
