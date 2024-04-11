@@ -35,8 +35,8 @@ const SelectGrasswren = () => {
 
 
     return (
-        <div className='bg-dark-green p-20'>
-            <h1 className='text-4xl text-white text-center font-sans mb-16'>Meet Our Endangered Grasswrens</h1>
+        <div className='bg-dark-green p-20 '>
+            <h1 className='text-5xl text-white text-center font-caveat-brush mb-10'>Meet Our Endangered Grasswrens</h1>
 
             {/* Filter buttons */}
             <div className='flex flex-row gap-20 justify-center mb-16'>

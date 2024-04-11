@@ -30,6 +30,7 @@ export default {
         inter: ["'Inter'", "sans-serif"],
         gelasio: ["'Gelasio'", "serif"],
         righteous: ['Righteous', 'cursive'],
+        'caveat-brush': ["'Caveat Brush'", 'cursive'],
       },
     },
   },

@@ -68,7 +68,7 @@ const RiskPage = () => {
 
             {/* links to other risk pages */}
             <div className='bg-dark-green pb-20'>
-                <p className='text-white text-5xl text-center p-20'>What went wrong exactly?</p>
+                <p className='text-white text-5xl text-center font-caveat-brush p-20'>What went wrong exactly?</p>
                 <div className='grid grid-cols-3 gap-4 mx-10'>
                     <Link to='/risk/fire' className='relative max-w-xl mx-auto group'>
                         <img src={imgfire} alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110' />
