@@ -53,11 +53,11 @@
     }
 
     .btn-dark {
-        @apply whitespace-nowrap bg-black text-white rounded-full py-3 px-6 text-xl capitalize hover:bg-opacity-80;
+        @apply whitespace-nowrap bg-dark-green text-white rounded-[20px] py-3 px-6 text-xl capitalize hover:bg-opacity-80;
     }
 
     .btn-light {
-        @apply btn-dark bg-grey text-black;
+        @apply btn-dark bg-white text-dark-green border border-dark-green hover:bg-grey;
     }
 
     .link {
