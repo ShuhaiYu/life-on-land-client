@@ -31,6 +31,7 @@ export default {
         gelasio: ["'Gelasio'", "serif"],
         righteous: ['Righteous', 'cursive'],
         'caveat-brush': ["'Caveat Brush'", 'cursive'],
+        'noto-sans-tc': ["'Noto Sans TC'", 'sans-serif'],
       },
     },
   },

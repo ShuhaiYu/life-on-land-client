@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import RiskPredators from './pages/RiskPredators';
 import RiskHuman from './pages/RiskHuman';
 import LoginPage from './pages/Login';
+import QuizPage from './pages/Quiz';
 
 function ProtectedRoute({ isLoggedIn, children }) {
   const location = useLocation();
@@ -41,13 +42,12 @@ function App() {
           <Route path="/grasswren" element={<GrasswrenPage />} />
           <Route path="/grasswren/:id" element={<GrasswrenDetail />} />
           <Route path="/education" element={<EducationPage />} />
+          <Route path='/education/quiz' element={<QuizPage />} />
           <Route path="/involved" element={<InvolvedPage />} />
           <Route path="/risk" element={<RiskPage />} />
           <Route path="/risk/fire" element={<RiskFirePage />} />
           <Route path="/risk/predators" element={<RiskPredators />} />
           <Route path="/risk/humans" element={<RiskHuman />} />
-
-
           <Route path="*" element={<PageNotFound />} />
         </Route>
 
