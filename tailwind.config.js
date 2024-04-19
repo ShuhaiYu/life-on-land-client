@@ -25,6 +25,7 @@ export default {
         'dark-green': '#2C7744',
         'orange': '#FA8700',
         'yellow': '#C7A801',
+        'light-yellow': '#FCE04E',
       },
       fontFamily: {
         inter: ["'Inter'", "sans-serif"],

@@ -1,49 +1,50 @@
 import React, { useState } from 'react';
 import ChoiceQuestion from './ChoiceQuestion';
+import QuizResult from './QuizResult';
 
 const questions = [
     {
         question: "What is the primary method used to determine if a species is threatened?",
         options: [
-            "A) Estimating its population size over several years",
-            "B) Assessing the geographic range of the species",
-            "C) Both A and B"
+            { label: "A) Estimating its population size over several years", content: null, type: "text" },
+            { label: "B) Assessing the geographic range of the species", content: null, type: "text" },
+            { label: "C) Both A and B", content: null, type: "text" }
         ],
         correct: "C) Both A and B"
     },
     {
         question: "What type of data is crucial for assessing the threat level to a species?",
         options: [
-            "A) Celebrity endorsements for conservation",
-            "B) Historical and current population data",
-            "C) Opinion polls about the species"
+            { label: "A) Celebrity endorsements for conservation", content: null, type: "text" },
+            { label: "B) Historical and current population data", content: null, type: "text" },
+            { label: "C) Opinion polls about the species", content: null, type: "text" }
         ],
         correct: "B) Historical and current population data"
     },
     {
         question: "What does it mean for a species to be listed as 'Endangered' under the IUCN Red List?",
         options: [
-            "A) The species has a large and stable population.",
-            "B) The species is at risk of extinction in the wild.",
-            "C) The species is only found in captivity."
+            { label: "A) The species has a large and stable population.", content: null, type: "text" },
+            { label: "B) The species is at risk of extinction in the wild.", content: null, type: "text" },
+            { label: "C) The species is only found in captivity.", content: null, type: "text" }
         ],
         correct: "B) The species is at risk of extinction in the wild."
     },
     {
         question: "Which of the following factors is NOT considered when assessing the threat status of a species?",
         options: [
-            "A) Economic value of the species",
-            "B) Rate of decline in population size",
-            "C) Degree of habitat fragmentation"
+            { label: "A) Economic value of the species", content: null, type: "text" },
+            { label: "B) Rate of decline in population size", content: null, type: "text" },
+            { label: "C) Degree of habitat fragmentation", content: null, type: "text" }
         ],
         correct: "A) Economic value of the species"
     },
     {
         question: "What role do habitat changes play in determining whether a species is threatened?",
         options: [
-            "A) Habitat changes are monitored but not crucial.",
-            "B) Significant habitat changes can indicate a threat to the species.",
-            "C) Only sudden habitat changes are considered."
+            { label: "A) Habitat changes are monitored but not crucial.", content: null, type: "text" },
+            { label: "B) Significant habitat changes can indicate a threat to the species.", content: null, type: "text" },
+            { label: "C) Only sudden habitat changes are considered.", content: null, type: "text" }
         ],
         correct: "C) Only sudden habitat changes are considered."
     }
@@ -54,6 +55,9 @@ const QuizWren = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState(Array(questions.length).fill(null));
     const [submitted, setSubmitted] = useState(false);
+
+    let nextTopicName = "Spot A Grasswren";
+    const encodedTopicName = encodeURIComponent(nextTopicName);
 
     const handleAnswerSelect = (answer) => {
         const newAnswers = [...answers];
@@ -86,13 +90,14 @@ const QuizWren = () => {
                 correctCount++;
             }
         });
+        console.log((correctCount / questions.length * 100).toFixed(0));
         return (correctCount / questions.length * 100).toFixed(0);
     };
 
     const progress = (currentQuestionIndex + 1) / questions.length * 100;
 
     return (
-        <div className='flex flex-col items-center justify-center w-full'>
+        <div className='flex flex-col items-center justify-center'>
             <div className='w-3/4 bg-white p-10 rounded-xl shadow-xl'>
                 <ChoiceQuestion
                     question={questions[currentQuestionIndex]}
@@ -101,27 +106,27 @@ const QuizWren = () => {
                     submitted={submitted}
                 />
             </div>
-            <div className='flex justify-between mt-4'>
-                <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="text-lg px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
-                    Previous
+            <div className='flex justify-between gap-4 mt-4'>
+                <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="text-lg px-4 pt-2 rounded bg-gray-300 hover:bg-gray-400">
+                <i className="fi fi-rr-angle-left text-2xl"></i>
                 </button>
-                <button onClick={nextQuestion} disabled={currentQuestionIndex === questions.length - 1} className="text-lg px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">
-                    Next
+                <button onClick={nextQuestion} disabled={currentQuestionIndex === questions.length - 1} className="text-lg px-4 pt-2 rounded bg-gray-300 hover:bg-gray-400">
+                    <i className="fi fi-rr-angle-right text-2xl"></i>
                 </button>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
-                <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-4">
+                <div className="bg-dark-green h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
             </div>
             {!submitted ? (
-                <button onClick={handleSubmit} className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button onClick={handleSubmit} className="btn-dark my-5">
                     Submit
                 </button>
             ) : (
-                <div className="text-lg mt-4 font-semibold">
-                    <button onClick={() => setSubmitted(false)} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <div className='w-full'>
+                    {/* <button onClick={() => setSubmitted(false)} className="text-lg py-2 font-semibold mt-4 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded">
                         Reset Quiz
-                    </button>
-                    Correct Answers: {calculateCorrectAnswers()}%
+                    </button> */}
+                    <QuizResult score={calculateCorrectAnswers() } nextQuizLink={`/education/quiz?title=${encodedTopicName}`} />
                 </div>
             )}
         </div>

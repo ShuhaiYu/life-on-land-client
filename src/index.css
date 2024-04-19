@@ -95,6 +95,17 @@
         animation: bounce 2s infinite;
     }
 
+    .tooltip:hover::after {
+        content: attr(data-info);
+        position: absolute;
+        left: 100%;
+        white-space: nowrap;
+        background: black;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
 }
 
 @keyframes bounce {
