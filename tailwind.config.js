@@ -15,7 +15,7 @@ export default {
       colors: {
         'white': '#FFFFFF',
         'black': '#242424',
-        'grey': '#F3F3F3',
+        'grey': '#F9F8F4',
         'dark-grey': '#6B6B6B',
         'red': '#FA000F',
         'transparent': 'transparent',
@@ -25,12 +25,14 @@ export default {
         'dark-green': '#2C7744',
         'orange': '#FA8700',
         'yellow': '#C7A801',
+        'light-yellow': '#FCE04E',
       },
       fontFamily: {
         inter: ["'Inter'", "sans-serif"],
         gelasio: ["'Gelasio'", "serif"],
         righteous: ['Righteous', 'cursive'],
         'caveat-brush': ["'Caveat Brush'", 'cursive'],
+        'noto-sans-tc': ["'Noto Sans TC'", 'sans-serif'],
       },
     },
   },

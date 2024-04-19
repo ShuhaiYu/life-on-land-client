@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gelasio&family=Inter:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
 
 @import "@flaticon/flaticon-uicons/css/all/all";
 
@@ -53,11 +55,11 @@
     }
 
     .btn-dark {
-        @apply whitespace-nowrap bg-black text-white rounded-full py-3 px-6 text-xl capitalize hover:bg-opacity-80;
+        @apply whitespace-nowrap bg-dark-green text-white rounded-[20px] py-3 px-6 text-xl capitalize hover:bg-opacity-80;
     }
 
     .btn-light {
-        @apply btn-dark bg-grey text-black;
+        @apply btn-dark bg-white text-dark-green border border-dark-green hover:bg-grey;
     }
 
     .link {
@@ -91,6 +93,17 @@
 
     .bounce {
         animation: bounce 2s infinite;
+    }
+
+    .tooltip:hover::after {
+        content: attr(data-info);
+        position: absolute;
+        left: 100%;
+        white-space: nowrap;
+        background: black;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
     }
 
 }
