@@ -235,7 +235,11 @@ const HabitatPage = () => {
     };
 
     return (
-        <div className='flex flex-col bg-grey'>
+        <div className='flex flex-col bg-grey h-auto relative'>
+             <Link to="/education" className="z-10 absolute top-5 right-5 p-3 bg-light-green hover:bg-dark-green text-white rounded-full transition duration-300 ease-in-out px-4 shadow flex items-center justify-center">
+                <i className="fi fi-rr-angle-left text-xl"></i>
+                <span className="pl-2">Back to Education</span>
+            </Link>
             <div className='relative'>
                 <img src={garden} alt="Garden" className="w-full h-auto object-cover opacity-80" />
                 <h1 className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[96px] text-white font-Poppins tracking-widest whitespace-nowrap">
