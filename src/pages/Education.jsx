@@ -31,7 +31,7 @@ const EducationPage = () => {
                     <p className="text-xl">Ready to test your knowledge and passion for threatened grasswrens? We've crafted four engaging topics to help you dive deep into their world and discover how we can all contribute to their conservation. Take the challenge and join the WrenGuard family today!</p>
                     <div className="flex flex-row gap-5 items-start justify-start w-full pt-10">
                         <button className="btn-dark" onClick={scrollToTopics}>Get Started</button>
-                        <Link to="/habitat" className="btn-light">Build A Habitat</Link>
+                        <Link to="/education/habitat" className="btn-light">Build A Habitat</Link>
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-1/2">
@@ -51,7 +51,7 @@ const EducationPage = () => {
                     <TopicSelectCard topicName="Where Do They Live" topicDescription="Reveal the secret of the grasswren's habitat!" imgIcon={nest} />
                     <TopicSelectCard topicName="Grasswren's Favorite" topicDescription="Did you know the grasswren has a serious dietary routine?" imgIcon={berries} />
                 </div>
-                <Link to="/habitat" className="btn-light">Build A Habitat</Link>
+                <Link to="/education/habitat" className="btn-light">Build A Habitat</Link>
             </div>
             {/* Part Three */}
             <div className="flex justify-end my-20">

@@ -33,6 +33,7 @@ export default {
         righteous: ['Righteous', 'cursive'],
         'caveat-brush': ["'Caveat Brush'", 'cursive'],
         'noto-sans-tc': ["'Noto Sans TC'", 'sans-serif'],
+        'Poppins': ["'Poppins'", 'sans-serif'],
       },
     },
   },
