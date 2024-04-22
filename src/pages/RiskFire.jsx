@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, Line, XAxis, YAxis, Ca
 import { useState } from 'react';
 import axios from 'axios';
 import HoverImage from '../components/HoverImage';
-import FireHeatMap from '../components/FireMap';
+import RiskMap from '../components/RiskMap';
 import fireicon from '../imgs/risk/fireicon.png';
 import imgfire1 from '../imgs/risk/fire.jpg';
 import imgfire2 from '../imgs/home/bushfire.jpg';
@@ -182,8 +182,8 @@ const RiskFirePage = () => {
 
             </div>
             <div className='flex flex-row items-center'>
-                <div className="m-10 p-10 w-[60%] border border-black shadow-lg shadow-black rounded-3xl">
-                    <FireHeatMap points={points} />
+                <div className="m-10 p-10 w-[60%] h-[60vh] border border-black shadow-lg shadow-black rounded-3xl">
+                    <RiskMap isFireShow={true} isButtonShow={false} />
                 </div>
                 <p className='text-2xl text-dark-green w-[40%] m-10'>
                     Check out where the wildfires happen most frequently by interacting with the map!<br />

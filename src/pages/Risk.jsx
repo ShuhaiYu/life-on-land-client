@@ -1,8 +1,10 @@
 import React from 'react';
+import RiskMap from '../components/RiskMap';
+import { Link } from 'react-router-dom';
+
 import Vector from '../imgs/Vector 1.png'
 import VectorWhite from '../imgs/risk/Vector 3.png';
 import BirdIcon1 from '../imgs/risk/bird.png'
-import BirdIcon2 from '../imgs/grasswren/bird-right.png'
 import BirdIcon3 from '../imgs/risk/birds 1.png'
 import Slider from "react-slick";
 import img1 from '../imgs/risk/Grasswren-website 1.png';
@@ -12,20 +14,15 @@ import img4 from '../imgs/home/ebird2.jpeg'
 import imgfire from '../imgs/home/bushfire.jpg'
 import imgcat from '../imgs/risk/cat.png';
 import imgnature from '../imgs/risk/nature.png';
-import imgvolunteer from '../imgs/risk/Volunteer.png';
-import imglearnmore from '../imgs/risk/learnmore.png';
 
 import NavCard from '../components/NavCard';
 import NavCardImg1 from '../imgs/home/nsw2.jpg';
 import NavCardImg2 from '../imgs/home/nsw3.jpg';
 import NavCardImg3 from '../imgs/home/getinvolved.jpeg';
 
-import { Link } from 'react-router-dom';
-import HoverImage from '../components/HoverImage';
-
-
 
 const RiskPage = () => {
+
     // Slider settings
     const settings = {
         dots: true,
@@ -37,7 +34,7 @@ const RiskPage = () => {
 
     };
     return (
-        <div>
+        <div className='w-full h-auto'>
             <div className="slider-container">
                 {/* // Slider component */}
                 <Slider {...settings}>
@@ -56,13 +53,13 @@ const RiskPage = () => {
 
                 </Slider>
             </div>
-            
+
 
             <div className="flex flex-col justify-center items-center m-20">
                 <img src={BirdIcon1} alt="bird icon" className='self-center w-20 h-20 m-8' />
                 <p className="text-dark-green text-3xl text-center w-[70%]">
                     The Mukarrthippi Grasswren is on the verge of extinction, with fewer than 20 individuals remaining in the wild.
-                    
+
                     Similarly, the Grey Grasswren population is currently fewer than 200, posing a serious threat to both biodiversity and cultural heritage.
                 </p>
 
@@ -70,9 +67,16 @@ const RiskPage = () => {
                 <img src={Vector} alt="Vector" className='w-auto h-auto m-10' />
             </div>
 
-            {/* links to other risk pages */}
+
             <div className='bg-dark-green pb-20'>
-                <p className='text-white text-5xl text-center font-caveat-brush p-20'>What went wrong exactly?</p>
+
+                <p className='text-white text-5xl text-center font-caveat-brush p-20'>How are these threats affecting the grasswren's habitat?</p>
+                <div className='h-[80vh]'>
+                    <RiskMap isFireShow={true} isCatShow={true} isFoxShow={true} isHumanShow={true} isButtonShow={true} />
+
+                </div>
+                {/* links to other risk pages */}
+                <p className='text-white text-5xl text-center font-caveat-brush p-20'>Explore more details about the risks</p>
                 <div className='grid grid-cols-3 gap-4 mx-10'>
                     <Link to='/risk/fire' className='relative max-w-xl mx-auto group hover:z-50'>
                         <img src={imgfire} alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110 ' />
