@@ -27,7 +27,7 @@ const GrasswrenDetail = () => {
     }, [id]);
 
     // Destructure the grasswren object
-    const { common_name, description, location, population, risk_category, scientific_name, threats, image, audio, obs_locations } = grasswren;
+    const { common_name, description, location, population, risk_category, scientific_name, threats, image, audio, obs_locations, earliestObsDate } = grasswren;
 
     return (
         <div className='grid grid-cols-2 m-20' style={{ gridTemplateColumns: '30% 70%' }}>
@@ -64,12 +64,26 @@ const GrasswrenDetail = () => {
                 </div>
                 <div className='flex flex-row gap-5 m-5 items-start'>
                     <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>location</p>
-                    <div className='h-[250px] w-[500px]'>
+                    <div className='h-[250px] w-[600px]'>
                         <AustraliaMap location={location} observation={obs_locations} />
+                    </div>
+                    <div className='flex flex-col items-start justify-center text-white px-10 border rounded-3xl h-full' style={{ borderStyle: 'dashed' }}>
+                        <h4 className="font-bold text-xl ">Did you know?</h4>
+                        {earliestObsDate ? (
+                            <p className='text-xl'>The earliest observation record of {common_name} dates back to {new Date(earliestObsDate).getFullYear()}.</p>
+                        ) : (
+                            <p className='text-xl'>Unfortunately, we have not found any observational data for this Grasswren. They'll be hard to find.</p>
+                        )}
+                        <p className='text-white text-xl mt-4'>
+                            That's why it is so important to keep them safe and preserve our heritage.
+                        </p>
                     </div>
 
                 </div>
+                <div className='flex items-center justify-center'>
+                    <p className='text-2xl text-[#FCE04E] '>Check the bird icon on the map to learn the location of their habitat!</p>
 
+                </div>
                 {/* Back button */}
                 <div className='flex items-end justify-end'>
                     <Link to={`/grasswren`} className='flex gap-5 text-white text-center uppercase border-2 border-white px-10 py-2 transition duration-300 ease-in-out bg-light-green hover:bg-white hover:text-dark-green focus:bg-white focus:text-dark-green focus:outline-none'>
