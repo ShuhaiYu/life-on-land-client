@@ -17,19 +17,9 @@ import imgbirdRight from '../imgs/grasswren/bird-right.png';
 import imgvector from '../imgs/Vector 1.png';
 
 const RiskFirePage = () => {
-    let [fireData, setFireData] = useState([]);
-
-    let [fireDates, setFireDates] = useState([]);
-
-    let [points, setPoints] = useState([]);
-
-    const [timeRange, setTimeRange] = useState('2021-2022');
-    const [timeUnit, setTimeUnit] = useState('month');
-    const [processedData, setProcessedData] = useState({
-        fireTypes: [],
-        stateDistribution: [],
-        fireDates: [],
-    });
+    const [fireData, setFireData] = useState([]);
+    const [selectedYear, setSelectedYear] = useState(2023);
+    const [processedData, setProcessedData] = useState({ fireTypes: [], stateDistribution: [], fireDates: [] });
 
     // Slider settings
     const settings = {
@@ -41,114 +31,84 @@ const RiskFirePage = () => {
         arrows: true,
     };
 
-    // Function to fetch fire points
-    const fetchFirePoints = async () => {
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firepoints`);
-            const newPoints = response.data.map(fire => {
-                // Directly access the x and y properties of first_point
-                const { x: lng, y: lat } = fire.first_point;
-                return [lat, lng, 1]; // Note that the heatmap expects [latitude, longitude, intensity]
-            });
-            setPoints(newPoints);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    // Function to fetch fire data
-    const fetchFireData = async () => {
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firedata`);
-            setFireData(response.data);
-            processData(response.data); // Initial processing for default filter values
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     // useEffect hook to fetch fire data
     useEffect(() => {
-        fetchFirePoints();
+        const fetchFireData = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firedata`);
+                setFireData(response.data);
+                processData(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
         fetchFireData();
     }, []);
 
     // useEffect hook to process fire data
     useEffect(() => {
         processData(fireData);
-    }, [fireData, timeRange, timeUnit]);
+    }, [fireData, selectedYear]);
 
     const processData = (data) => {
-        // Filter data based on the selected time range
-        const filteredData = data.filter(fire => {
+        // Helper function to initialize months array
+        const initializeMonths = (year) => {
+            return Array.from({ length: 12 }, (_, index) => ({
+                date: `${year}-${index + 1}`, // Format: "Year-Month"
+                count: 0
+            }));
+        };
+
+        const fireYear = selectedYear;
+        const months = initializeMonths(fireYear);
+        const monthIndexMap = months.reduce((acc, month, index) => {
+            acc[month.date] = index;
+            return acc;
+        }, {});
+
+        // Aggregate data based on the selected year and update the counts for each month
+        data.forEach(fire => {
             const fireDate = new Date(fire.fire_date);
             const fireYear = fireDate.getFullYear();
-            const fireMonth = fireDate.getMonth() + 1; // JavaScript months are 0-indexed
+            const fireMonth = fireDate.getMonth() + 1; // JavaScript months are 0-indexed, hence +1
+            const dateString = `${fireYear}-${fireMonth}`;
 
-            if (timeRange === "2021-2022") {
-                return (
-                    (fireYear === 2021 && fireMonth >= 10) ||
-                    (fireYear === 2022 && fireMonth <= 10)
-                );
-            } else if (timeRange === "2022-2023") {
-                return (
-                    (fireYear === 2022 && fireMonth >= 10) ||
-                    (fireYear === 2023 && fireMonth <= 10)
-                );
+            if (fireYear === selectedYear && monthIndexMap.hasOwnProperty(dateString)) {
+                months[monthIndexMap[dateString]].count += 1;
             }
         });
 
+        // Aggregate data for fire types and states
+        const fireTypeCounts = data.reduce((acc, fire) => {
+            if (new Date(fire.fire_date).getFullYear() === selectedYear) {
+                acc[fire.fire_type] = (acc[fire.fire_type] || 0) + 1;
+            }
+            return acc;
+        }, {});
 
-        // Aggregate data based on the selected time unit
-        const fireDateCounts = aggregateDataByTimeUnit(filteredData, timeUnit);
-        const fireTypeCounts = aggregateDataByProperty(filteredData, 'fire_type');
-        const stateCounts = aggregateDataByProperty(filteredData, 'state');
+        const stateCounts = data.reduce((acc, fire) => {
+            if (new Date(fire.fire_date).getFullYear() === selectedYear) {
+                acc[fire.state] = (acc[fire.state] || 0) + 1;
+            }
+            return acc;
+        }, {});
 
-        const sortedFireDates = Object.entries(fireDateCounts).map(([date, count]) => ({ date, count }));
-        sortedFireDates.sort((a, b) => new Date(a.date) - new Date(b.date));
-        setFireDates(sortedFireDates);
-
-        // Set the processed data
+        // Update state with the processed data
         setProcessedData({
             fireTypes: Object.entries(fireTypeCounts).map(([name, value]) => ({ name, value })),
             stateDistribution: Object.entries(stateCounts).map(([name, value]) => ({ name, value })),
-            fireDates: Object.entries(fireDateCounts).map(([date, count]) => ({ date, count })),
+            fireDates: months
         });
-
     };
 
-    // Helper function to aggregate data by a specific property
-    const aggregateDataByProperty = (data, property) => {
-        return data.reduce((acc, item) => {
-            acc[item[property]] = (acc[item[property]] || 0) + 1;
-            return acc;
-        }, {});
+
+    const initializeMonths = (year) => {
+        return Array.from({ length: 12 }, (_, index) => ({
+            date: `${year}-${index + 1}`, // Format: "Year-Month"
+            count: 0
+        }));
     };
 
-    // Helper function to aggregate data by time unit
-    const aggregateDataByTimeUnit = (data, unit) => {
-        return data.reduce((acc, item) => {
-            const date = new Date(item.fire_date);
-            let groupKey;
-            if (unit === 'month') {
-                const monthName = date.toLocaleString('default', { month: 'short' });
-                const year = date.getFullYear();
-                groupKey = `${monthName} ${year}`;
-            } else {
-                // Handle week or other units differently if needed
-                groupKey = `${date.getFullYear()}-W${getWeekOfYear(date)}`;
-            }
-            acc[groupKey] = (acc[groupKey] || 0) + 1;
-            return acc;
-        }, {});
-    };
-
-    // Helper function to get week of the year
-    function getWeekOfYear(date) {
-        const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-        const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
-        return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
-    }
 
     // Color palette for charts
     const COLORS = [
@@ -163,7 +123,7 @@ const RiskFirePage = () => {
     ];
 
     return (
-        <div>
+        <div >
             <div className="slider-container">
                 <Slider {...settings}>
                     <div>
@@ -192,33 +152,26 @@ const RiskFirePage = () => {
                 </p>
             </div>
 
-
-            {/* Time range selector */}
+            {/* Slider for selecting year */}
             <div className='flex items-center justify-center mt-20 text-xl'>
-                <select className='bg-light-green rounded-full text-white p-3' value={timeRange} onChange={(e) => setTimeRange(e.target.value)}>
-                    <option value="2021-2022">2021-2022</option>
-                    <option value="2022-2023">2022-2023</option>
-                </select>
+                <input
+                    type="range"
+                    min="2013"
+                    max="2023"
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(parseInt(e.target.value))}
+                    className='w-1/2 h-2 rounded-lg cursor-pointer'
+                    style={{
+                        // Custom styles for the thumb and track
+                        '--tw-bg-opacity': '1', // Ensure the background opacity is full for colors
+                        backgroundImage: `linear-gradient(90deg, var(--tw-bg-opacity) 0%, var(--tw-bg-opacity) 100%)`
+                    }}
+                />
+                <div className='text-2xl ml-4 '>{selectedYear}</div>
             </div>
-
-            {/* Two pie charts   */}
+            {/* pie chart   */}
             <div className="charts-container">
-                <div className='grid grid-cols-2 gap-4'>
-                    {/* Left Pie Chart with Title */}
-                    <div>
-                        <div className="text-center font-bold text-xl">
-                            Annual Total Number of Different Types of Wildfires in Australia
-                        </div>
-                        <ResponsiveContainer width="100%" height={400}>
-                            <PieChart>
-                                <Pie dataKey="value" data={processedData.fireTypes} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label>
-                                    {processedData.fireTypes.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
-                                </Pie>
-                                <Tooltip />
-                                <Legend />
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </div>
+                <div className=''>
 
                     {/* Right Pie Chart with Title */}
                     <div>
@@ -239,54 +192,66 @@ const RiskFirePage = () => {
                     </div>
                 </div>
 
-                {/* Time unit selector */}
-                <div className='flex items-center justify-center mt-10 mb-5 text-xl'>
 
-                    <select className='bg-light-green rounded-full text-white p-3' value={timeUnit} onChange={(e) => setTimeUnit(e.target.value)}>
-                        <option value="week">Week</option>
-                        <option value="month">Month</option>
-                    </select>
+                <div className='w-full bg-dark-green h-auto py-10 px-16 mb-10'>
+                    <p className='text-2xl text-white text-center'>
+                        Bushfires have become a major cause of wildfires in Australia, affecting regions such as Victoria, Western Australia, and Queensland. The damaging fire patterns have resulted in a dramatic decline in the grasswren population. Modern fires are typically less frequent but larger and more intense. Consequently, these fires can lead to the removal of suitable grasswren habitat over extensive areas, which has been implicated in the decline of the species.
+                    </p>
                 </div>
-
                 {/* Line chart */}
                 <div>
                     <div className="text-center font-bold text-xl mb-4">
-                        Total Number of Wildfires Occurred in Australia Monthly/Weekly
+                        Total Number of Wildfires Occurred in Australia Monthly
                     </div>
                     <ResponsiveContainer width="100%" height={400}>
                         <LineChart data={processedData.fireDates} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="date" />
+                            <XAxis dataKey="date" tickFormatter={(tickItem) => {
+                                const date = new Date(tickItem);
+                                return date.toLocaleString('default', { month: 'short' });
+                            }} />
+
                             <YAxis />
                             <Tooltip />
                             <Line type="monotone" dataKey="count" stroke="#FA8700" />
                         </LineChart>
                     </ResponsiveContainer>
                 </div>
+                <div className='w-full bg-dark-green h-auto py-10 px-16 mb-10'>
+                    <p className='text-2xl text-white text-center'>
+                        The greatest danger is between late spring and early autumn when fuels have dried after the winter rains. The worst conditions occur when deep low-pressure systems near Tasmania bring strong, hot and dry, westerly winds to the coastal districts. Intense high-pressure systems over South Australia producing strong southeast to northeast winds increase the risk of bushfires.                    </p>
+                </div>
 
             </div>
             {/* Ending content */}
             <div className='flex flex-col mx-20 mt-20 justify-center items-center'>
                 <img src={imgbirdRight} alt="bird icon" className='self-center w-20 h-20 my-5 mx-1' />
-                <p className='text-3xl text-dark-green font-bold text-center w-[70%] m-10'>
+                <p className='text-4xl text-dark-green font-bold text-center w-[70%] m-10'>
                     Your passion is recruited!
                 </p>
                 <p className='text-xl text-dark-green text-center font-bold w-[60%]'>
                     Crafting effective fire management strategies is crucial for wildfire risk reduction in vulnerable areas, supporting the recovery and conservation of the grasswren population.
+                    <br />
+                    <br />
+
+                    Crafting effective fire management strategies is crucial for wildfire risk reduction in vulnerable areas, supporting the recovery and conservation of the grasswren population.
+
+                    Commencing prescribed burns during suitable conditions at the conclusion of the wet season, typically between March and May. This practice involves various techniques, including matches, drip torches, and aerial incendiaries, to ignite fires based on a strategic annual burn plan. The aim of prescribed burning during the early dry season is twofold: to mitigate the spread of more severe wildfires later in the year and to create fire breaks while reducing the fuel load across the landscape.
+
                 </p>
-                <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
+                <img src={imgvector} alt="Vector" className='w-auto h-auto m-10 mb-20' />
                 <p className='text-xl text-dark-green text-center font-bold w-[60%]'>
-                    To learn more risk about grasswren extinction<br />
-                    …
+                    Explore other risk about grasswren extinction
 
                 </p>
             </div>
+            <div className='flex flex-col items-center w-full h-auto'>
+                <div className='grid grid-cols-2 gap-12 m-32 mt-16'>
 
-            <div className='grid grid-cols-2 gap-12 m-32'>
-
-                {/* <HoverImage imgSrc={imgfire} title='Wildfire' link='/risk/fire' /> */}
-                <HoverImage imgSrc={imgcat} title='Predators' link='/risk/predators' />
-                <HoverImage imgSrc={imgnature} title='Humans' link='/risk/humans' />
+                    {/* <HoverImage imgSrc={imgfire} title='Wildfire' link='/risk/fire' /> */}
+                    <HoverImage imgSrc={imgcat} title='Predators' link='/risk/predators' />
+                    <HoverImage imgSrc={imgnature} title='Humans' link='/risk/humans' />
+                </div>
             </div>
         </div >
     );
