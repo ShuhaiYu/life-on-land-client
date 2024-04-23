@@ -107,10 +107,10 @@ const QuizWren = () => {
                 />
             </div>
             <div className='flex justify-between gap-4 mt-4'>
-                <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="text-lg px-4 pt-2 rounded bg-gray-300 hover:bg-gray-400">
+                <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="pt-2 px-4 rounded-full hover:bg-gray-300 disabled:text-gray-400 text-dark-green  disabled:cursor-not-allowed transition duration-300 ease-in-out">
                 <i className="fi fi-rr-angle-left text-2xl"></i>
                 </button>
-                <button onClick={nextQuestion} disabled={currentQuestionIndex === questions.length - 1} className="text-lg px-4 pt-2 rounded bg-gray-300 hover:bg-gray-400">
+                <button onClick={nextQuestion} disabled={currentQuestionIndex === questions.length - 1} className="pt-2 px-4 rounded-full hover:bg-gray-300 disabled:text-gray-400 text-dark-green  disabled:cursor-not-allowed transition duration-300 ease-in-out">
                     <i className="fi fi-rr-angle-right text-2xl"></i>
                 </button>
             </div>

@@ -14,25 +14,25 @@ const quizDetails = {
     "Threatened Species": {
         title: "Threatened Species",
         icon: bird,
-        desc: "Did you know the grasswren has a serious dietary routine? Let us find out what they love the most!",
+        desc: "How do we determine if a species is endangered? \nLet us see if you can make correct judgement!",
         component: <QuizWren />
     },
     "Spot A Grasswren": {
         title: "Spot A Grasswren",
         icon: telescope,
-        desc: "How do we know if that is a grasswren?",
+        desc: "Spotting grasswrens can be quite challenging \ndue to their rapid hopping and swift movements.",
         component: <QuizSpot />
     },
     "Where Do They Live": {
         title: "Where Do They Live",
         icon: nest,
-        desc: "Reveal the secret of the grasswren's habitat!",
+        desc: "Grasswren is one of the birds recognised as the most difficult to find. \nLet us reveal the secret of their habitat! \nSelect one or more locations where you think it's Grasswren's favourite spot.",
         component: <QuizWhere />
     },
     "Grasswren's Favorite": {
         title: "Grasswren's Favorite",
         icon: berries,
-        desc: "Did you know the grasswren has a serious dietary routine?",
+        desc: "Did you know the grasswren has a serious dietary routine? \nLet us find out what they love the most!",
         component: <QuizFavorite />
     }
 };
@@ -53,7 +53,7 @@ const QuizPage = () => {
             <div className='flex flex-col items-center justify-center'>
                 <img src={details.icon} alt={`${details.title} Icon`} className='w-20 h-20 m-5' />
                 <h1 className='text-5xl text-dark-green font-bold text-center m-5'>{details.title}</h1>
-                <p className='text-3xl w-[60%] text-center font-noto-sans-tc text-[#747474] mb-5'>{details.desc}</p>
+                <p className='text-3xl w-[60%] text-center font-noto-sans-tc text-[#747474] mb-5'  style={{ whiteSpace: 'pre-line' }}>{details.desc}</p>
 
             </div>
             <div>

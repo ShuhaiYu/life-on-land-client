@@ -43,7 +43,7 @@ const QuizWhere = () => {
             return acc;
         }, 0);
     };
-    
+
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -52,16 +52,15 @@ const QuizWhere = () => {
                 {iconData.map((icon) => (
                     <button
                         key={icon.id}
-                        className={`tooltip absolute ${icon.position} p-2 rounded-full ${
-                            selected[icon.id] 
-                                ? (submitted ? (icon.correct ? 'bg-green-500' : 'bg-red') : 'bg-gray-300')
-                                : 'bg-transparent'
-                        } hover:bg-gray-200`}                        
+                        className={`tooltip absolute ${icon.position} p-2 rounded-full ${selected[icon.id]
+                                ? (submitted ? (icon.correct ? 'bg-light-green border border-light-green' : 'bg-error border border-error') : 'bg-light-yellow border border-light-yellow')
+                                : 'bg-transparent border border-transparent'
+                            } hover:bg-gray-200 hover:border-gray-200`}
                         data-info={submitted ? icon.info : icon.label}
                         style={{ transform: "translate(-50%, -50%)" }}
                         onClick={() => handleIconClick(icon.id)}
                     >
-                        <img src={bird} alt="Bird"  className="w-32 h-32 p-3 rounded-full bg-white"/>
+                        <img src={bird} alt="Bird" className="w-32 h-32 p-3 rounded-full bg-white" />
                     </button>
                 ))}
             </div>

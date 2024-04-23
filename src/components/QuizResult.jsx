@@ -10,16 +10,16 @@ const QuizResult = ({ score, nextQuizLink }) => {
                 desc: "Don't worry! Everyone starts somewhere. Let's learn together and try again. You've got this!",
                 bgColor: "#3A8151" // Green
             };
-        } else if (score >= 50 && score < 80) {
+        } else if (score == 50) {
             return {
                 title: "You Can Do This!",
                 desc: "You only scored 50% correct answers!  Let's give it another shot and see if we can boost that score up! Keep going, you're getting closer!!",
                 bgColor: "#C7A801" // Yellow
             };
-        } else if (score >= 80 && score < 100) {
+        } else if (score > 50 && score < 100) {
             return {
                 title: "Congratulation!",
-                desc: "You scored 80% correct answers! Great job! Keep up the momentum and take on the next challenge!",
+                desc: "You scored more than 50% correct answer! Great job! Keep up the momentum and take on the next challenge!",
                 bgColor: "#FF9131" // Orange
             };
         } else if (score == 100) {
@@ -51,7 +51,7 @@ const QuizResult = ({ score, nextQuizLink }) => {
                     <p className=" w-1/3 text-center text-3xl">{desc}</p>
                 </div>
                 <div style={{ '--text-color': bgColor }} className="parent-class">
-                    <Link to={nextQuizLink} className="absolute left-1/2 transform -translate-x-1/2 bottom-20 btn-light rounded-xl px-6 py-4 font-bold text-[var(--text-color)]">
+                    <Link to={nextQuizLink} className="absolute left-1/2 transform -translate-x-1/2 bottom-20 btn-light rounded-xl px-6 py-4 font-bold text-[var(--text-color)] hover:bg-light-yellow transition-transform duration-200 hover:scale-110">
                         Next Challenge
                     </Link>
                 </div>

@@ -9,11 +9,11 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
             return "hover:bg-light-yellow " + (selectedOption === option.label ? 'bg-light-yellow' : 'bg-white');
         } else {
             if (option.label === question.correct) {
-                return "bg-green-500";  // Correct answers are green
+                return "border border-light-green text-light-green";  // Correct answers are green
             } else if (selectedOption === option.label) {
-                return "bg-red";  // Incorrectly selected answers are red
+                return "border border-error text-error";  // Incorrectly selected answers are red
             } else {
-                return "bg-white border border-dark-green";  // Unselected options remain blue
+                return "";  // Unselected options remain
             }
         }
     };
@@ -49,16 +49,19 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
                 return <span className='text-2xl'>{option.label}</span>;
         }
     };
+    // Determine layout based on question types
+    const isHorizontalLayout = question.options.some(option => option.type === 'image' || option.type === 'audio');
+    const optionsContainerClass = isHorizontalLayout ? 'flex-row items-center justify-center' : 'flex-col items-center justify-center';
     
 
     return (
         <div className='flex flex-col items-center justify-center'>
             <i className="fi fi-rr-interrogation text-5xl rounded-full text-dark-green"></i>
             <h1 className='text-3xl text-dark-green p-10 text-center'>{question.question}</h1>
-            <div className='flex flex-col items-center justify-center'>
+            <div className={`flex ${optionsContainerClass} gap-4`}>
                 {question.options.map((option, index) => (
                     <button key={index}
-                        className={`w-full p-2 my-2 text-2xl text-dark-green rounded-lg  border-2 border-dark-green ${getButtonClass(option)}`}
+                        className={`w-full p-2 my-2 text-2xl rounded-lg border-2 ${getButtonClass(option)}`}
                         onClick={() => handleAnswerSelect(option.label)}
                         disabled={submitted}
                     >

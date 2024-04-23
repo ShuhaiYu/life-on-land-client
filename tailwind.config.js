@@ -18,6 +18,7 @@ export default {
         'grey': '#F9F8F4',
         'dark-grey': '#6B6B6B',
         'red': '#FA000F',
+        'error': '#AF0606',
         'transparent': 'transparent',
         'purple': '#8B46FF',
         'brown': '#5A3F37',
