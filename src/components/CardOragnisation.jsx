@@ -1,9 +1,12 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const CardOrganisation = ({ organisation }) => {
-    const { name, description, image, phone } = organisation;
+    const { name, description, image, phone, link } = organisation;
     return (
         <div className="flex bg-white shadow-md shadow-gray-500 rounded-xl">
             <div className="flex flex-col">
-                <h2 className="text-3xl text-dark-green font-bold p-5 pl-9">{name}</h2>
+                <Link to={link} target="_blank" rel="noopener noreferrer" className="text-3xl text-dark-green font-bold p-5 pl-9 hover:underline">{name}</Link>
                 <div className="flex flex-row flex-grow">
                     <div className="flex flex-col p-5 gap-2 flex-grow">
                         <div className="flex items-center">
@@ -18,6 +21,7 @@ const CardOrganisation = ({ organisation }) => {
                     </div>
                 </div>
             </div>
+            
             <img src={image} alt={name} className="w-[20vh] h-auto object-contain mr-5 mb-5" />
         </div>
 
