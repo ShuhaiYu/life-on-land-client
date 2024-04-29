@@ -2,30 +2,30 @@ import React from 'react';
 import ResultBg from '../imgs/education/ResultBg.svg';
 import { Link } from 'react-router-dom';
 
-const QuizResult = ({ score, nextQuizLink }) => {
+const QuizResult = ({ score, nextQuizLink, buttonName = 'Next Challenge' }) => {
     const getResultContent = (score) => {
-        if (score < 50) {
+        if (score == 0) {
             return {
-                title: "You Are Getting There!",
+                title: "WrenGuard Learner",
                 desc: "Don't worry! Everyone starts somewhere. Let's learn together and try again. You've got this!",
                 bgColor: "#3A8151" // Green
             };
-        } else if (score == 50) {
+        } else if (score <= 50) {
             return {
-                title: "You Can Do This!",
-                desc: "You only scored 50% correct answers!  Let's give it another shot and see if we can boost that score up! Keep going, you're getting closer!!",
+                title: "WrenGuard Supporter",
+                desc: " Let’s review what you answered and give it another shot to boost that score up! Keep going, you're making progress!",
                 bgColor: "#C7A801" // Yellow
             };
         } else if (score > 50 && score < 100) {
             return {
-                title: "Congratulation!",
-                desc: "You scored more than 50% correct answer! Great job! Keep up the momentum and take on the next challenge!",
+                title: "WrenGuard Protector",
+                desc: "Great job! Let’s see what you answered wrong and keep up the momentum and take on the next challenge!",
                 bgColor: "#FF9131" // Orange
             };
         } else if (score == 100) {
             return {
-                title: "You Are The Expert!",
-                desc: "You got 100% correct answers! You're a true Grasswren expert! Congratulations! Keep up the fantastic work!",
+                title: "WrenGuard Expert",
+                desc: "You got them all right! You're a true Grasswren expert! Congratulations! Keep up the fantastic work!",
                 bgColor: "#5A3F37" // Brown
             };
         }
@@ -52,7 +52,7 @@ const QuizResult = ({ score, nextQuizLink }) => {
                 </div>
                 <div style={{ '--text-color': bgColor }} className="parent-class">
                     <Link to={nextQuizLink} className="absolute left-1/2 transform -translate-x-1/2 bottom-20 btn-light rounded-xl px-6 py-4 font-bold text-[var(--text-color)] hover:bg-light-yellow transition-transform duration-200 hover:scale-110">
-                        Next Challenge
+                        {buttonName}
                     </Link>
                 </div>
             </div>

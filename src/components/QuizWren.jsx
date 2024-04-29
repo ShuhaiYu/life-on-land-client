@@ -1,35 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ChoiceQuestion from './ChoiceQuestion';
 import QuizResult from './QuizResult';
 
 const questions = [
-    {
-        question: "What is the primary method used to determine if a species is threatened?",
-        options: [
-            { label: "A) Estimating its population size over several years", content: null, type: "text" },
-            { label: "B) Assessing the geographic range of the species", content: null, type: "text" },
-            { label: "C) Both A and B", content: null, type: "text" }
-        ],
-        correct: "C) Both A and B"
-    },
-    {
-        question: "What type of data is crucial for assessing the threat level to a species?",
-        options: [
-            { label: "A) Celebrity endorsements for conservation", content: null, type: "text" },
-            { label: "B) Historical and current population data", content: null, type: "text" },
-            { label: "C) Opinion polls about the species", content: null, type: "text" }
-        ],
-        correct: "B) Historical and current population data"
-    },
-    {
-        question: "What does it mean for a species to be listed as 'Endangered' under the IUCN Red List?",
-        options: [
-            { label: "A) The species has a large and stable population.", content: null, type: "text" },
-            { label: "B) The species is at risk of extinction in the wild.", content: null, type: "text" },
-            { label: "C) The species is only found in captivity.", content: null, type: "text" }
-        ],
-        correct: "B) The species is at risk of extinction in the wild."
-    },
     {
         question: "Which of the following factors is NOT considered when assessing the threat status of a species?",
         options: [
@@ -42,11 +15,38 @@ const questions = [
     {
         question: "What role do habitat changes play in determining whether a species is threatened?",
         options: [
-            { label: "A) Habitat changes are monitored but not crucial.", content: null, type: "text" },
-            { label: "B) Significant habitat changes can indicate a threat to the species.", content: null, type: "text" },
-            { label: "C) Only sudden habitat changes are considered.", content: null, type: "text" }
+            { label: "A) Habitat changes are monitored but not crucial", content: null, type: "text" },
+            { label: "B) Significant habitat changes can indicate a threat to the species", content: null, type: "text" },
+            { label: "C) Only sudden habitat changes are considered", content: null, type: "text" }
         ],
-        correct: "C) Only sudden habitat changes are considered."
+        correct: "C) Only sudden habitat changes are considered"
+    },
+    {
+        question: "Which of the following factors is NOT considered as grasswren’s threats?",
+        options: [
+            { label: "A) Heavy rainfall", content: null, type: "text" },
+            { label: "B) Feral cats", content: null, type: "text" },
+            { label: "C) Bushfire", content: null, type: "text" }
+        ],
+        correct: "A) Heavy rainfall"
+    },
+    {
+        question: "What action CANNOT prevent wildfire?",
+        options: [
+            { label: "A) Commencing prescribed burns", content: null, type: "text" },
+            { label: "B) Implementing effective fire management", content: null, type: "text" },
+            { label: "C) Leaving a campfire unattended", content: null, type: "text" }
+        ],
+        correct: "C) Leaving a campfire unattended"
+    },
+    {
+        question: "What is NOT a reason that the feral fox is a threat to grasswrens?",
+        options: [
+            { label: "A) Grasswren usually nests near ground-level", content: null, type: "text" },
+            { label: "B) Grasswren has high-toned, clear, whistled notes", content: null, type: "text" },
+            { label: "C) Having limited capability for flight", content: null, type: "text" }
+        ],
+        correct: "B) Grasswren has high-toned, clear, whistled notes"
     }
 ];
 
@@ -55,6 +55,8 @@ const QuizWren = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState(Array(questions.length).fill(null));
     const [submitted, setSubmitted] = useState(false);
+
+    const resultsRef = useRef(null);
 
     let nextTopicName = "Spot A Grasswren";
     const encodedTopicName = encodeURIComponent(nextTopicName);
@@ -96,6 +98,12 @@ const QuizWren = () => {
 
     const progress = (currentQuestionIndex + 1) / questions.length * 100;
 
+    useEffect(() => {
+        if (submitted && resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [submitted]);
+
     return (
         <div className='flex flex-col items-center justify-center'>
             <div className='w-3/4 bg-white p-10 rounded-xl shadow-xl'>
@@ -106,27 +114,27 @@ const QuizWren = () => {
                     submitted={submitted}
                 />
             </div>
-            <div className='flex justify-between gap-4 mt-4'>
+            <div className='flex justify-between gap-20 mt-10'>
                 <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="pt-2 px-4 rounded-full hover:bg-gray-300 disabled:text-gray-400 text-dark-green  disabled:cursor-not-allowed transition duration-300 ease-in-out">
-                <i className="fi fi-rr-angle-left text-2xl"></i>
+                    <i className="fi fi-rr-angle-left text-2xl"></i>
                 </button>
                 <button onClick={nextQuestion} disabled={currentQuestionIndex === questions.length - 1} className="pt-2 px-4 rounded-full hover:bg-gray-300 disabled:text-gray-400 text-dark-green  disabled:cursor-not-allowed transition duration-300 ease-in-out">
                     <i className="fi fi-rr-angle-right text-2xl"></i>
                 </button>
             </div>
-            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-4">
+            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-10">
                 <div className="bg-dark-green h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
             </div>
             {!submitted ? (
-                <button onClick={handleSubmit} className="btn-dark my-5">
+                <button onClick={handleSubmit} className="btn-dark my-10">
                     Submit
                 </button>
             ) : (
-                <div className='w-full'>
+                <div className='w-full' ref={resultsRef}>
                     {/* <button onClick={() => setSubmitted(false)} className="text-lg py-2 font-semibold mt-4 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded">
                         Reset Quiz
                     </button> */}
-                    <QuizResult score={calculateCorrectAnswers() } nextQuizLink={`/education/quiz?title=${encodedTopicName}`} />
+                    <QuizResult score={calculateCorrectAnswers()} nextQuizLink={`/education/quiz?title=${encodedTopicName}`} />
                 </div>
             )}
         </div>

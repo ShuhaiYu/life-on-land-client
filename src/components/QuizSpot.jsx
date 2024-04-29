@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ChoiceQuestion from './ChoiceQuestion';
 import QuizResult from './QuizResult';
 
@@ -8,7 +8,7 @@ import soundNoisyMiner from '../imgs/education/Bird song of Noisy Miner.mp3';
 
 const questions = [
     {
-        question: "Which one is grasswren?",
+        question: "Which one is the Grasswren?",
         options: [
             { label: "A) Image of a grasswren", content: shadowGrasswren, type: "image" },
             { label: "B) Image of a not grasswren", content: shadowNoisyMiner, type: "image" },
@@ -40,7 +40,7 @@ const questions = [
         correct: "B) Skulking in low vegetation"
     },
     {
-        question: "Which appearance helps distinguish different grasswren species?",
+        question: "Which appearance helps distinguish between different grasswren species?",
         options: [
             { label: "A) Colour patterns on their plumage", content: null, type: "text" },
             { label: "B) Length of their beak", content: null, type: "text" }
@@ -53,6 +53,7 @@ const QuizSpot = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState(Array(questions.length).fill(null));
     const [submitted, setSubmitted] = useState(false);
+    const resultsRef = useRef(null);
 
     let nextTopicName = "Where Do They Live";
     const encodedTopicName = encodeURIComponent(nextTopicName);
@@ -92,7 +93,11 @@ const QuizSpot = () => {
     };
 
     const progress = (currentQuestionIndex + 1) / questions.length * 100;
-
+    useEffect(() => {
+        if (submitted && resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [submitted]);
     return (
         <div className='flex flex-col items-center justify-center'>
             <div className='w-3/4 bg-white p-10 rounded-xl shadow-xl'>
@@ -103,7 +108,7 @@ const QuizSpot = () => {
                     submitted={submitted}
                 />
             </div>
-            <div className='flex justify-between gap-16 mt-4'>
+            <div className='flex justify-between gap-20 mt-10'>
                 <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="pt-2 px-4 rounded-full hover:bg-gray-300 disabled:text-gray-400 text-dark-green  disabled:cursor-not-allowed transition duration-300 ease-in-out">
                     <i className="fi fi-rr-angle-left text-3xl "></i>
                 </button>
@@ -112,15 +117,15 @@ const QuizSpot = () => {
                 </button>
             </div>
 
-            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-4">
+            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-10">
                 <div className="bg-dark-green h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
             </div>
             {!submitted ? (
-                <button onClick={handleSubmit} className="btn-dark my-5">
+                <button onClick={handleSubmit} className="btn-dark my-10">
                     Submit
                 </button>
             ) : (
-                <div className='w-full'>
+                <div className='w-full ' ref={resultsRef}>
                     {/* <button onClick={() => setSubmitted(false)} className="text-lg py-2 font-semibold mt-4 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded">
                         Reset Quiz
                     </button> */}

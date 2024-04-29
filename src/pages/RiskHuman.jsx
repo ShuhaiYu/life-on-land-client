@@ -37,19 +37,22 @@ const RiskHuman = () => {
             </div>
             {/* Landing Content */}
             <div className='flex flex-col items-center justify-center m-20'>
-                <p className='text-dark-green text-3xl text-center w-[70%] m-10'>
-                    Tom, an avid wildlife adventurer,<br />
-                    enjoys all kinds of outdoor activities in the bush.
+                <p className='text-dark-green text-3xl text-center m-10'>
+                    Did you know unattended campfire or hunted for pleasure can threaten <br/>
+                    the survival of endangered grasswrens,<br/>
+                    whose habitats and lives are fragile and easily disrupted by such actions.<br/>
+                    Check out where hunting and camping (brown dots) are conducted in each area on the map below<br/>
+
                 </p>
                 <img src={imgdiscover} alt="Discover" className='w-32' />
 
                 <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
-                <p className='text-xl text-dark-green font-bold text-center w-[70%] m-10 mb-20'>
+                {/* <p className='text-xl text-dark-green font-bold text-center w-[70%] m-10 mb-20'>
                     Little did he know, <br />
                     every time he carelessly started a campfire or hunted for fun, <br />
                     he was unknowingly threatening the survival of endangered grasswrens, <br />
                     whose habitats and lives are fragile and easily disrupted by such actions.
-                </p>
+                </p> */}
 
                 {/* Map */}
                 <div className="m-10 p-4 w-[60%] h-[70vh] border border-black shadow-lg shadow-black rounded-3xl">

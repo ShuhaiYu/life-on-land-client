@@ -125,7 +125,7 @@ const RiskMap = ({ isFireShow, isFoxShow, isCatShow, isHumanShow, isButtonShow }
     try {
       const { data } = await axios.get(url);
       let layer;
-  
+
       if (type === 'fire') {
         const points = processFireData(data);
         layer = L.heatLayer(points, { radius: 25, gradient: { 0.4: 'yellow', 0.65: 'orange', 1: 'red' } });
@@ -161,40 +161,40 @@ const RiskMap = ({ isFireShow, isFoxShow, isCatShow, isHumanShow, isButtonShow }
           layer.addTo(map);
         }
       }
-      
+
     } catch (error) {
       console.error('Failed to fetch data:', error);
     }
   };
-  
+
 
 
   // Fetch data and add to map based on props
   useEffect(() => {
-      if (isFireShow && !fireLayer) {
-        console.log('Fetching fire data');
-        fetchData(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firepoints`, setFireLayer, 'fire');
+    if (isFireShow && !fireLayer) {
+      console.log('Fetching fire data');
+      fetchData(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/firepoints`, setFireLayer, 'fire');
 
-      }
-      if ((isFoxShow || isCatShow) && (!foxLayer || !catLayer)) {
-        console.log('Fetching predator data');
-        fetchData(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/predators`, (data) => {
-          const { foxPoints, catPoints } = processPredatorData(data);
-          if (isFoxShow && !foxLayer) {
-            const foxLayer = L.layerGroup(foxPoints).addTo(map);
-            setFoxLayer(foxLayer);
-          }
-          if (isCatShow && !catLayer) {
-            const catLayer = L.layerGroup(catPoints).addTo(map);
-            setCatLayer(catLayer);
-          }
-        }, 'predators');
-      }
-      if (isHumanShow && !humanLayer) {
-        console.log('Fetching human data');
-        fetchData(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/human`, setHumanLayer, 'human');
-      }
-    
+    }
+    if ((isFoxShow || isCatShow) && (!foxLayer || !catLayer)) {
+      console.log('Fetching predator data');
+      fetchData(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/predators`, (data) => {
+        const { foxPoints, catPoints } = processPredatorData(data);
+        if (isFoxShow && !foxLayer) {
+          const foxLayer = L.layerGroup(foxPoints).addTo(map);
+          setFoxLayer(foxLayer);
+        }
+        if (isCatShow && !catLayer) {
+          const catLayer = L.layerGroup(catPoints).addTo(map);
+          setCatLayer(catLayer);
+        }
+      }, 'predators');
+    }
+    if (isHumanShow && !humanLayer) {
+      console.log('Fetching human data');
+      fetchData(`${import.meta.env.VITE_SERVER_DOMAIN}/api/risk/human`, setHumanLayer, 'human');
+    }
+
 
   }, [isFireShow, isFoxShow, isCatShow, isHumanShow, map]);
 
@@ -217,10 +217,38 @@ const RiskMap = ({ isFireShow, isFoxShow, isCatShow, isHumanShow, isButtonShow }
     <div className='flex h-full'>
       {isButtonShow && (
         <div className='flex flex-col items-center justify-center m-10 w-1/4'>
-          {isFireShow && <button className={'btn-light w-full mb-2 bg-[#FA8700] text-white hover:bg-gray-200 hover:text-dark-green'} onClick={() => toggleLayer(fireLayer)}>Wildfire</button>}
-          {isFoxShow && <button className='btn-light w-full mb-2 bg-[#C7A801] text-white hover:bg-gray-200 hover:text-dark-green' onClick={() => toggleLayer(foxLayer)}>Feral Foxes</button>}
-          {isCatShow && <button className='btn-light w-full mb-2 bg-[#181E5B] text-white hover:bg-gray-200 hover:text-dark-green' onClick={() => toggleLayer(catLayer)}>Feral Cats</button>}
-          {isHumanShow && <button className='btn-light w-full mb-2 bg-[#5A3F37] text-white hover:bg-gray-200 hover:text-dark-green' onClick={() => toggleLayer(humanLayer)}>Human Activities</button>}
+          {
+            isFireShow &&
+            <div className='flex flex-col items-center justify-center p-5 m-2 bg-[#FA8700] text-white rounded-lg shadow-lg'>
+              <h2 className='text-lg font-bold mb-2'>Threats of Wildfire</h2>
+              <p className='mb-4'>The heatmap indicates where wildfires occur most frequently in each area.</p>
+              <button className='btn-light w-full bg-[#FA8700] hover:bg-gray-200 hover:text-dark-green border-white text-white' onClick={() => toggleLayer(fireLayer)}>Show Wildfire</button>
+            </div>
+          }
+          {
+            isFoxShow &&
+            <div className='flex flex-col items-center justify-center p-5 m-2 bg-[#C7A801] text-white rounded-lg shadow-lg'>
+              <h2 className='text-lg font-bold mb-2'>Threats of Feral Foxes</h2>
+              <p className='mb-4'>The mustard yellow dots indicate the population of feral foxes in each area.</p>
+              <button className='btn-light w-full bg-[#C7A801] hover:bg-gray-200 hover:text-dark-green border-white text-white' onClick={() => toggleLayer(foxLayer)}>Show Feral Foxes</button>
+            </div>
+          }
+          {
+            isCatShow &&
+            <div className='flex flex-col items-center justify-center p-5 m-2 bg-[#181E5B] text-white rounded-lg shadow-lg'>
+              <h2 className='text-lg font-bold mb-2'>Threats of Feral Cats</h2>
+              <p className='mb-4'>The navy dots indicate the population of feral cats in each area.</p>
+              <button className='btn-light w-full bg-[#181E5B] hover:bg-gray-200 hover:text-dark-green border-white text-white' onClick={() => toggleLayer(catLayer)}>Show Feral Cats</button>
+            </div>
+          }
+          {
+            isHumanShow &&
+            <div className='flex flex-col items-center justify-center p-5 m-2 bg-[#5A3F37] text-white rounded-lg shadow-lg'>
+              <h2 className='text-lg font-bold mb-2'>Threats of Human Activities</h2>
+              <p className='mb-4'>The brown dots indicate human activities such as hunting and camping in each area.</p>
+              <button className='btn-light w-full bg-[#5A3F37] hover:bg-gray-200 hover:text-dark-green border-white text-white' onClick={() => toggleLayer(humanLayer)}>Show Human Activities</button>
+            </div>
+          }
         </div>
       )}
 

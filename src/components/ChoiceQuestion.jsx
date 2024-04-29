@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 
 const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitted }) => {
-    const [isPlaying, setIsPlaying] = useState({});
+    const [playingIndex, setPlayingIndex] = useState(null);
+
     const audioRefs = useRef({});
 
     const getButtonClass = (option) => {
@@ -19,17 +20,25 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
     };
 
     const togglePlayPause = (event, optionIndex) => {
-        event.stopPropagation();  // Prevent event from bubbling up to parent elements
-        const newIsPlaying = { ...isPlaying };
-        if (newIsPlaying[optionIndex]) {
-            audioRefs.current[optionIndex].pause();
-        } else {
-            audioRefs.current[optionIndex].play();
+        event.stopPropagation();
+        const audio = audioRefs.current[optionIndex];
+
+        // Stop the currently playing audio if it's different from the clicked one
+        if (playingIndex !== null && playingIndex !== optionIndex) {
+            audioRefs.current[playingIndex].pause();
         }
-        newIsPlaying[optionIndex] = !newIsPlaying[optionIndex];
-        setIsPlaying(newIsPlaying);
+
+        // Play or pause the new audio
+        if (audio.paused) {
+            audio.play();
+            setPlayingIndex(optionIndex);
+        } else {
+            audio.pause();
+            setPlayingIndex(null); // No audio is playing
+        }
     };
-    
+
+
     const renderOptionContent = (option, index) => {
         switch (option.type) {
             case 'image':
@@ -37,11 +46,13 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
             case 'audio':
                 return (
                     <div className="flex items-center">
-                        <audio ref={el => audioRefs.current[index] = el} src={option.content} onPlay={() => setIsPlaying({ ...isPlaying, [index]: true })} onPause={() => setIsPlaying({ ...isPlaying, [index]: false })}>
+                        <audio ref={el => audioRefs.current[index] = el} src={option.content}
+                            onPlay={() => setPlayingIndex(index)}
+                            onPause={() => setPlayingIndex(null)}>
                             Your browser does not support the audio element.
                         </audio>
                         <button onClick={(event) => togglePlayPause(event, index)} className='mx-10 text-dark-green focus:outline-none transition duration-300 ease-in-out rounded-full pt-2 px-2'>
-                            <i className={`fi fi-rr-${isPlaying[index] ? 'pause' : 'play'}-circle text-5xl`} ></i>
+                            <i className={`fi fi-rr-${playingIndex === index && !audioRefs.current[index].paused ? 'pause' : 'play'}-circle text-5xl`} ></i>
                         </button>
                     </div>
                 );
@@ -52,7 +63,7 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
     // Determine layout based on question types
     const isHorizontalLayout = question.options.some(option => option.type === 'image' || option.type === 'audio');
     const optionsContainerClass = isHorizontalLayout ? 'flex-row items-center justify-center' : 'flex-col items-center justify-center';
-    
+
 
     return (
         <div className='flex flex-col items-center justify-center'>

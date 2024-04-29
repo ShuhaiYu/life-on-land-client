@@ -136,13 +136,15 @@ const RiskFirePage = () => {
                 </Slider>
             </div>
             <div className='flex flex-col items-center justify-center m-20'>
-                <p className='text-3xl text-dark-green text-center w-[70%]'>In 2020, there were 58,258 fires across Australia, affecting more than 10 million acres. Nesting near ground-level and having limited flight capability make grasswrens vulnerable to increased wildfire frequency and intensity. Fire management and habitat recovery have become top priorities in the grasswren conservation plan</p>
+                <p className='text-3xl text-dark-green text-center w-[70%]'>
+                    Did you know in 2020, there were 58,258 fires across Australia, affecting more than 10 million acres. Nesting near ground-level and having limited flight capability make grasswrens vulnerable to increased wildfire frequency and intensity.
+                </p>
                 <img src={Vector} alt="Vector" className='w-auto h-auto m-10' />
                 <img src={fireicon} alt="fire icon" className='self-center w-20 h-20 my-5 mx-1' />
 
             </div>
             <div className='flex flex-row items-center'>
-                <div className="m-10 p-10 w-[60%] h-[60vh] border border-black shadow-lg shadow-black rounded-3xl">
+                <div className="m-5 p-5 w-[60%] h-[70vh] border shadow-lg rounded-3xl">
                     <RiskMap isFireShow={true} isButtonShow={false} />
                 </div>
                 <p className='text-2xl text-dark-green w-[40%] m-10'>
@@ -152,8 +154,43 @@ const RiskFirePage = () => {
                 </p>
             </div>
 
+
+
+
+            {/* Data Visualization   */}
+
+            {/* Pie Chart with Title */}
+            <div className='w-full bg-dark-green h-auto py-10 px-16 mb-10'>
+                <p className='text-2xl text-white text-center'>
+                    Bushfires have become a major cause of wildfires in Australia, affecting regions<br />
+                    such as Victoria, Western Australia, and Queensland. The damaging fire patterns have resulted in<br />
+                    a dramatic decline in the grasswren population. Modern fires are typically less frequent but larger and more intense.<br />
+                    Consequently, these fires can lead to the removal of suitable Grasswren habitat over extensive areas,<br />
+                    which has been implicated in the decline of the species. To explore which state has the most wildfires<br />
+                    in which month, try the timeline bar below!
+                </p>
+            </div>
+            <div className="flex justify-center items-center">
+                <div className="w-1/2">
+                    <div className="text-center font-bold text-xl mb-4">
+                        Annual Total Number of Wildfires in Different States in Australia
+                    </div>
+                    <ResponsiveContainer width="100%" height={500}>
+                        <PieChart>
+                            <Pie data={processedData.stateDistribution} cx="50%" cy="50%" outerRadius={160} fill="#8884d8" dataKey="value" label>
+                                {processedData.stateDistribution.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                ))}
+                            </Pie>
+                            <Tooltip formatter={(value) => `${value} fires`} />
+                            <Legend layout="vertical" align="right" verticalAlign="middle" />
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
+
             {/* Slider for selecting year */}
-            <div className='flex items-center justify-center mt-20 text-xl'>
+            <div className='flex items-center justify-center my-10 text-xl'>
                 <input
                     type="range"
                     min="2013"
@@ -169,37 +206,11 @@ const RiskFirePage = () => {
                 />
                 <div className='text-2xl ml-4 '>{selectedYear}</div>
             </div>
-            {/* pie chart   */}
-            <div className="charts-container">
-                <div className=''>
-
-                    {/* Right Pie Chart with Title */}
-                    <div>
-                        <div className="text-center font-bold text-xl">
-                            Annual Total Number of Wildfires in Different States in Australia
-                        </div>
-                        <ResponsiveContainer width="100%" height={400}>
-                            <PieChart>
-                                <Pie data={processedData.stateDistribution} cx="50%" cy="50%" label outerRadius={80} fill="#8884d8" dataKey="value">
-                                    {processedData.stateDistribution.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                <Tooltip formatter={(value) => `${value} fires`} />
-                                <Legend />
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </div>
-                </div>
 
 
-                <div className='w-full bg-dark-green h-auto py-10 px-16 mb-10'>
-                    <p className='text-2xl text-white text-center'>
-                        Bushfires have become a major cause of wildfires in Australia, affecting regions such as Victoria, Western Australia, and Queensland. The damaging fire patterns have resulted in a dramatic decline in the grasswren population. Modern fires are typically less frequent but larger and more intense. Consequently, these fires can lead to the removal of suitable grasswren habitat over extensive areas, which has been implicated in the decline of the species.
-                    </p>
-                </div>
-                {/* Line chart */}
-                <div>
+            {/* Line chart */}
+            <div className='flex justify-center items-center mb-10'>
+                <div className='w-2/3'>
                     <div className="text-center font-bold text-xl mb-4">
                         Total Number of Wildfires Occurred in Australia Monthly
                     </div>
@@ -217,12 +228,14 @@ const RiskFirePage = () => {
                         </LineChart>
                     </ResponsiveContainer>
                 </div>
-                <div className='w-full bg-dark-green h-auto py-10 px-16 mb-10'>
-                    <p className='text-2xl text-white text-center'>
-                        The greatest danger is between late spring and early autumn when fuels have dried after the winter rains. The worst conditions occur when deep low-pressure systems near Tasmania bring strong, hot and dry, westerly winds to the coastal districts. Intense high-pressure systems over South Australia producing strong southeast to northeast winds increase the risk of bushfires.                    </p>
-                </div>
 
             </div>
+            <div className='flex items-center justify-center w-full bg-dark-green h-auto py-10 px-16 mb-10'>
+                <p className='text-2xl text-white text-center w-2/3'>
+                    The greatest danger is between late spring and early autumn when fuels have dried after the winter rains. The worst conditions occur when deep low-pressure systems near Tasmania bring strong, hot and dry, westerly winds to the coastal districts. Intense high-pressure systems over South Australia producing strong southeast to northeast winds increase the risk of bushfires.                    </p>
+            </div>
+
+
             {/* Ending content */}
             <div className='flex flex-col mx-20 mt-20 justify-center items-center'>
                 <img src={imgbirdRight} alt="bird icon" className='self-center w-20 h-20 my-5 mx-1' />
@@ -234,7 +247,7 @@ const RiskFirePage = () => {
                     <br />
                     <br />
 
-                    Crafting effective fire management strategies is crucial for wildfire risk reduction in vulnerable areas, supporting the recovery and conservation of the grasswren population.
+
 
                     Commencing prescribed burns during suitable conditions at the conclusion of the wet season, typically between March and May. This practice involves various techniques, including matches, drip torches, and aerial incendiaries, to ignite fires based on a strategic annual burn plan. The aim of prescribed burning during the early dry season is twofold: to mitigate the spread of more severe wildfires later in the year and to create fire breaks while reducing the fuel load across the landscape.
 

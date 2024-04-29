@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import QuizResult from "./QuizResult";
+
 
 import habitat from "../imgs/education/habitat.jpeg";
 import bird from "../imgs/education/bird.png";
@@ -8,13 +9,14 @@ const iconData = [
     { id: 1, label: "Dense shrubbery", correct: true, info: "Correct! Grasswrens use dense shrubbery for nesting.", position: "top-[55%] left-[10%]" },
     { id: 2, label: "Low shrubbery", correct: true, info: "Correct! Grasswrens forage for food in low shrubbery.", position: "bottom-[20%] left-[20%]" },
     { id: 3, label: "High tree canopies", correct: false, info: "Incorrect. Grasswrens do not dwell in high tree canopies.", position: "top-[15%] right-[30%]" },
-    { id: 4, label: "High humidity & moisture", correct: false, info: "Incorrect. Grasswrens do not typically inhabit areas with high humidity and moisture.", position: "bottom-[25%] right-[15%]" },
+    { id: 4, label: "High humidity & moisture", correct: false, info: "Incorrect. Grasswrens typically avoid humid and moist areas.", position: "bottom-[25%] right-[25%]" },
 ];
 
 const QuizWhere = () => {
     const [selected, setSelected] = useState({});
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(null);
+    const resultsRef = useRef(null);
 
     const handleIconClick = (id) => {
         setSelected((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -43,7 +45,11 @@ const QuizWhere = () => {
             return acc;
         }, 0);
     };
-
+    useEffect(() => {
+        if (submitted && resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [submitted]);
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -65,11 +71,11 @@ const QuizWhere = () => {
                 ))}
             </div>
             {!submitted ? (
-                <button onClick={handleSubmit} className="btn-dark my-5">
+                <button onClick={handleSubmit} className="btn-dark my-10">
                     Submit
                 </button>
             ) : (
-                <div className='w-full'>
+                <div className='w-full' ref={resultsRef}>
                     {/* <button onClick={() => setSubmitted(false)} className="text-lg py-2 font-semibold mt-4 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded">
                         Reset Quiz
                     </button> */}

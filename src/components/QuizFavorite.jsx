@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ChoiceQuestion from './ChoiceQuestion';
 import QuizResult from './QuizResult';
 
@@ -54,9 +54,7 @@ const QuizFavorite = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState(Array(questions.length).fill(null));
     const [submitted, setSubmitted] = useState(false);
-
-    let nextTopicName = "Threatened Species";
-    const encodedTopicName = encodeURIComponent(nextTopicName);
+    const resultsRef = useRef(null);
 
     const handleAnswerSelect = (answer) => {
         const newAnswers = [...answers];
@@ -93,7 +91,11 @@ const QuizFavorite = () => {
     };
 
     const progress = (currentQuestionIndex + 1) / questions.length * 100;
-
+    useEffect(() => {
+        if (submitted && resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [submitted]);
     return (
         <div className='flex flex-col items-center justify-center'>
             <div className='w-3/4 bg-white p-10 rounded-xl shadow-xl'>
@@ -104,7 +106,7 @@ const QuizFavorite = () => {
                     submitted={submitted}
                 />
             </div>
-            <div className='flex justify-between gap-4 mt-4'>
+            <div className='flex justify-between gap-20 mt-10'>
                 <button onClick={previousQuestion} disabled={currentQuestionIndex === 0} className="pt-2 px-4 rounded-full hover:bg-gray-300 disabled:text-gray-400 text-dark-green  disabled:cursor-not-allowed transition duration-300 ease-in-out">
                     <i className="fi fi-rr-angle-left text-2xl"></i>
                 </button>
@@ -112,19 +114,19 @@ const QuizFavorite = () => {
                     <i className="fi fi-rr-angle-right text-2xl"></i>
                 </button>
             </div>
-            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-4">
+            <div className="w-[50%] bg-gray-200 rounded-full h-2.5 mt-10">
                 <div className="bg-dark-green h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
             </div>
             {!submitted ? (
-                <button onClick={handleSubmit} className="btn-dark my-5">
+                <button onClick={handleSubmit} className="btn-dark my-10">
                     Submit
                 </button>
             ) : (
-                <div className='w-full'>
+                <div className='w-full' ref={resultsRef}>
                     {/* <button onClick={() => setSubmitted(false)} className="text-lg py-2 font-semibold mt-4 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded">
                         Reset Quiz
                     </button> */}
-                    <QuizResult score={calculateCorrectAnswers() } nextQuizLink={`/education/quiz?title=${encodedTopicName}`} />
+                    <QuizResult score={calculateCorrectAnswers() } nextQuizLink={`/education`} buttonName='Back to Education'/>
                 </div>
             )}
         </div>

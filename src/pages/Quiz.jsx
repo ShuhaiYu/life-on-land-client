@@ -14,11 +14,11 @@ const quizDetails = {
     "Threatened Species": {
         title: "Threatened Species",
         icon: bird,
-        desc: "How do we determine if a species is endangered? \nLet us see if you can make correct judgement!",
+        desc: "How do we determine if a species is endangered? \nLet's see if you can make correct judgement!",
         component: <QuizWren />
     },
-    "Spot A Grasswren": {
-        title: "Spot A Grasswren",
+    "Spot a Grasswren": {
+        title: "Spot a Grasswren",
         icon: telescope,
         desc: "Spotting grasswrens can be quite challenging \ndue to their rapid hopping and swift movements.",
         component: <QuizSpot />
@@ -26,13 +26,13 @@ const quizDetails = {
     "Where Do They Live": {
         title: "Where Do They Live",
         icon: nest,
-        desc: "Grasswren is one of the birds recognised as the most difficult to find. \nLet us reveal the secret of their habitat! \nSelect one or more locations where you think it's Grasswren's favourite spot.",
+        desc: "Grasswren is one of the birds recognised as the most difficult to find. \nLet's reveal the secret of their habitat! \nSelect one or more locations where you think might be Grasswren's favourite spot",
         component: <QuizWhere />
     },
     "Grasswren's Favorite": {
         title: "Grasswren's Favorite",
         icon: berries,
-        desc: "Did you know the grasswren has a serious dietary routine? \nLet us find out what they love the most!",
+        desc: "Did you know the grasswren has a serious dietary routine? \nLet's find out what they love the most!",
         component: <QuizFavorite />
     }
 };
@@ -51,9 +51,9 @@ const QuizPage = () => {
     return (
         <div className='bg-grey h-auto relative'>
             <div className='flex flex-col items-center justify-center'>
-                <img src={details.icon} alt={`${details.title} Icon`} className='w-20 h-20 m-5' />
-                <h1 className='text-5xl text-dark-green font-bold text-center m-5'>{details.title}</h1>
-                <p className='text-3xl w-[60%] text-center font-noto-sans-tc text-[#747474] mb-5'  style={{ whiteSpace: 'pre-line' }}>{details.desc}</p>
+                <img src={details.icon} alt={`${details.title} Icon`} className='w-20 h-20 m-5 mt-10' />
+                <h1 className='text-5xl text-dark-green font-bold text-center m-5 mt-0'>{details.title}</h1>
+                <p className='text-3xl w-[60%] text-center font-noto-sans-tc text-[#747474] mb-10'  style={{ whiteSpace: 'pre-line' }}>{details.desc}</p>
 
             </div>
             <div>

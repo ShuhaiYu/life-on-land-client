@@ -22,7 +22,13 @@ const HomePage = () => {
 
                 <div className='flex flex-col justify-center items-center sm:w-full md:w-[40%] '>
                     <img src={BirdIcon} alt="bird icon" className='self-center w-16 h-16 mx-1' />
-                    <p className='text-2xl text-center font-bold w-2/3 my-5'>Did you know there are more than 200 Australian birds are now threatened with extinction? </p>
+                    <p className='text-2xl text-center font-bold w-[80%] my-5'>
+                        Australia's vibrant grasswren populations are facing
+                        critical decline, primarily due to habitat degradation.
+                        At WrenGuard, we invite you to join our strong network in
+                        combating habitat loss and protecting these iconic birds.
+                        Explore how you can make a difference today!
+                    </p>
                     <img src={Vector} alt="Vector" className='w-auto h-auto' />
                 </div>
                 <div className='flex flex-col sm:w-full md:w-[20%] items-center'>
@@ -34,7 +40,13 @@ const HomePage = () => {
             <div className='flex flex-col sm:flex-col md:flex-row'>
                 <img src={LandingImg4} alt="Grasswren" className="sm:w-full md:w-[40%] h-auto" />
                 <div className='flex flex-col justify-center items-center'>
-                    <p className='text-xl sm:text-lg md:text-2xl text-center font-bold w-2/3 my-5'>Three new species have recenlty become significantly threatened species across Australia. According to the NSW Threatened Species Scientific Committee (2021), the total population of Mukarrthippi Grasswren is very likely to be less than 20 mature individuals, with a continuing decline caused by ongoing threats from wildfire, habitat deterioration and fragmentation of the small populations.</p>
+                    <p className='text-xl sm:text-lg md:text-2xl text-center font-bold w-2/3 my-5'>
+                        Species like the Mukarrthippi Grasswren are on the
+                        brink of extinction, with less than 20 individuals remaining as of 2023.
+                        The Grey Grasswren population also faces significant threat,
+                        with numbers dropping below 200 posing a serious threat to
+                        both biodiversity and cultural heritage on life on land.
+                    </p>
                     <img src={Vector} alt="Vector" className='w-auto h-auto' />
                 </div>
 
@@ -44,14 +56,15 @@ const HomePage = () => {
             {/* This is timeline */}
             <section className='mt-20'>
                 <div className="bg-dark-green text-white py-8">
-                <h1 className="text-5xl text-center font-caveat-brush text-white">Grasswren Timeline: Fascinating Facts</h1>
+                    <h1 className="text-5xl text-center font-caveat-brush text-white">Conservation Timeline of Grasswrens</h1>
+                    <p className="text-3xl text-center font-caveat-brush text-white">Discover Fascinating Facts About Grasswrens and Their Enemies</p>
 
                     <div className="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
                         <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
                             <p className="ml-2 text-yellow-300 uppercase tracking-loose">Conservation Journey</p>
-                            <p className="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Conservation Timeline of Grasswrens</p>
+                            <p className="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Meet Endangered Grasswrens</p>
                             <p className="text-sm md:text-base text-gray-50 mb-4">
-                                Explore the Threatened Grasswrens: Navigate through a comprehensive list and explore detailed profiles and habitat locations for each species.
+                            Explore their profiles and habitat locations
                             </p>
                             <Link to="/grasswren"
                                 className="bg-transparent mr-auto hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
