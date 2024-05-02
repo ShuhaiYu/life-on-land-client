@@ -42,6 +42,7 @@ const RiskPrediction = () => {
                 <div className="container mx-auto">
 
                     <h1 className="text-center text-2xl font-bold mb-4">Risk Level: {riskPrediction.riskLevel}</h1>
+                    <p className="text-center text-lg mb-4">WildFire Probability: {riskPrediction.probability}</p>
                     {/* <RiskIndicator riskLevel={riskLevel} /> */}
 
                 </div>
