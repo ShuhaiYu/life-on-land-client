@@ -18,6 +18,7 @@ import RiskHuman from './pages/RiskHuman';
 import LoginPage from './pages/Login';
 import QuizPage from './pages/Quiz';
 import HabitatPage from './pages/Habitat';
+import RiskPrediction from './pages/RiskPrediction';
 
 function ProtectedRoute({ isLoggedIn, children }) {
   const location = useLocation();
@@ -50,6 +51,7 @@ function App() {
           <Route path="/risk/fire" element={<RiskFirePage />} />
           <Route path="/risk/predators" element={<RiskPredators />} />
           <Route path="/risk/humans" element={<RiskHuman />} />
+          <Route path="/risk/prediction" element={<RiskPrediction />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
 

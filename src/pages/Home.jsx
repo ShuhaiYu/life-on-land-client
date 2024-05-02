@@ -64,7 +64,7 @@ const HomePage = () => {
                             <p className="ml-2 text-yellow-300 uppercase tracking-loose">Conservation Journey</p>
                             <p className="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Meet Endangered Grasswrens</p>
                             <p className="text-sm md:text-base text-gray-50 mb-4">
-                            Explore their profiles and habitat locations
+                                Explore their profiles and habitat locations
                             </p>
                             <Link to="/grasswren"
                                 className="bg-transparent mr-auto hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
@@ -119,6 +119,21 @@ const HomePage = () => {
                                             </p>
                                         </div>
                                     </div>
+                                    <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                        <div className="order-1 w-5/12"></div>
+                                        <div className="order-1 w-5/12 px-1 py-4 text-right">
+                                            <p className="mb-3 text-3xl text-[#ff7d31] font-bold">Future</p>
+                                            <h4 className="mb-3 font-bold text-lg md:text-2xl">Predicted Future Challenges</h4>
+                                            <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 mb-5">
+                                                Wildfire change and habitat destruction pose significant threats to grasswrens in the future. Conservation efforts must prioritize mitigating these risks to ensure the survival of grasswrens.
+                                            </p>
+                                            <Link to="/risk/prediction"
+                                                className="bg-transparent mr-auto hover:bg-[#ff7d31] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
+                                                Learn More About Future Risks</Link>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <img class="mx-auto mt-10" src={GrasswrenSeries} />
                             </div>
