@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import garden from '../imgs/education/garden.png';
 import whiteLine from '../imgs/Vector 3.svg';
@@ -425,14 +426,21 @@ const HabitatPage = () => {
                         {step === 1 && (
                             <div className='flex flex-col w-full'>
                                 <div className="flex flex-col my-2 p-2 rounded-lg border" >
-                                    <label htmlFor="postcode">Postcode</label>
+                                    <label htmlFor="postcode">
+                                        Postcode &nbsp;
+                                        <span className="tooltip-text fi fi-rr-info pt-1" data-info="Enter your postcode to check if there is a grasswren nearby!" />
+                                    </label>
+
                                     <input type="text" placeholder="Enter your postcode" value={postcode}
                                         onChange={e => setPostcode(e.target.value)} />
 
                                 </div>
                                 <div className='grid grid-cols-2 gap-8'>
                                     <div className='flex flex-col my-2 p-2 rounded-lg border'>
-                                        <label htmlFor="residenceType">Residence Type</label>
+                                        <label htmlFor="residenceType">
+                                            Residence Type&nbsp;
+                                            <span className="tooltip-text fi fi-rr-info pt-1" data-info="Choose your Residence Type to ensure the right space is available." />
+                                        </label>
                                         <select value={residenceType} onChange={e => setResidenceType(e.target.value)}
                                         >
                                             <option value="" disabled>Select Residence Type</option>
@@ -443,7 +451,11 @@ const HabitatPage = () => {
                                     </div>
 
                                     <div className='flex flex-col my-2 p-2 rounded-lg border'>
-                                        <label htmlFor="gardeningSkill">Gardening Experience</label>
+                                        <label htmlFor="gardeningSkill">
+                                            Gardening Experience
+                                            &nbsp;
+                                            <span className="tooltip-text fi fi-rr-info pt-1" data-info="Choose your Gardening Experience to ensure you are able to build and maintain a habitat." />
+                                        </label>
                                         <select value={gardeningSkill} onChange={e => setGardeningSkill(e.target.value)}
                                         >
                                             <option value="" disabled>Select Gardening Experience</option>
@@ -465,7 +477,10 @@ const HabitatPage = () => {
                         {step === 2 && (
                             <div className='flex flex-col w-full'>
                                 <div className="flex flex-col my-2 p-2 rounded-lg border">
-                                    <label>Habitat Size</label>
+                                    <label>Habitat Size
+                                        &nbsp;
+                                        <span className="tooltip-text fi fi-rr-info pt-1" data-info="Grasswren's habitat usually requires a space of more than 300*300 cm." />
+                                    </label>
                                     <select value={habitatSize} onChange={e => setHabitatSize(e.target.value)}
                                         className="my-2 p-2">
                                         <option value="" disabled>Select Habitat Size</option>
@@ -485,7 +500,10 @@ const HabitatPage = () => {
                             <div className='flex flex-col w-full'>
                                 <div className='grid grid-cols-2 gap-4'>
                                     <div className="flex flex-col my-2 p-2 rounded-lg border">
-                                        <label>Do you have pets?</label>
+                                        <label>
+                                            Do you have pets?&nbsp;
+                                            <span className="tooltip-text fi fi-rr-info pt-1" data-info="Some pets may hurt grasswren" />
+                                        </label>
                                         <select value={hasPets} onChange={e => setHasPets(e.target.value)}
                                             className="my-2 p-2">
                                             <option value="" disabled>Select an option</option>

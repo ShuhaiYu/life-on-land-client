@@ -83,8 +83,7 @@ const RiskPredators = () => {
                     <p className='text-dark-green text-3xl text-center'>
                         Did you know there are almost 316,000,000 birds killed <br />
                         by feral cats in Australia each year?<br />
-                        When we worry about the risk of wildfire causing irreversible damage to grasswren habitats,<br />
-                        there are more heartbreaking truths about their fate toward extinction.<br />
+
 
                     </p>
                     <img src={imgvector} alt="Vector" className='w-auto h-auto m-10' />
@@ -100,14 +99,16 @@ const RiskPredators = () => {
                 </div>
                 <p className='text-2xl text-dark-green w-[40%] m-10'>
                     Check out where the population of <span className="text-2xl text-[#C7A801]">feral foxes (mustard yellow dots)</span> and
-                    <span className="text-2xl text-[#181E5B]"> feral cats (navy dots)</span> in each area. In reality, one of the biggest challenges for grasswren conservation is protecting the grasswrens against the additional pressure of cat and fox predation. Nesting near ground-level and having limited capability for flight has made them vulnerable to introduced predators like cats and foxes.
+                    <span className="text-2xl text-[#181E5B]"> feral cats (navy dots)</span> in each area. In reality, one of the biggest challenges for grasswren conservation is protecting the grasswrens against the additional pressure of cat and fox predation.
 
                 </p>
             </div>
 
             <div className='flex justify-center w-full bg-dark-green h-auto py-10 px-16 mb-10'>
                 <p className='text-2xl text-white text-center w-2/3'>
-                    There are more than 1.7 million foxes covering 80% of Australia, with an average density of 1 fox per 4 square kilometres. Feral cats, on the other hand, have a population of 2.8 million in Australia, covering 99.9% of the country. These invasive animals threaten our native animals with extinction: at least 140 species are threatened by feral cats; 95 species are threatened by foxes.
+                    There are more than 1.7 million feral foxes covering 80% of Australia, and around  2.8 million feral cats  in Australia, covering 99.9% of the country.
+                    These invasive animals threaten our native animals with extinction
+                    at least <span className='text-3xl font-bold'>235</span> species are threatened by feral foxes and cats.
                 </p>
 
             </div>
@@ -140,10 +141,9 @@ const RiskPredators = () => {
                 <div className='flex flex-col items-center justify-center w-1/2'>
                     <img src={imgbird} alt="Discover" className='w-16 h-16' />
                     <p className='text-2xl text-dark-green font-bold text-center w-[70%] m-10 mb-20'>
-                        In reality, one of the biggest challenges for grasswren conservation is
-                        protecting the grasswrens against the additional pressure of cat and fox predation.
-                        Nesting near ground-level and having limited capability for flight has made them
-                        vulnerable to introduced predators like cats and foxes.
+                        Nesting near ground-level and having limited capability for flight has made them vulnerable to introduced predators like cats and foxes.
+
+
 
                     </p>
                 </div>

@@ -160,14 +160,12 @@ const RiskFirePage = () => {
             {/* Data Visualization   */}
 
             {/* Pie Chart with Title */}
-            <div className='w-full bg-dark-green h-auto py-10 px-16 mb-10'>
-                <p className='text-2xl text-white text-center'>
-                    Bushfires have become a major cause of wildfires in Australia, affecting regions<br />
-                    such as Victoria, Western Australia, and Queensland. The damaging fire patterns have resulted in<br />
-                    a dramatic decline in the grasswren population. Modern fires are typically less frequent but larger and more intense.<br />
-                    Consequently, these fires can lead to the removal of suitable Grasswren habitat over extensive areas,<br />
-                    which has been implicated in the decline of the species. To explore which state has the most wildfires<br />
-                    in which month, try the timeline bar below!
+            <div className='flex justify-center w-full bg-dark-green h-auto py-10 px-16 mb-10'>
+                <p className='text-2xl text-white text-center w-2/3'>
+                    Bushfires have become a major cause of wildfires in Australia. During a bushfire, flame temperatures can reach up to 1100 degrees C.
+                    The damaging fire patterns have resulted in a dramatic decline in the grasswren population. <br />
+                    To explore which state has the most wildfires in which month, try the timeline bar below!
+
                 </p>
             </div>
             <div className="flex justify-center items-center">

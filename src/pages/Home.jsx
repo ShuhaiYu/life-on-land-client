@@ -11,6 +11,12 @@ import NavCardImg2 from '../imgs/home/nsw3.jpg'
 import NavCardImg3 from '../imgs/home/bushfire.jpg'
 import NavCardImg4 from '../imgs/home/getinvolved.jpeg'
 import GrasswrenSeries from '../imgs/home/Grasswren-Series.jpg'
+import TimeLineImg1 from '../imgs/home/gw1.png'
+import TimeLineImg2 from '../imgs/home/gw2.png'
+import TimeLineImg3 from '../imgs/home/gw3.png'
+import TimeLineImg4 from '../imgs/home/gw4.png'
+import TimeLineImg5 from '../imgs/home/gw5.png'
+import TimeLineImg6 from '../imgs/home/gw6.jpg'
 
 import NavCard from '../components/NavCard'
 
@@ -68,7 +74,9 @@ const HomePage = () => {
                             </p>
                             <Link to="/grasswren"
                                 className="bg-transparent mr-auto hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
-                                Explore Now</Link>
+                                Explore Now
+                            </Link>
+                            <img src={TimeLineImg1} className='w-64 h-64 rounded-lg mt-8' />
                         </div>
                         <div className="ml-0 md:ml-12 lg:w-2/3 sticky">
                             <div className="container mx-auto w-full h-full">
@@ -77,62 +85,146 @@ const HomePage = () => {
                                         style={{ right: '50%', border: '2px solid #FFC100', borderRadius: '1%' }}></div>
                                     <div className="border-2-2 border-yellow-555 absolute h-full border"
                                         style={{ left: '50%', border: '2px solid #FFC100', borderRadius: '1%' }}></div>
-                                    <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+
+                                    <div className="mb-48 flex justify-between flex-row-reverse items-center w-full left-timeline">
                                         <div className="order-1 w-5/12"></div>
                                         <div className="order-1 w-5/12 px-1 py-4 text-right">
-                                            <p className="mb-3 text-3xl text-[#FCE04E] font-bold">1890</p>
-                                            <h4 className="mb-3 font-bold text-lg md:text-2xl">First Recorded Observation</h4>
-                                            <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-                                                Did you know the earliest observation record of the Mukarrthippi Grasswren dates all the way back to 1890!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-8 flex justify-between items-center w-full right-timeline">
-                                        <div className="order-1 w-5/12"></div>
-                                        <div className="order-1  w-5/12 px-1 py-4 text-left">
-                                            <p className="mb-3 text-3xl text-[#FCE04E] font-bold">1910</p>
-                                            <h4 className="mb-3 font-bold text-lg md:text-2xl">Decline Noted</h4>
-                                            <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-                                                Between 1900 and 1910, Australia was home to at least six species of grasswrens that were actively living. Unfortunately, all of them are now endangered.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-                                        <div className="order-1 w-5/12"></div>
-                                        <div className="order-1 w-5/12 px-1 py-4 text-right">
-                                            <p className="mb-3 text-3xl text-[#FF9131] font-bold"> 2010</p>
-                                            <h4 className="mb-3 font-bold text-lg md:text-2xl">Recovery Programs Initiated</h4>
-                                            <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-                                                Between 1940 and 1990, there were increasing records of various grasswren species. Since 2010, their population has experienced a dramatic decline.
-                                            </p>
+                                            <div className='timeline-card'>
+                                                <div className="card-front">
+                                                    <p className="pb-3 text-3xl text-[#FCE04E] font-bold">1890</p>
+                                                    <h4 className="pb-3 font-bold text-lg md:text-2xl">First Recorded Observation</h4>
+                                                    <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                                                        Did you know the earliest observation record of the Mukarrthippi Grasswren dates all the way back to 1890!
+                                                    </p>
+                                                </div>
+                                                <div className="card-back">
+
+                                                    <div className="flex justify-center items-center">
+                                                        <img src={TimeLineImg2} className='w-32 h-32 rounded-lg' />
+                                                    </div>
+                                                    <p className='text-sm md:text-base leading-snug text-gray-50 text-opacity-100 text-center mb-3'>
+                                                        Mukarrthippi Grasswren is currently one of the critical endangered species
+                                                    </p>
+                                                    <Link to='/grasswren' className="bg-transparent hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
+                                                        Explore Profile
+                                                    </Link>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
 
-                                    <div className="mb-8 flex justify-between items-center w-full right-timeline">
+                                    <div className="mb-48 flex justify-between items-center w-full right-timeline">
                                         <div className="order-1 w-5/12"></div>
+                                        <div className="order-1  w-5/12 px-1 py-4 text-left ">
+                                            <div className='timeline-card'>
+                                                <div className="card-front">
+                                                    <p className="pb-3 text-3xl text-[#FCE04E] font-bold">1910</p>
+                                                    <h4 className="pb-3 font-bold text-lg md:text-2xl">Decline Noted</h4>
+                                                    <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                                                        Between 1900 and 1910, Australia was home to at least six species of grasswrens that were actively living. Unfortunately, all of them are now endangered.
+                                                    </p>
+                                                </div>
+                                                <div className="card-back">
+                                                    <div className="flex justify-center items-center">
+                                                        <img src={TimeLineImg3} className='w-32 h-32 rounded-lg' />
+                                                    </div>
+                                                    <p className='text-sm md:text-base leading-snug text-gray-50 text-opacity-100 text-center mb-3'>
+                                                        The damaging fire patterns have resulted in a
+                                                        dramatic decline in the grasswren population.
 
+                                                    </p>
+                                                    <Link to='/risk' className="bg-transparent hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
+                                                        What Went Wrong
+                                                    </Link>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div className="mb-48 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                        <div className="order-1 w-5/12"></div>
+                                        <div className="order-1 w-5/12 px-1 py-4 text-right">
+                                            <div className='timeline-card'>
+                                                <div className="card-front">
+                                                    <p className="mb-3 text-3xl text-[#FF9131] font-bold"> 2010</p>
+                                                    <h4 className="mb-3 font-bold text-lg md:text-2xl">Recovery Programs Initiated</h4>
+                                                    <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                                                        Between 1940 and 1990, there were increasing records of various grasswren species. Since 2010, their population has experienced a dramatic decline.
+                                                    </p>
+                                                </div>
+                                                <div className="card-back">
+                                                    <div className="flex justify-center items-center">
+                                                        <img src={TimeLineImg4} className='w-32 h-32 rounded-lg' />
+                                                    </div>
+                                                    <p className='text-sm md:text-base leading-snug text-gray-50 text-opacity-100 text-center mb-3'>
+                                                        Many conservation groups need extra hands
+                                                        to support grasswren conservation efforts.
+                                                    </p>
+                                                    <Link to='/involved' className="bg-transparent hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
+                                                        Get Involved
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-48 flex justify-between items-center w-full right-timeline">
+                                        <div className="order-1 w-5/12"></div>
                                         <div className="order-1  w-5/12 px-1 py-4">
-                                            <p className="mb-3 text-3xl text-[#FF9131] font-bold">2024</p>
-                                            <h4 className="mb-3 font-bold  text-lg md:text-2xl text-left">Current Conservation Status</h4>
-                                            <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-                                                Currently, 10 grasswren species are listed as vulnerable or critically endangered, posing an unprecedented threat to our ecosystem and community.
-                                            </p>
+                                            <div className='timeline-card'>
+                                                <div className="card-front">
+                                                    <p className="mb-3 text-3xl text-[#FF9131] font-bold">2024</p>
+                                                    <h4 className="mb-3 font-bold  text-lg md:text-2xl text-left">Current Conservation Status</h4>
+                                                    <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                                                        Currently, 10 grasswren species are listed as vulnerable or critically endangered, posing an unprecedented threat to our ecosystem and community.
+                                                    </p>
+                                                </div>
+                                                <div className="card-back">
+                                                    <div className="flex justify-center items-center">
+                                                        <img src={TimeLineImg5} className='w-32 h-32 rounded-lg' />
+                                                    </div>
+                                                    <p className='text-sm md:text-base leading-snug text-gray-50 text-opacity-100 text-center mb-3'>
+                                                        You can become part of the WrenGuard family!
+                                                        Follow our guide and let's help protect these endangered grasswrens.
+                                                    </p>
+                                                    <Link to='/education' className="bg-transparent hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
+                                                        Build A Habitat
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                    <div className="mb-64 flex justify-between flex-row-reverse items-center w-full left-timeline">
                                         <div className="order-1 w-5/12"></div>
                                         <div className="order-1 w-5/12 px-1 py-4 text-right">
-                                            <p className="mb-3 text-3xl text-[#ff7d31] font-bold">Future</p>
-                                            <h4 className="mb-3 font-bold text-lg md:text-2xl">Predicted Future Challenges</h4>
-                                            <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 mb-5">
-                                                Wildfire change and habitat destruction pose significant threats to grasswrens in the future. Conservation efforts must prioritize mitigating these risks to ensure the survival of grasswrens.
-                                            </p>
-                                            <Link to="/risk/prediction"
-                                                className="bg-transparent mr-auto hover:bg-[#ff7d31] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
-                                                Learn More About Future Risks</Link>
+                                            <div className='timeline-card'>
+                                                <div className="card-front">
+                                                    <p className="mb-3 text-3xl text-[#ff7d31] font-bold">Future</p>
+                                                    <h4 className="mb-3 font-bold text-lg md:text-2xl">Predicted Future Challenges</h4>
+                                                    <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 mb-5">
+                                                        Wildfire change and habitat destruction pose significant threats to grasswrens in the future. Conservation efforts must prioritize mitigating these risks to ensure the survival of grasswrens.
+                                                    </p>
 
+                                                </div>
+
+                                                <div className="card-back">
+                                                    <div className="flex justify-center items-center">
+                                                        <img src={TimeLineImg6} className='w-32 h-32 rounded-lg' />
+                                                    </div>
+                                                    <p className='text-sm md:text-base leading-snug text-gray-50 text-opacity-100 text-center mb-3'>
+                                                        Use our predictive modeling to foresee dangers in advance. Protecting nature requires each and every one of us.
+                                                    </p>
+                                                    <Link to="/risk/prediction"
+                                                        className="bg-transparent hover:bg-[#FFC100] text-white hover:text-dark-green rounded shadow hover:shadow-lg py-2 px-4 border border-[#FFC100] hover:border-transparent">
+                                                        Explore Future Risks
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
 
                                 </div>
                                 <img class="mx-auto mt-10" src={GrasswrenSeries} />

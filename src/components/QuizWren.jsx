@@ -58,7 +58,7 @@ const QuizWren = () => {
 
     const resultsRef = useRef(null);
 
-    let nextTopicName = "Spot A Grasswren";
+    let nextTopicName = "Spot a Grasswren";
     const encodedTopicName = encodeURIComponent(nextTopicName);
 
     const handleAnswerSelect = (answer) => {
