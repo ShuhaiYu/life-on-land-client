@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 import garden from '../imgs/education/garden.png';
 import whiteLine from '../imgs/Vector 3.svg';
