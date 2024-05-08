@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import LandingImg1 from '../imgs/home/bellbird-birding-tours-australian-birdwatching-tours-28.jpg'
 import LandingImg2 from '../imgs/home/grasswren-birdwatching-tour-bellbird-tours-1.jpg'
@@ -21,6 +21,12 @@ import TimeLineImg6 from '../imgs/home/gw6.jpg'
 import NavCard from '../components/NavCard'
 
 const HomePage = () => {
+    const timeline = useRef(null)
+
+    const scrollToTimeline = () => {
+        timeline.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <div className='flex flex-col'>
             {/* This is the landing imgs */}
@@ -31,11 +37,13 @@ const HomePage = () => {
                     <p className='text-2xl text-center font-bold w-[80%] my-5'>
                         Australia's vibrant grasswren populations are facing
                         critical decline, primarily due to habitat degradation.
-                        At WrenGuard, we invite you to join our strong network in
-                        combating habitat loss and protecting these iconic birds.
-                        Explore how you can make a difference today!
                     </p>
                     <img src={Vector} alt="Vector" className='w-auto h-auto' />
+                    <div className='flex gap-5 mt-5'>
+                        
+                        <button className='btn-dark' onClick={scrollToTimeline}>Learn More</button>
+                        <Link to='/risk' className='btn-light'>What Went Wrong</Link>
+                    </div>
                 </div>
                 <div className='flex flex-col sm:w-full md:w-[20%] items-center'>
                     <img src={LandingImg1} alt="Birdwatching" className='h-64' />
@@ -60,7 +68,7 @@ const HomePage = () => {
             </div>
 
             {/* This is timeline */}
-            <section className='mt-20'>
+            <section ref={timeline} className='mt-20'>
                 <div className="bg-dark-green text-white py-8">
                     <h1 className="text-5xl text-center font-caveat-brush text-white">Conservation Timeline of Grasswrens</h1>
                     <p className="text-3xl text-center font-caveat-brush text-white">Discover Fascinating Facts About Grasswrens and Their Enemies</p>
