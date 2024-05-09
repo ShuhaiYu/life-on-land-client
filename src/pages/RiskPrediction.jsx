@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import RiskIndicator from '../components/RiskIndicator';
 import axios from 'axios';
 
 import Slider from 'react-slick';
 import topImage from '../imgs/risk/shrubland.png';
-import fireRiskImage from '../imgs/risk/firerisk.png';
-
+import ImgRiskM from '../imgs/risk/risk-moderate.png';
+import ImgRiskH from '../imgs/risk/risk-high.png';
+import ImgRiskC from '../imgs/risk/risk-catastrophic.png';
+import ImgRiskE from '../imgs/risk/risk-extreme.png';
 
 
 const RiskPrediction = () => {
@@ -38,6 +39,9 @@ const RiskPrediction = () => {
     // Get the next month and year
     const nextMonth = nextMonthDate.toLocaleString('default', { month: 'long' });
     const year = nextMonthDate.getFullYear();
+
+    const fireRiskImage = riskLevel === 'Moderate' ? ImgRiskM : riskLevel === 'High' ? ImgRiskH : riskLevel === 'Catastrophic' ? ImgRiskC : ImgRiskE;
+
 
     // Slider settings
     const settings = {
