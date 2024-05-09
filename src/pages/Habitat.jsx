@@ -556,13 +556,19 @@ const HabitatPage = () => {
                             </p>
                         </div>
 
+
                     </div>
+                    
                     <div className='flex items-center justify-center mb-20'>
                         <p className='w-2/3 text-2xl'>
                             Grasswrens can be shy, and wrenguards should watch carefully for these birds to first arrive in the yard. Once they learn about the resources a yard offers, however, they will become more comfortable.
                             Their natural curiosity and intelligence will quickly become apparent. Positioning feeding areas and bird baths in a quiet corner will help grasswrens feel more comfortable at first.
                             Before you know it, these spritely birds will be flitting all over the yard and you can enjoy their company throughout the year.
                         </p>
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        <Link to={'/education/plan'} className="btn-dark text-3xl">Make a Plan</Link>
+
                     </div>
                     {/* Three nav cards */}
                     <div className='flex flex-col sm:flex-col md:flex-row gap-8 justify-center m-28'>
