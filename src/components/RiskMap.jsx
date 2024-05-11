@@ -229,7 +229,7 @@ const RiskMap = ({ isFireShow, isFoxShow, isCatShow, isHumanShow, isButtonShow }
             isFoxShow &&
             <div className='flex flex-col items-center justify-center p-5 m-2 bg-[#C7A801] text-white rounded-lg shadow-lg'>
               <h2 className='text-lg font-bold mb-2'>Threats of Feral Foxes</h2>
-              <p className='mb-4'>The mustard yellow dots indicate the population of feral foxes in each area.</p>
+              <p className='mb-4'>The yellow dots indicate the population of feral foxes in each area.</p>
               <button className='btn-light w-full bg-[#C7A801] hover:bg-gray-200 hover:text-dark-green border-white text-white' onClick={() => toggleLayer(foxLayer)}>Show Feral Foxes</button>
             </div>
           }

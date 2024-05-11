@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { useState } from 'react';
 import axios from 'axios';
@@ -123,7 +124,11 @@ const RiskFirePage = () => {
     ];
 
     return (
-        <div >
+        <div className='bg-grey h-auto relative'>
+            <Link to="/risk" className="absolute z-50 top-5 right-5 p-3 bg-light-green hover:bg-dark-green text-white rounded-full transition duration-300 ease-in-out px-4 shadow flex items-center justify-center">
+                <i className="fi fi-rr-angle-left text-xl"></i>
+                <span className="pl-2">Back to What Went Wrong</span>
+            </Link>
             <div className="slider-container">
                 <Slider {...settings}>
                     <div>
@@ -162,7 +167,7 @@ const RiskFirePage = () => {
             {/* Pie Chart with Title */}
             <div className='flex justify-center w-full bg-dark-green h-auto py-10 px-16 mb-10'>
                 <p className='text-2xl text-white text-center w-2/3'>
-                    Bushfires have become a major cause of wildfires in Australia. During a bushfire, flame temperatures can reach up to 1100 degrees C.
+                    Bushfires have become a major cause of wildfires in Australia. During a bushfire, flame temperatures can reach up to <span className='text-3xl font-bold'>1100°C</span>.
                     The damaging fire patterns have resulted in a dramatic decline in the grasswren population. <br />
                     To explore which state has the most wildfires in which month, try the timeline bar below!
 

@@ -14,6 +14,7 @@ import img4 from '../imgs/home/ebird2.jpeg'
 import imgfire from '../imgs/home/bushfire.jpg'
 import imgcat from '../imgs/risk/cat.png';
 import imgnature from '../imgs/risk/nature.png';
+import topImage from '../imgs/risk/shrubland.png';
 
 import NavCard from '../components/NavCard';
 import NavCardImg1 from '../imgs/home/nsw2.jpg';
@@ -109,6 +110,18 @@ const RiskPage = () => {
 
                     <img src={VectorWhite} alt="Vector" className='w-auto h-auto' />
                 </div>
+                <p className='text-white text-3xl text-center pt-10'>
+                    Discover the future threats to our wildlife.<br/> Try our prediction tool to see what risks lie ahead and how you can help.
+                </p>
+                <div className='grid grid-cols-1 gap-4 my-10'>
+                    <Link to='/risk/prediction' className='relative max-w-xl mx-auto group hover:z-50'>
+                        <img src="https://media.cntraveler.com/photos/5eb18e42fc043ed5d9779733/16:9/w_4288,h_2412,c_limit/BlackForest-Germany-GettyImages-147180370.jpg" alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110' />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="text-white text-5xl font-bold opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100">Future</h2>
+                        </div>
+                    </Link>
+                </div>
+
 
 
             </div>

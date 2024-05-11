@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -62,7 +63,11 @@ const RiskPredators = () => {
         '#181E5B', // Steel Blue
     ];
     return (
-        <div>
+        <div className='bg-grey h-auto relative'>
+            <Link to="/risk" className="absolute z-50 top-5 right-5 p-3 bg-light-green hover:bg-dark-green text-white rounded-full transition duration-300 ease-in-out px-4 shadow flex items-center justify-center">
+                <i className="fi fi-rr-angle-left text-xl"></i>
+                <span className="pl-2">Back to What Went Wrong</span>
+            </Link>
             {/* Img Silder */}
             <div className="slider-container" key={new Date()}>
                 <Slider {...settings}>
@@ -98,7 +103,7 @@ const RiskPredators = () => {
                     <RiskMap isCatShow={true} isFoxShow={true} />
                 </div>
                 <p className='text-2xl text-dark-green w-[40%] m-10'>
-                    Check out where the population of <span className="text-2xl text-[#C7A801]">feral foxes (mustard yellow dots)</span> and
+                    Check out where the population of <span className="text-2xl text-[#C7A801]">feral foxes (yellow dots)</span> and
                     <span className="text-2xl text-[#181E5B]"> feral cats (navy dots)</span> in each area. In reality, one of the biggest challenges for grasswren conservation is protecting the grasswrens against the additional pressure of cat and fox predation.
 
                 </p>

@@ -222,18 +222,6 @@ const HabitatPage = () => {
         setCurrentStepIndex((prev) => (prev - 1 + currentSteps.length) % currentSteps.length);
     };
 
-    const handleQualifiedClick = () => {
-        setShowQualifiedContent(true);
-    };
-
-    const handlePreparationClick = () => {
-        setShowPreparationContent(true);
-    };
-
-    // const handleReadyClick = () => {
-    //     setShowReadyContent(!showReadyContent);
-    // };
-
     const handleHereWeGoClick = () => {
         setShowHereWeGoContent(true);
     };
@@ -249,14 +237,15 @@ const HabitatPage = () => {
                 <h1 className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[96px] text-white font-Poppins tracking-widest whitespace-nowrap">
                     Build A Habitat
                 </h1>
-                <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-white text-center font-Poppins tracking-widest">
+
+                <img src={whiteLine} alt="White Line" className="absolute bottom-[38%] left-1/2 transform -translate-x-1/2 w-auto h-auto" />
+                <h2 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-white font-Poppins tracking-widest">
+                    Be A WrenGuard
+                </h2>
+                <p className="absolute bottom-[17%]  left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-white text-center font-Poppins tracking-widest">
                     It's not difficult to contribute to grasswren conservation efforts.<br />
                     Follow the guide and help save the grasswrens.
                 </p>
-                <img src={whiteLine} alt="White Line" className="absolute bottom-1/3 left-1/2 transform -translate-x-1/2 w-auto h-auto" />
-                <h2 className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-white font-Poppins tracking-widest">
-                    Be A WrenGuard
-                </h2>
             </div>
 
 
@@ -353,10 +342,10 @@ const HabitatPage = () => {
 
                             {showStepModal && (
                                 <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center" onClick={() => setShowStepModal(false)}>
-                                    <div className="bg-white bg-opacity-75 w-1/3 h-1/2 p-5 rounded-lg shadow-lg flex flex-col" onClick={(e) => e.stopPropagation()}>
+                                    <div className="bg-white bg-opacity-75 w-1/2 h-2/3 p-5 rounded-lg shadow-lg flex flex-col" onClick={(e) => e.stopPropagation()}>
                                         <div className='px-6 py-4'>
                                             <h2 className='text-3xl'>{currentSteps[currentStepIndex].step}</h2>
-                                            <p className='text-xl mb-6'>{currentSteps[currentStepIndex].description}</p>
+                                            <p className='text-xl xl:text-[18px] mb-6'>{currentSteps[currentStepIndex].description}</p>
                                         </div>
                                         <div className='mt-auto flex justify-evenly'>
                                             {currentStepIndex > 0 && (
@@ -382,9 +371,9 @@ const HabitatPage = () => {
                         <div className='relative'>
                             <img src={leftBubble} alt="Left Bubble" className="w-auto h-auto object-cover" />
                             <p className="absolute top-[40%] left-[40%] transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold">
-                                I don’t know much about grasswren
+                                I don't know much about grasswren
                             </p>
-                            <Link to='/education/quiz' className="absolute top-[70%] left-[40%] transform -translate-x-1/2 -translate-y-1/2 btn-light py-2">
+                            <Link to='/grasswren' className="absolute top-[70%] left-[40%] transform -translate-x-1/2 -translate-y-1/2 btn-light py-2">
                                 Threatened Grasswren
                             </Link>
                         </div>
@@ -542,9 +531,12 @@ const HabitatPage = () => {
 
                         <div className='relative'>
                             <img src={leftBubble} alt="Left Bubble" className="w-auto h-auto object-cover" />
-                            <p className="absolute top-1/2 left-[40%] transform -translate-x-1/2 -translate-y-1/2 text-2xl text-center font-bold">
+                            <p className="absolute top-[45%] left-[40%] transform -translate-x-1/2 -translate-y-1/2 text-2xl text-center font-bold">
                                 Be careful for the wild <br />cats and foxes.
                             </p>
+                            <Link to='/education/plan' className="absolute top-[75%] left-[38%] transform -translate-x-1/2 -translate-y-1/2 btn-light py-2">
+                                Make a Plan
+                            </Link>
                         </div>
                         <img src={person} alt="Profile" className="w-auto h-auto object-cover" />
                         <div className='relative'>
@@ -558,17 +550,13 @@ const HabitatPage = () => {
 
 
                     </div>
-                    
+
                     <div className='flex items-center justify-center mb-20'>
                         <p className='w-2/3 text-2xl'>
                             Grasswrens can be shy, and wrenguards should watch carefully for these birds to first arrive in the yard. Once they learn about the resources a yard offers, however, they will become more comfortable.
                             Their natural curiosity and intelligence will quickly become apparent. Positioning feeding areas and bird baths in a quiet corner will help grasswrens feel more comfortable at first.
                             Before you know it, these spritely birds will be flitting all over the yard and you can enjoy their company throughout the year.
                         </p>
-                    </div>
-                    <div className='flex items-center justify-center'>
-                        <Link to={'/education/plan'} className="btn-dark text-3xl">Make a Plan</Link>
-
                     </div>
                     {/* Three nav cards */}
                     <div className='flex flex-col sm:flex-col md:flex-row gap-8 justify-center m-28'>

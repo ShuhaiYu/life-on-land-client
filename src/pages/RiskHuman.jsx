@@ -22,7 +22,11 @@ const RiskHuman = () => {
 
     };
     return (
-        <div>
+        <div className='bg-grey h-auto relative'>
+            <Link to="/risk" className="absolute z-50 top-5 right-5 p-3 bg-light-green hover:bg-dark-green text-white rounded-full transition duration-300 ease-in-out px-4 shadow flex items-center justify-center">
+                <i className="fi fi-rr-angle-left text-xl"></i>
+                <span className="pl-2">Back to What Went Wrong</span>
+            </Link>
             {/* Img Silder */}
             <div className="slider-container">
                 <Slider {...settings}>

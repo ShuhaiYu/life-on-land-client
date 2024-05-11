@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitted }) => {
     const [playingIndex, setPlayingIndex] = useState(null);
@@ -22,21 +22,22 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
     const togglePlayPause = (event, optionIndex) => {
         event.stopPropagation();
         const audio = audioRefs.current[optionIndex];
-
-        // Stop the currently playing audio if it's different from the clicked one
-        if (playingIndex !== null && playingIndex !== optionIndex) {
-            audioRefs.current[playingIndex].pause();
-        }
-
-        // Play or pause the new audio
-        if (audio.paused) {
-            audio.play();
-            setPlayingIndex(optionIndex);
-        } else {
-            audio.pause();
-            setPlayingIndex(null); // No audio is playing
+    
+        if (audio) {
+            if (playingIndex !== null && playingIndex !== optionIndex) {
+                audioRefs.current[playingIndex]?.pause();
+            }
+    
+            if (audio.paused) {
+                audio.play();
+                setPlayingIndex(optionIndex);
+            } else {
+                audio.pause();
+                setPlayingIndex(null); // No audio is playing
+            }
         }
     };
+    
 
 
     const renderOptionContent = (option, index) => {
@@ -52,7 +53,7 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
                             Your browser does not support the audio element.
                         </audio>
                         <button onClick={(event) => togglePlayPause(event, index)} className='mx-10 text-dark-green focus:outline-none transition duration-300 ease-in-out rounded-full pt-2 px-2'>
-                            <i className={`fi fi-rr-${playingIndex === index && !audioRefs.current[index].paused ? 'pause' : 'play'}-circle text-5xl`} ></i>
+                            <i className={`fi fi-rr-${playingIndex === index && audioRefs.current[index] && !audioRefs.current[index].paused ? 'pause' : 'play'}-circle text-5xl`} ></i>
                         </button>
                     </div>
                 );
@@ -63,7 +64,6 @@ const ChoiceQuestion = ({ question, handleAnswerSelect, selectedOption, submitte
     // Determine layout based on question types
     const isHorizontalLayout = question.options.some(option => option.type === 'image' || option.type === 'audio');
     const optionsContainerClass = isHorizontalLayout ? 'flex-row items-center justify-center' : 'flex-col items-center justify-center';
-
 
     return (
         <div className='flex flex-col items-center justify-center'>
