@@ -9,7 +9,7 @@ const Footer = () => {
 
             <img src={logo} alt="logo" className="w-20 h-20" />
             <p className="text-3xl text-white">WrenGuard</p>
-            <p className='text-xl text-white opacity-80 p-10'>Copyright © 2024</p>
+            <p className='text-xl text-white opacity-80 p-10'>Copyright © 2024 FYJI Team</p>
 
         </footer>
     );
