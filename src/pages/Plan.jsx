@@ -8,7 +8,6 @@ import 'tailwindcss/tailwind.css';
 import ImgWren from '../imgs/education/wren.png';
 import NavCard from '../components/NavCard';
 import NavCardImg1 from '../imgs/home/nsw2.jpg'
-import NavCardImg2 from '../imgs/home/nsw3.jpg'
 import NavCardImg3 from '../imgs/home/bushfire.jpg'
 import NavCardImg4 from '../imgs/home/getinvolved.jpeg'
 
@@ -31,9 +30,9 @@ const PlanPage = () => {
                 let taskDay = new Date(currentDate);
                 let taskList = [];
 
-                if (i % 3 === 0) taskList.push("💧");
-                if (i % 5 === 0) taskList.push("🍒");
-                if (i % 7 === 0) taskList.push("🧹");
+                if (i % 3 === 0) taskList.push({ type: 'Water', icon: 'fi fi-rs-raindrops' });
+                if (i % 5 === 0) taskList.push({ type: 'Feed', icon: 'fi fi-rs-flower-tulip' });
+                if (i % 7 === 0) taskList.push({ type: 'Clean', icon: 'fi fi-rs-clean' });
 
                 newTasks.push({ date: taskDay, tasks: taskList });
                 currentDate.setDate(currentDate.getDate() + 1);
@@ -50,8 +49,8 @@ const PlanPage = () => {
         return (
             <div>
                 {dayTasks && dayTasks.tasks.map((task, index) => (
-                    <span key={index} className={`p-1 text-xs ${task === "Water" ? 'text-blue-500' : task === "Feed" ? 'text-orange' : 'text-green-500'}`}>
-                        {task}
+                    <span key={index} className={`p-1 text-xs ${task.type === "Water" ? 'text-blue-500' : task.type === "Feed" ? 'text-orange' : 'text-green-500'}`}>
+                        <i className={task.icon}></i>
                     </span>
                 ))}
             </div>
@@ -78,20 +77,21 @@ const PlanPage = () => {
         return (
             <div className="flex justify-around items-center w-1/2 mt-4 p-4 bg-white rounded-lg shadow">
                 <div className="flex items-center">
-                    <span className="mr-2">💧</span>
+                    <i className="fi fi-rs-raindrops text-blue-500 mr-2 text-xl"></i>
                     <span className="text-sm text-gray-600">Watering</span>
                 </div>
                 <div className="flex items-center">
-                    <span className="mr-2">🍒</span>
+                    <i className="fi fi-rs-flower-tulip text-orange mr-2 text-xl"></i>
                     <span className="text-sm text-gray-600">Feeding</span>
                 </div>
                 <div className="flex items-center">
-                    <span className="mr-2">🧹</span>
+                    <i className="fi fi-rs-clean text-green-500 mr-2 text-xl"></i>
                     <span className="text-sm text-gray-600">Cleaning</span>
                 </div>
             </div>
         );
     };
+    
 
 
     return (
@@ -137,9 +137,9 @@ const PlanPage = () => {
                             Your efforts in maintaining a backyard habitat are crucial for the survival of the grasswren. Here’s how you can help:
                         </p>
                         <ul className="list-disc pl-5 mt-2 text-sm">
-                            <li><strong>Watering (💧):</strong> Provides a reliable source of fresh water for drinking, especially important during dry spells.</li>
-                            <li><strong>Feeding (🍒):</strong> Helps supplement the natural diet of Grasswrens, ensuring they get enough nutrients to thrive.</li>
-                            <li><strong>Cleaning (🧹):</strong> Reduces risks from predators by keeping the area tidy and free from materials that could hide or attract them.</li>
+                            <li><strong>Watering (<i className="fi fi-rs-raindrops text-blue-500 mx-2 text-xl"></i>):</strong> Provides a reliable source of fresh water for drinking, especially important during dry spells.</li>
+                            <li><strong>Feeding (<i className="fi fi-rs-flower-tulip text-orange mx-2 text-xl"></i>):</strong> Helps supplement the natural diet of Grasswrens, ensuring they get enough nutrients to thrive.</li>
+                            <li><strong>Cleaning (<i className="fi fi-rs-clean text-green-500 mx-2 text-xl"></i>):</strong> Reduces risks from predators by keeping the area tidy and free from materials that could hide or attract them.</li>
                         </ul>
                         <p className="text-sm text-gray-700 mt-2">
                             By carefully managing these tasks, you contribute significantly to the conservation of grasswrens in your area.
