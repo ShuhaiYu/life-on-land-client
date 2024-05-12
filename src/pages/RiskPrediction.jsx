@@ -14,23 +14,41 @@ import ImgRiskNone from '../imgs/risk/risk-none.jpg';
 const RiskPrediction = () => {
     const [postcode, setPostcode] = useState('');
     const [riskPrediction, setRiskPrediction] = useState(null);
+    const [error, setError] = useState('');
+
     const fetchRiskPrediction = async () => {
         const currentDate = new Date().toISOString().slice(0, 10);
-        // Fetch risk prediction data
-        axios.get(import.meta.env.VITE_SERVER_DOMAIN + '/api/risk/estimate', {
-            params: {
-                postcode: postcode,
-                currentDate: currentDate
-            }
+        setError(''); // Clear previous errors
+        if (!postcode) {
+            setError('Please enter a valid postcode.');
+            return;
         }
-        )
-            .then(response => {
-                setRiskPrediction(response.data);
-            })
-            .catch(error => {
-                console.log(error);
+        // Regex for Australian postcodes: 4-digit numbers ranging from 0200 to 9999
+        const postcodeRegex = /^(0[2-9]\d{2}|[1-9]\d{3})$/;
+        if (!postcodeRegex.test(postcode)) {
+            setError('Please enter a valid Australian postcode.');
+            return;
+        }
+
+        try {
+            const response = await axios.get(import.meta.env.VITE_SERVER_DOMAIN + '/api/risk/estimate', {
+                params: {
+                    postcode: postcode,
+                    currentDate: currentDate
+                }
             });
+
+            if (response.data.city && response.data.state) {
+                setRiskPrediction(response.data);
+            } else {
+                setError('No data available for the provided postcode.');
+            }
+        } catch (error) {
+            console.error('Fetching risk prediction failed:', error);
+            setError('Failed to fetch risk data. Please try again later.');
+        }
     };
+
 
     const riskLevel = riskPrediction ? riskPrediction.riskLevel : '';
 
@@ -106,7 +124,7 @@ const RiskPrediction = () => {
                     </div>
                     <button className='btn-light' onClick={fetchRiskPrediction} >Check Now</button>
                 </div>
-
+                {error && <p className="text-error text-center mt-2">{error}</p>}
             </div>
 
             <div className='flex flex-col justify-center items-center m-10'>
