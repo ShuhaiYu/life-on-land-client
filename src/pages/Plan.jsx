@@ -16,9 +16,15 @@ const PlanPage = () => {
     const [tasks, setTasks] = useState([]);
     const [tempDate, setTempDate] = useState(new Date());
     const top = useRef(null);
+    const today = new Date();
 
     const handleConfirm = () => {
         setStartDate(tempDate);
+    };
+
+    const formatDate = (date) => {
+        const d = new Date(date);
+        return `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
     };
 
     useEffect(() => {
@@ -45,7 +51,7 @@ const PlanPage = () => {
 
     // Function to format the task for display
     const taskFormatter = (date, view) => {
-        const dayTasks = tasks.find(task => task.date.toDateString() === date.toDateString());
+        const dayTasks = tasks.find(task => formatDate(task.date) === formatDate(date));
         return (
             <div>
                 {dayTasks && dayTasks.tasks.map((task, index) => (
@@ -55,6 +61,15 @@ const PlanPage = () => {
                 ))}
             </div>
         );
+    };
+
+    const getTileClassName = ({ date, view }) => {
+        // Highlight today's date
+        if (view === "month" && formatDate(date) === formatDate(today)) {
+            return 'text-light-green hover:scale-110 hover:bg-green-100 transition-transform duration-200';
+        } else {
+            return 'hover:scale-110 hover:bg-green-100 transition-transform duration-200'; // Default style
+        }
     };
 
     const addToGoogleCalendar = () => {
@@ -128,8 +143,7 @@ const PlanPage = () => {
                             value={startDate}
                             tileContent={({ date, view }) => taskFormatter(date, view)}
                             className="w-full h-full text-xl text-green-700"
-                            tileClassName="hover:scale-110 hover:bg-green-100 transition-transform duration-200"
-                        />
+                            tileClassName={getTileClassName}                        />
                     </div>
                     <div className='w-1/4 p-4 bg-green-100 rounded-lg shadow-lg'>
                         <h2 className="text-lg text-dark-green font-bold mb-2">Why It Matters</h2>
