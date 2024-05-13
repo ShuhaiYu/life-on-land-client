@@ -58,7 +58,7 @@ const RiskPage = () => {
 
             <div className="flex flex-col justify-center items-center m-20">
                 <img src={BirdIcon1} alt="bird icon" className='self-center w-20 h-20 m-8' />
-                <p className="text-dark-green text-3xl text-center w-[70%]">
+                <p className="text-dark-green text-2xl sm:text-3xl text-center w-[70%]">
                     The Mukarrthippi Grasswren is on the verge of extinction, with fewer than 20 individuals remaining in the wild.
 
                     Similarly, the Grey Grasswren population is currently fewer than 200, posing a serious threat to both biodiversity and cultural heritage.
@@ -72,7 +72,7 @@ const RiskPage = () => {
             <div className='bg-dark-green pb-20'>
                 <div className='flex flex-col justify-center items-center '>
                     <h1 className='text-white text-5xl text-center font-caveat-brush p-20 pb-0'>How are these threats affecting the grasswren's habitat?</h1>
-                    <p className='text-white text-3xl text-center w-[70%] p-20 pt-10'>Wildfire, predators, and human activities are major threats to the Grasswren population. <br />Click on the green birds to see where Grasswrens were spotted. Select different threats to explore their impact on the map!</p>
+                    <p className='text-white text-2xl sm:text-3xl text-center w-[70%] p-20 pt-10'>Wildfire, predators, and human activities are major threats to the Grasswren population. <br />Click on the green birds to see where Grasswrens were spotted. Select different threats to explore their impact on the map!</p>
 
                 </div>
 
@@ -83,7 +83,7 @@ const RiskPage = () => {
                 {/* links to other risk pages */}
                 <h1 className='text-white text-5xl text-center font-caveat-brush p-20 pb-0'>Explore more details about the risks</h1>
                 <p className='text-white text-3xl text-center p-20 pt-10'>There is so much you can do to control the risks and save grasswrens. Let's get started!</p>
-                <div className='grid grid-cols-3 gap-4 mx-10'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 mx-10'>
                     <Link to='/risk/fire' className='relative max-w-xl mx-auto group hover:z-50'>
                         <img src={imgfire} alt="Grasswren" className='w-[100%] transition-transform duration-300 ease-in-out group-hover:scale-110 ' />
                         <div className="absolute inset-0 flex items-center justify-center">

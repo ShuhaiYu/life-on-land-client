@@ -39,7 +39,7 @@ const SelectGrasswren = () => {
             <h1 className='text-5xl text-white text-center font-caveat-brush mb-10'>Meet Our Endangered Grasswrens</h1>
 
             {/* Filter buttons */}
-            <div className='flex flex-row gap-20 justify-center mb-16'>
+            <div className='flex sm:flex-row flex-col gap-20 justify-center mb-16'>
                 <button onClick={() => handleRiskFilter('Critically Endangered')} className="focus:outline-none transition duration-300 ease-in-out transform hover:scale-110 active:scale-95">
                     <img src={VectorBgRed} alt="Critically Endangered" className='w-auto h-auto' />
                 </button>
@@ -55,7 +55,7 @@ const SelectGrasswren = () => {
 
 
             {/* Display grasswren cards based on the selected risk category */}
-            <div className='grid grid-cols-3 gap-4 '>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 '>
                 {grasswrenList.filter(grasswren => !selectedRisk || grasswren.risk_category === selectedRisk).map((grasswren) => (
                     <CardGrasswren
                         key={grasswren.wren_id}

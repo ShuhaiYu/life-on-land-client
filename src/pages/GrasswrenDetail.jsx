@@ -7,6 +7,7 @@ import AustraliaMap from '../components/AustraliaMap';
 const GrasswrenDetail = () => {
     const { id } = useParams();
     const [grasswren, setGrasswren] = useState({});
+    const [isLargeScreen, setIsLargeScreen] = useState(window.matchMedia("(min-width: 640px)").matches);
 
     // Fetch the grasswren data from the server
     const fetchGrasswren = async () => {
@@ -23,6 +24,14 @@ const GrasswrenDetail = () => {
     // useEffect hook to fetch grasswren data
     useEffect(() => {
         fetchGrasswren();
+        const handleResize = () => {
+            setIsLargeScreen(window.matchMedia("(min-width: 640px)").matches);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
 
     }, [id]);
 
@@ -30,41 +39,44 @@ const GrasswrenDetail = () => {
     const { common_name, description, location, population, risk_category, scientific_name, threats, image, audio, obs_locations, earliestObsDate } = grasswren;
 
     return (
-        <div className='grid grid-cols-2 m-20' style={{ gridTemplateColumns: '30% 70%' }}>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-0 m-5 sm:m-20' style={isLargeScreen ? { gridTemplateColumns: '30% 70%' } : {}}>
 
             {/* Display the grasswren img */}
-            <div className='relative max-w-xl mx-auto'>
-                <img src={image} alt={common_name} className='w-full h-full object-cover' />
-                <div className="absolute inset-0 flex items-end justify-start px-4 pb-10 ">
-                    <h2 className="text-white text-4xl font-bold opacity-90">{common_name}</h2>
+            
+                <div className='relative max-w-xl mx-auto'>
+                    <img src={image} alt={common_name} className='w-full h-full object-cover' />
+                    <div className="absolute inset-0 flex items-end justify-start px-4 pb-10 ">
+                        <h2 className="text-white text-4xl font-bold opacity-90">{common_name}</h2>
+                    </div>
                 </div>
-            </div>
+            
 
-            <div className='flex flex-col bg-dark-green p-10 pl-0'>
+
+            <div className='flex flex-col bg-dark-green p-10 pl-0 '>
                 {/* Display the grasswren name and sound */}
-                <div className='flex flex-row gap-32'>
-                    <div className='flex flex-row gap-5 m-5'>
+                <div className='flex flex-col sm:flex-row sm:gap-32'>
+                    <div className='flex flex-col sm:flex-row gap-5 m-5'>
                         <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Name</p>
                         <p className='text-white'>{scientific_name}</p>
                     </div>
-                    <div className='flex flex-row gap-5 m-5'>
+                    <div className='flex flex-col sm:flex-row gap-5 m-5'>
                         <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Sound</p>
                         <AudioPlayer src_url={audio} />
                     </div>
                 </div>
 
                 {/* Display the grasswren Risk, description and location */}
-                <div className='flex flex-row gap-5 m-5'>
+                <div className='flex flex-col sm:flex-row gap-5 m-5'>
                     <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>Risk</p>
                     <p className='text-white'>{risk_category}</p>
                 </div>
-                <div className='flex gap-5 m-5 items-start'>
+                <div className='flex flex-col sm:flex-row gap-5 m-5 items-start'>
                     <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>description</p>
                     <p className='text-white'>{description}</p>
                 </div>
-                <div className='flex flex-row gap-5 m-5 items-start'>
+                <div className='flex flex-col sm:flex-row gap-5 m-5 items-start'>
                     <p className='text-white text-center uppercase border-2 border-white px-10 py-2 w-[150px]'>location</p>
-                    <div className='h-[250px] w-[600px]'>
+                    <div className='h-[250px] w-full sm:w-[600px]'>
                         <AustraliaMap location={location} observation={obs_locations} />
                     </div>
                     <div className='flex flex-col items-start justify-center text-white px-10 border rounded-3xl h-full' style={{ borderStyle: 'dashed' }}>

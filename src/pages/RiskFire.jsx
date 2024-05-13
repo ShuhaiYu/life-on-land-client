@@ -148,8 +148,8 @@ const RiskFirePage = () => {
                 <img src={fireicon} alt="fire icon" className='self-center w-20 h-20 my-5 mx-1' />
 
             </div>
-            <div className='flex flex-row items-center'>
-                <div className="m-5 p-5 w-[60%] h-[70vh] border shadow-lg rounded-3xl">
+            <div className='flex flex-col sm:flex-row items-center'>
+                <div className="m-5 p-5 w-full sm:w-[60%] h-[70vh] border shadow-lg rounded-3xl">
                     <RiskMap isFireShow={true} isButtonShow={false} />
                 </div>
                 <p className='text-2xl text-dark-green w-[40%] m-10'>
@@ -262,7 +262,7 @@ const RiskFirePage = () => {
                 </p>
             </div>
             <div className='flex flex-col items-center w-full h-auto'>
-                <div className='grid grid-cols-2 gap-12 m-32 mt-16'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-12 m-32 mt-16'>
 
                     {/* <HoverImage imgSrc={imgfire} title='Wildfire' link='/risk/fire' /> */}
                     <HoverImage imgSrc={imgcat} title='Predators' link='/risk/predators' />

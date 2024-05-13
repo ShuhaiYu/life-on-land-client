@@ -98,7 +98,7 @@ const RiskPredators = () => {
             {/* Map */}
 
 
-            <div className='flex flex-row items-center'>
+            <div className='flex flex-col sm:flex-row items-center'>
                 <div className="m-10 p-4 w-[60%] h-[60vh] border  shadow-lg  rounded-3xl">
                     <RiskMap isCatShow={true} isFoxShow={true} />
                 </div>
@@ -119,8 +119,8 @@ const RiskPredators = () => {
             </div>
 
             {/* Chart */}
-            <div className='flex'>
-                <div className='w-1/2 ml-10'>
+            <div className='flex flex-col sm:flex-row'>
+                <div className='sm:w-1/2 ml-10'>
                     <div className="text-center font-bold text-xl mb-4">
                         Observation Records of Feral Foxes and Cats near Grasswren Habitat
                     </div>
@@ -143,7 +143,7 @@ const RiskPredators = () => {
                     </ResponsiveContainer>
                 </div>
 
-                <div className='flex flex-col items-center justify-center w-1/2'>
+                <div className='flex flex-col items-center justify-center sm:w-1/2'>
                     <img src={imgbird} alt="Discover" className='w-16 h-16' />
                     <p className='text-2xl text-dark-green font-bold text-center w-[70%] m-10 mb-20'>
                         Nesting near ground-level and having limited capability for flight has made them vulnerable to introduced predators like cats and foxes.
@@ -159,7 +159,7 @@ const RiskPredators = () => {
 
 
             {/* Content */}
-            <div className='flex flex-row m-20 items-center justify-center'>
+            <div className='flex flex-col sm:flex-row m-20 items-center justify-center'>
                 <img src="https://images.pexels.com/photos/17816256/pexels-photo-17816256/free-photo-of-fox-in-nature.jpeg" alt="Fox in nature" className='w-[300px] h-[300px] rounded-full mx-10' />
                 <div className='text-xl text-dark-green w-[60%]'>
                     <h1 className='text-3xl text-dark-green font-bold pb-2'>Feral Foxes</h1>
@@ -171,7 +171,7 @@ const RiskPredators = () => {
                 </div>
 
             </div>
-            <div className='flex flex-row m-20 items-center justify-center'>
+            <div className='flex flex-col sm:flex-row m-20 items-center justify-center'>
                 <img src="https://i.guim.co.uk/img/media/8e760f479d3b40f74fa495f64728d58c6be054a6/0_0_5000_3333/master/5000.jpg?width=1900&dpr=2&s=none" alt="Fox in nature" className='w-[300px] h-[300px] rounded-full mx-10' />
                 <div className='text-xl text-dark-green w-[60%]'>
                     <h1 className='text-3xl text-dark-green font-bold pb-2'>Feral Cats</h1>
@@ -205,7 +205,7 @@ const RiskPredators = () => {
                 </p>
             </div>
             <div className='flex flex-col items-center w-full h-auto'>
-                <div className='grid grid-cols-2 gap-12 m-32 mt-16'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-12 m-32 mt-16'>
 
                     <HoverImage imgSrc={imgfire} title='Wildfire' link='/risk/fire' />
                     {/* <HoverImage imgSrc={imgcat} title='Predators' link='/risk/predators' /> */}

@@ -59,7 +59,7 @@ const RiskHuman = () => {
                 </p> */}
 
                 {/* Map */}
-                <div className="m-10 p-4 w-[60%] h-[70vh] border border-black shadow-lg shadow-black rounded-3xl">
+                <div className="m-10 p-4 w-full sm:w-[60%] h-[70vh] border border-black shadow-lg shadow-black rounded-3xl">
                     <RiskMap isHumanShow={true} />
                 </div>
 
@@ -67,7 +67,7 @@ const RiskHuman = () => {
 
 
             {/* Content */}
-            <div className='flex flex-row m-20 justify-center items-center'>
+            <div className='flex flex-col sm:flex-row m-20 justify-center items-center'>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tent_camping_along_the_Sulayr_trail_in_La_Taha%2C_Sierra_Nevada_National_Park_%28DSCF5147%29.jpg/1280px-Tent_camping_along_the_Sulayr_trail_in_La_Taha%2C_Sierra_Nevada_National_Park_%28DSCF5147%29.jpg" alt="Fox in nature" className='w-[300px] h-[300px] rounded-full mx-10' />
                 <div className='text-xl text-dark-green w-[60%]'>
                     <h1 className='text-3xl text-dark-green font-bold pb-2'>Careless Fire Management</h1>
@@ -75,7 +75,7 @@ const RiskHuman = () => {
                 </div>
 
             </div>
-            <div className='flex flex-row m-20 justify-center items-center'>
+            <div className='flex flex-col sm:flex-row m-20 justify-center items-center'>
                 <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/msnbc/Components/Photo_StoryLevel/080204/080204-gamefarms-bcol-1p.jpg" alt="Fox in nature" className='w-[300px] h-[300px] rounded-full mx-10' />
                 <div className='text-xl text-dark-green w-[60%]'>
                     <h1 className='text-3xl text-dark-green font-bold pb-2'>Reckless Wildlife Hunting</h1>
@@ -103,7 +103,7 @@ const RiskHuman = () => {
             {/* Hover Images that navigate to other risk pages */}
             <div className='flex flex-col items-center w-full h-auto'>
 
-                <div className='grid grid-cols-2 gap-12 m-32 mt-16'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-12 m-32 mt-16'>
 
                     <HoverImage imgSrc={imgfire} title='Wildfire' link='/risk/fire' />
                     <HoverImage imgSrc={imgcat} title='Predators' link='/risk/predators' />

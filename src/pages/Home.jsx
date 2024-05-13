@@ -39,20 +39,20 @@ const HomePage = () => {
                         critical decline, primarily due to habitat degradation.
                     </p>
                     <img src={Vector} alt="Vector" className='w-auto h-auto' />
-                    <div className='flex gap-5 mt-5'>
+                    <div className='flex gap-5 my-5'>
                         
                         <button className='btn-dark' onClick={scrollToTimeline}>Learn More</button>
                         <Link to='/risk' className='btn-light'>What Went Wrong</Link>
                     </div>
                 </div>
-                <div className='flex flex-col sm:w-full md:w-[20%] items-center'>
+                <div className='flex flex-col md:w-[20%] items-center'>
                     <img src={LandingImg1} alt="Birdwatching" className='h-64' />
                     <img src={LandingImg2} alt="Birdwatching" className='h-96' />
                 </div>
-                <img src={LandingImg3} alt="Birdwatching" className="sm:w-full md:w-[40%] h-[40rem]" />
+                <img src={LandingImg3} alt="Birdwatching" className="sm:w-full md:w-[40%] h-[40rem] hidden sm:block" />
             </div>
             <div className='flex flex-col sm:flex-col md:flex-row'>
-                <img src={LandingImg4} alt="Grasswren" className="sm:w-full md:w-[40%] h-auto" />
+                <img src={LandingImg4} alt="Grasswren" className="sm:w-full md:w-[40%] h-auto hidden sm:block" />
                 <div className='flex flex-col justify-center items-center'>
                     <p className='text-xl sm:text-lg md:text-2xl text-center font-bold w-2/3 my-5'>
                         Species like the Mukarrthippi Grasswren are on the

@@ -214,9 +214,9 @@ const RiskMap = ({ isFireShow, isFoxShow, isCatShow, isHumanShow, isButtonShow }
   };
 
   return (
-    <div className='flex h-full'>
+    <div className='flex flex-col sm:flex-row h-full'>
       {isButtonShow && (
-        <div className='flex flex-col items-center justify-center m-10 w-1/4'>
+        <div className='flex flex-col items-center justify-center m-2 sm:m-10 w-full sm:w-1/4'>
           {
             isFireShow &&
             <div className='flex flex-col items-center justify-center p-5 m-2 bg-[#FA8700] text-white rounded-lg shadow-lg'>
@@ -251,12 +251,10 @@ const RiskMap = ({ isFireShow, isFoxShow, isCatShow, isHumanShow, isButtonShow }
           }
         </div>
       )}
-
-
-      <div className={`w-${isButtonShow ? '3/4' : 'full'} h-full z-10 border-[40px] border-white ${isButtonShow ? 'mr-20' : ''}`} ref={mapRef}></div>
-
+      <div className={`w-full h-full z-10 border-[5px] sm:border-[40px] border-white ${isButtonShow ? 'mb-10 sm:mb-0 sm:mr-20' : ''}`} ref={mapRef}></div>
     </div>
-  );
+);
+
 };
 
 export default RiskMap;

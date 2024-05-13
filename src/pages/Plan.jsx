@@ -90,7 +90,7 @@ const PlanPage = () => {
     // Legend for task icons
     const TaskLegend = () => {
         return (
-            <div className="flex justify-around items-center w-1/2 mt-4 p-4 bg-white rounded-lg shadow">
+            <div className="flex justify-around items-center w-full sm:w-1/2 mt-4 p-4 bg-white rounded-lg shadow">
                 <div className="flex items-center">
                     <i className="fi fi-rs-raindrops text-blue-500 mr-2 text-xl"></i>
                     <span className="text-sm text-gray-600">Watering</span>
@@ -116,7 +116,7 @@ const PlanPage = () => {
                 <span className="pl-2">Back to Build a Habitat</span>
             </Link>
             <div className='flex flex-col items-center justify-center p-4'>
-                <h1 ref={top} className='text-[75px] text-dark-green font-bold text-center mb-4'>Want to keep going?</h1>
+                <h1 ref={top} className='text-4xl sm:text-[75px] text-dark-green font-bold text-center mb-4 mt-20 sm:mt-0'>Want to keep going?</h1>
                 <p className='text-3xl text-center'>We are here to help you make a plan to maintain your habitat <br />Select the date you plan to start the work</p>
                 <div className='flex justify-center my-16'>
                     <DatePicker
@@ -136,7 +136,7 @@ const PlanPage = () => {
 
                 <h1 className='w-2/3 text-3xl text-dark-green font-noto-sans-tc text-center'>The steps and actions are listed in the calendar below.<br /> Let's get started!</h1>
                 <div className='flex mt-10'>
-                    <img src={ImgWren} alt="Wren" className='w-1/4 h-auto rounded-full p-20' />
+                    <img src={ImgWren} alt="Wren" className='w-1/4 h-auto rounded-full p-20 hidden sm:block' />
 
                     <div className='flex-grow w-1/2 '>
                         <Calendar
@@ -145,8 +145,8 @@ const PlanPage = () => {
                             className="w-full h-full text-xl text-green-700"
                             tileClassName={getTileClassName}                        />
                     </div>
-                    <div className='w-1/4 p-4 bg-green-100 rounded-lg shadow-lg'>
-                        <h2 className="text-lg text-dark-green font-bold mb-2">Why It Matters</h2>
+                    <div className='w-1/4 p-4 bg-gray-100 rounded-lg shadow-lg hidden sm:block'>
+                        <h2 className="text-xl text-dark-green font-bold mb-2">Why It Matters</h2>
                         <p className="text-sm text-gray-700">
                             Your efforts in maintaining a backyard habitat are crucial for the survival of the grasswren. Here’s how you can help:
                         </p>
