@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -77,6 +77,14 @@ const RiskPrediction = () => {
 
     const fireRiskImage = getFireRiskImage(riskLevel);
 
+    const handleAnotherLocation = () => {
+        setRiskPrediction(null);
+        setPostcode('');
+        setError('');
+        // Scroll to the top using useRef
+        top.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
     // Slider settings
     const settings = {
         dots: true,
@@ -106,7 +114,7 @@ const RiskPrediction = () => {
 
             </div>
             {/* Landing Content */}
-            <div className='flex flex-col items-center justify-center mt-10'>
+            <div ref={top} className='flex flex-col items-center justify-center mt-10'>
                 <p className='text-dark-green text-3xl text-center m-10'>
                     To know the wildfire alarm in your area in the next month, <br />
                     input your postcode and our model
@@ -211,7 +219,7 @@ const RiskPrediction = () => {
 
 
 
-                <button className='btn-dark my-8' onClick={() => setRiskPrediction(null)}>Check Another Location</button>
+                <button className='btn-dark my-8' onClick={handleAnotherLocation}>Check Another Location</button>
             </div>
 
 

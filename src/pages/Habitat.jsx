@@ -234,15 +234,15 @@ const HabitatPage = () => {
             </Link>
             <div className='relative'>
                 <img src={garden} alt="Garden" className="w-full h-auto object-cover opacity-75" />
-                <h1 className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[96px] text-white font-Poppins tracking-widest whitespace-nowrap">
+                <h1 className="absolute top-1/4 sm:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[32px] sm:text-[64px] lg:text-[96px] text-white font-Poppins tracking-widest whitespace-nowrap">
                     Build A Habitat
                 </h1>
 
                 <img src={whiteLine} alt="White Line" className="absolute bottom-[38%] left-1/2 transform -translate-x-1/2 w-auto h-auto" />
-                <h2 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-white font-Poppins tracking-widest">
+                <h2 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl lg:text-4xl text-white font-Poppins tracking-widest">
                     Be A WrenGuard
                 </h2>
-                <p className="absolute bottom-[17%]  left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-white text-center font-Poppins tracking-widest">
+                <p className="absolute bottom-10 sm:bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl text-white text-center font-Poppins tracking-widest">
                     It's not difficult to contribute to grasswren conservation efforts.<br />
                     Follow the guide and help save the grasswrens.
                 </p>
