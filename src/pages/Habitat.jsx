@@ -242,7 +242,7 @@ const HabitatPage = () => {
                 <h2 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl lg:text-4xl text-white font-Poppins tracking-widest">
                     Be A WrenGuard
                 </h2>
-                <p className="absolute bottom-10 sm:bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl text-white text-center font-Poppins tracking-widest">
+                <p className="absolute bottom-10 sm:bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg sm:text-xl xl:text-2xl text-white text-center font-Poppins tracking-widest hidden sm:block">
                     It's not difficult to contribute to grasswren conservation efforts.<br />
                     Follow the guide and help save the grasswrens.
                 </p>
@@ -258,7 +258,7 @@ const HabitatPage = () => {
             </p>
 
             <div className='flex flex-col items-center justify-center mt-20'>
-                <div className='relative'>
+                <div className='relative hidden sm:block'>
                     <img src={garden} alt="Garden" className="w-full h-auto object-cover" />
 
                     <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] px-20 py-10 rounded-3xl " style={{ backgroundColor: sections[currentSection].color }}>
