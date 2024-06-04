@@ -106,18 +106,25 @@ const PlanPage = () => {
             </div>
         );
     };
-    
+
 
 
     return (
         <div className='bg-grey h-auto relative'>
-            <Link to="/education/habitat" className="absolute top-5 right-5 p-3 bg-light-green hover:bg-dark-green text-white rounded-full transition duration-300 ease-in-out px-4 shadow flex items-center justify-center">
+            <Link to="/education" className="absolute top-5 right-5 p-3 bg-light-green hover:bg-dark-green text-white rounded-full transition duration-300 ease-in-out px-4 shadow flex items-center justify-center">
                 <i className="fi fi-rr-angle-left text-xl"></i>
-                <span className="pl-2">Back to Build a Habitat</span>
+                <span className="pl-2">Back to Becoming An Expert</span>
             </Link>
             <div className='flex flex-col items-center justify-center p-4'>
                 <h1 ref={top} className='text-4xl sm:text-[75px] text-dark-green font-bold text-center mb-4 mt-20 sm:mt-0'>Want to keep going?</h1>
                 <p className='text-3xl text-center'>We are here to help you make a plan to maintain your habitat <br />Select the date you plan to start the work</p>
+                <div className='flex bg-dark-green w-2/3 p-8 rounded-full mt-16'>
+                    <p className='text-white text-xl text-center mx-auto'>
+                        Discover the Grasswren's dynamic population cycle and the importance of maintaining their habitat. <br />
+                        If you're unsure about how to start building a habitat, we provide detailed instructions.
+                    </p>
+                    <Link to="/education/habitat" className="btn-light mx-auto my-auto">Guide of Build a Habitat</Link>
+                </div>
                 <div className='flex justify-center my-16'>
                     <DatePicker
                         selected={tempDate}
@@ -143,7 +150,7 @@ const PlanPage = () => {
                             value={startDate}
                             tileContent={({ date, view }) => taskFormatter(date, view)}
                             className="w-full h-full text-xl text-green-700"
-                            tileClassName={getTileClassName}                        />
+                            tileClassName={getTileClassName} />
                     </div>
                     <div className='w-1/4 p-4 bg-gray-100 rounded-lg shadow-lg hidden sm:block'>
                         <h2 className="text-xl text-dark-green font-bold mb-2">Why It Matters</h2>

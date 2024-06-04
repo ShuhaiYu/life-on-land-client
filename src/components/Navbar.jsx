@@ -32,7 +32,7 @@ const Navbar = () => {
                                 <NavLink to="/risk/fire" className="dropdown-link">Fire</NavLink>
                                 <NavLink to="/risk/predators" className="dropdown-link">Predators</NavLink>
                                 <NavLink to="/risk/humans" className="dropdown-link">Human Factors</NavLink>
-                                <NavLink to="/risk/prediction" className="dropdown-link">Prediction</NavLink>
+                                <NavLink to="/risk/prediction" className="dropdown-link">Future Risks</NavLink>
                             </div>
                         )}
                     </div>
