@@ -32,7 +32,7 @@ function ProtectedRoute({ isLoggedIn, children }) {
 }
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // change to false to enable login
 
   return (
     <Router>
