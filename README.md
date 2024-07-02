@@ -39,6 +39,15 @@ The core feature of WrenGuard allows users to input an Australian postcode to de
 
 We track our project through various milestones, reflecting our agile development approach.
 
+## AWS System Architecture Diagram
+![System Architecture Diagram](public/readmeImgs/AWS.png)
+
+An Easy Overview of the System Architecture
+
+### Backend Repository
+
+For more information on the backend repository, please visit the [WrenGuard Backend Repository](https://github.com/ShuhaiYu/life-on-land-server).
+
 ## Award
 
 ![Award](public/readmeImgs/award.png)
