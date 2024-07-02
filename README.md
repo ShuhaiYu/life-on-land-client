@@ -1,6 +1,6 @@
 # WrenGuard
 
-![WrenGuard Logo](public\readmeImgs\logo.png)
+![WrenGuard Logo](public/readmeImgs/logo.png)
 
 Welcome to the GitHub repository of WrenGuard, a project dedicated to the conservation of endangered grasswrens in Australia. Our platform leverages technology to aid in the protection and study of these vital species, particularly focusing on the critically endangered Mukarrthippi Grasswren.
 
@@ -25,23 +25,23 @@ WrenGuard features a predictive model for wildfires, providing local stakeholder
 
 **Website:** [WrenGuard](https://www.wrenguard.com)
 
-![WrenGuard Landing Page](public\readmeImgs\landing.jpeg)
+![WrenGuard Landing Page](public/readmeImgs/landing.jpeg)
 
 ### Hero Feature
 
 The core feature of WrenGuard allows users to input an Australian postcode to determine the wildfire risk in the area and its potential impact on local grasswren populations over the next month.
 
-![WrenGuard Hero Feature](public\readmeImgs\hero.png)
+![WrenGuard Hero Feature](public/readmeImgs/hero.png)
 
 ## Progress and Milestones
 
-![Progress Map](public\readmeImgs\milestone.png)
+![Progress Map](public/readmeImgs/milestone.png)
 
 We track our project through various milestones, reflecting our agile development approach.
 
 ## Award
 
-![Award](public\readmeImgs\award.png)
+![Award](public/readmeImgs/award.png)
 We are proud to announce that WrenGuard has been awarded the "Student Choice Award Winner" award at the 2024 Monash PG Industry Experience EXPO.
 
 ## License
